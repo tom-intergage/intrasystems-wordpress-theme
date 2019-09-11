@@ -1,0 +1,337 @@
+// Style
+@import "compass/reset";	// Reset
+
+
+// Dev Style (Not for real output)
+.dev
+{
+	font-size: 1.8em;
+	padding: 50px 0px 20px 0px;
+	color: #2c2c2c;
+}
+
+.dev-grey
+{
+	background-color: #e7e7e7;
+	padding: 20px 0px 20px 0px;
+}
+
+//// Variables
+
+$priamry-blue: #00aeef;
+$primary-white: #FFFFFF;
+$primary-black: #000000;
+$further-details-grey: #a7a9ac;
+$light-grey: #e1e1e1;
+$dark-grey: #afafaf;
+$footer-black: #231f20;
+
+
+// Typography
+
+
+.h1-intro-white
+{
+	font-size: 40px;
+	color: $primary-white;
+}
+
+.h2-intro-white
+{
+	font-size: 0.875em;
+	color: $primary-white;
+}
+
+// h2
+
+.h2-white
+{
+	font-size: 30px;
+	color: $primary-white;
+}
+
+.h2-blue
+{
+	font-size: 30px;
+	color: $priamry-blue;
+}
+
+// h3
+
+.h3-white
+{
+	font-size: 1.500em;
+	color: $primary-white;
+}
+
+.h4-white
+{
+	font-size: 14px;
+	color: $primary-white;
+}
+
+.h4-blue
+{
+	font-size: 14px;
+	color: $priamry-blue;
+}
+
+.h4-blue-border
+{
+	font-size: 14px;
+	color: $priamry-blue;
+	border-bottom: 1px solid $primary-black;
+}
+
+.h4-black
+{
+	font-size: 14px;
+	color: $primary-black;
+}
+
+p
+{
+	font-size: 14px;
+}
+
+// Hyperlinks
+
+a:link
+{
+	color: $priamry-blue;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: $priamry-blue;
+}
+
+// Sections
+
+.features
+{
+	background-color: $primary-black;
+}
+
+.site-header
+{
+	background-color: $primary-black;
+	color: $primary-white;
+	font-size: 12px;
+	text-transform: uppercase;
+
+	a:link
+	{
+		color: $primary-white;
+	}
+
+	a:visited
+	{
+		color: $primary-white;
+	}
+}
+
+
+.further-details
+{
+	background-color: $further-details-grey;
+	width: 100%;
+	height: 138px;
+}
+
+	p
+	{
+		font-size: 12px;
+		color: $primary-white;
+	}
+
+.inner-further-details
+{
+	padding: 25px 35px;
+}
+
+.grey-pre-footer
+{
+	height: auto;
+	width: 100%;
+	background-color: $light-grey;
+	margin-top: 10px;
+	padding: 8px;
+	text-align: center;
+	font-size: 12px;
+	border-bottom: 9px solid $dark-grey;
+}
+
+.footer-black
+{
+	font-size: 21px;
+	height: auto;
+	background-color: $footer-black;
+	color: $primary-white;
+	padding: 20px 20px;
+
+	a:link
+	{
+		font-size: 12px;
+		text-decoration: none;
+	}
+}
+.footer-black p
+{
+	font-size: 21px;
+}
+
+.footer-logos
+{
+	padding-bottom: 15px;
+	border-bottom: 1px solid $primary-white;
+}
+
+.footer-copyright
+{
+	padding-top: 22px;
+	font-size: 12px;
+}
+
+.footer-copyright a:link
+{
+	font-size: 12px;
+}
+
+// Tables
+
+.design-tbl-blue
+{
+	width: 100%;
+	font-size: 12px;
+	margin-top: 50px;
+	color: $priamry-blue;
+}
+
+	table.design-tbl-blue td
+	{
+		padding-right: 0px;
+	}
+
+	table.design-tbl-blue tr
+	{
+		border-bottom: 1px solid $primary-black;
+		height: 35px;
+	}
+
+.design-tbl-black
+{
+	width: 100%;
+	font-size: 12px;
+	color: $primary-black;
+}
+
+	table.design-tbl-black td
+	{
+		padding-right: 11px;
+		text-align: left;
+	}
+
+	table.design-tbl-black tr
+	{
+		border-bottom: 1px solid $primary-black;
+		height: 35px;
+	}
+
+tr td.center
+{
+	text-align: center;
+}
+
+.specification-tbl
+{
+	width: 100%;
+	font-size: 12px;
+}
+
+	table.specification-tbl td
+	{
+		padding-right: 70px;
+	}
+
+	table.specification-tbl tr
+	{
+		border-bottom: 1px solid $primary-black;
+		height: 45px;
+	}
+
+
+// Lists
+.list-blue
+{
+	list-style-type: disc;
+	color: $priamry-blue;
+	font-size: 12px;
+}
+
+	span
+	{
+		color: $primary-black;
+	}
+
+.blue-highlight
+{
+	color: $priamry-blue;
+}
+
+
+// Buttons
+
+.large-blue-btn
+{
+	height: 26px;
+	width: 162px;
+	margin: 5px 0px 5px 0px;
+	border: 1px solid $priamry-blue;
+	background-color: transparent;
+	color: $priamry-blue;
+	outline: none;
+	-web-kit-appearance: none;
+	text-transform: uppercase;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.small-blue-btn
+{
+	@extend .large-blue-btn;
+	height: 26px;
+	width: 101px;
+}
+
+
+.large-white-btn
+{
+	@extend .large-blue-btn;
+	border: 1px solid $primary-white;
+	color: $primary-white;
+}
+
+// Search input
+
+input
+{
+	height: 26px;
+	width: 356px;
+	font-size: 0.750em;
+	background-color: $primary-white;
+	outline: none;
+	border: none;
+	-web-kit-appearance: none;
+	-moz-appearance: none;
+}
+
+
+// Icons
+
+.blue-fa
+{
+	color: $priamry-blue;
+}
