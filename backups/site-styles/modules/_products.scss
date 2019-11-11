@@ -1,0 +1,219 @@
+
+/*--------------------------------------------------------------
+## Products Page
+--------------------------------------------------------------*/
+
+#gripfit-l-col {
+  float: left;
+  width: 50%;
+  padding: 0 30px;
+
+  img {
+    margin-bottom: 30px;
+  }
+
+  a {
+    margin: 0 auto;
+  }
+}
+
+#gripfit-r-col {
+  float: left;
+  width: 50%;
+  padding: 0 30px;
+}
+
+#gripfit-profile {
+  padding: 60px 0;
+}
+
+#form-download .wpcf7 input {
+  &[type="text"], &[type="email"] {
+    width: 100%;
+  }
+}
+
+.news_list {
+  > div {
+    margin-bottom: 45px;
+  }
+
+  .prod-info {
+    float: left;
+    width: 55%;
+    padding: 0 0 0 55px;
+
+    p {
+      strong {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      }
+
+      margin-bottom: 15px;
+      max-width: 100%;
+
+      &.prod-title {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  > div div {
+    &.prod-info a.small-blue-btn {
+      margin-bottom: 3rem;
+    }
+
+    &.thumb-featured {
+      width: 45%;
+      float: left;
+    }
+  }
+}
+
+.header-prod .blue-solid-btn {
+  margin-top: 0;
+}
+
+.prod-button-option {
+  width: 33.3333%;
+  float: left;
+  padding: 0 15px;
+
+  .blue-solid-btn {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.raleway-font {
+  font-family: "Raleway", sans-serif;
+}
+
+.prod-info .raleway-font {
+  font-size: 1.6em;
+  line-height: 1.1em;
+  margin-bottom: 5px;
+}
+
+.header-prod > div .info p.raleway-font {
+  font-family: "Raleway", sans-serif;
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
+#accessories-content {
+  max-width: 72.75rem;
+  margin: 0 auto;
+  text-align: center;
+
+  .col {
+    width: 50%;
+    float: left;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    color: #404040;
+    font-size: 1.2rem;
+    font-family: "Swiss_721 W01 Medium", Helvetica, sans-serif;
+  }
+
+  .accessory-listing {
+    padding: 0 0 20px;
+  }
+
+  .accessory-listing-space {
+    padding-bottom: 40px;
+  }
+
+  .int-img {
+    max-width: 400px;
+    height: auto;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .int019 {
+    max-width: 417px;
+  }
+
+  .intr012 {
+    max-width: 400px;
+  }
+
+  .intb165 {
+    max-width: 330px;
+  }
+
+  .intb011 {
+    max-width: 326px;
+  }
+
+  p {
+    max-width: 400px;
+    margin: 0 auto 10px;
+    display: block;
+
+    strong {
+      font-family: "Swiss_721 W01 Medium", Helvetica, sans-serif;
+    }
+  }
+}
+
+#further-options {
+  padding-top: 50px;
+}
+
+@media only screen and (max-width: 1000px) {
+  #gripfit-l-col {
+    width: 100%;
+    float: none;
+  }
+
+  #gripfit-r-col {
+    width: 100%;
+    float: none;
+    margin: 20px 0 0;
+  }
+
+  #accessories-content .col {
+    padding: 0 30px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .news_list {
+    > div {
+      width: 290px;
+      margin: 0 auto 45px;
+
+      div.thumb-featured {
+        width: 290px;
+        float: none;
+      }
+    }
+
+    .prod-info {
+      float: none;
+      width: 100%;
+      padding: 20px 0 0;
+    }
+  }
+
+  .prod-button-option {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  #accessories-content .col {
+    width: 100%;
+    float: none;
+    padding: 0 15px 15px;
+  }
+}

@@ -10,13 +10,13 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 <?php
 $output           =  "";
-$parallax         =  get_field('parallax_img' ); 
+$parallax         =  get_field('parallax_img' );
 
 if($parallax){
    $size = 'parallax';
    $parallax_thumb = $parallax['sizes'][ $size ];
    if (!$parallax_thumb){
-   $parallax_thumb = $parallax['sizes'][ 'full' ];  
+   $parallax_thumb = $parallax['sizes'][ 'full' ];
    }
 }
 
@@ -30,31 +30,27 @@ if( have_rows('carousel_items') ){
 
 ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-		
-		<section>
-            <div class="row">
-            <div class="excerpt-width">
-               <?php the_title( '<h1>', '</h1>' ); ?>
-		         <?php the_excerpt(); ?>
 
-               <?php if( get_field('show_banner') ){ ?>
 
-                  <a href="/shopping-centres-strategy-for-overcoming-ecommerce/" target="_self" id="shopping-banner"><img src="/wp-content/themes/axishouse/img/shopping-banner.png" alt="Latest Whitepaper - Shopping Centres Strategy For Overcoming Ecommerce" /></a>
+			<?php
+			$id = get_the_ID();
 
-               <?php } ?>
-            
-            </div>
-         </div>
-      </section>
-      <?php
-         if($parallax_thumb){
-               echo "<div class='page-header parallax-window' data-parallax='scroll' data-position-y='bottom'  data-image-src='". $parallax_thumb."'></div>";
+			if ( have_rows( 'layouts', $id ) ) :
 
-         }
-      ?>
-   	<section>
+			    while ( have_rows( 'layouts', $id ) ) :
+
+			      the_row();
+
+			        get_template_part( 'layouts/' . get_row_layout() );
+
+			    endwhile;
+
+			endif;
+			?>
+
+
          <div class="row sectors">
-           
+
             <div class="sector-content <?php echo $extraClass; ?>">
             <?php  the_content(); ?>
 
@@ -76,39 +72,39 @@ if( have_rows('carousel_items') ){
             <?php if( have_rows('carousel_items') ){ ?>
 
             <div class="sector-cases">
-   
 
- 
-<?php       
+
+
+<?php
 // Big image
 
 if( have_rows('carousel_items') ){
   $output .="<div id='sync1' class='owl-carousel'> ";
-   while( have_rows('carousel_items') ): the_row();  
+   while( have_rows('carousel_items') ): the_row();
       $image = get_sub_field('c_img'); // Return object/array
       $thumb = $image['sizes']['sector-case'];
-      $output .="<div class='item' style='background-image:url(\"".$thumb."\");'>";  
+      $output .="<div class='item' style='background-image:url(\"".$thumb."\");'>";
      // $output .= "<img src='". $thumb."' >";
       $output .= "<div class='row'>";
       $output .= "<div class='plus'>";
-   
+
       $output .= "</div>";
-   
+
       $output .= "</div>";
    /*
       $output .= "<div class='popup-box'>";
-      $output .= get_sub_field('c_title'); 
-      $output .= get_sub_field('c_desc'); 
-      
+      $output .= get_sub_field('c_title');
+      $output .= get_sub_field('c_desc');
+
       $output .= "</div>";*/
-   
+
       $output .= "<div class='popup-box'>";
       $output .= "<div class='popup-inner'>";
       $output .= "<div class='popup-close'>";
       $output .= "</div>";
-   
+
       $output .= "<div class='popup-content'>";
-      $output .= "<h3>".get_sub_field('c_title')."</h3>"; 
+      $output .= "<h3>".get_sub_field('c_title')."</h3>";
       $output .= "<p>".get_sub_field('c_desc')."</p>";
       $product = get_sub_field('c_prod');
    if($product){
@@ -116,9 +112,9 @@ if( have_rows('carousel_items') ){
       setup_postdata($post);
       $output .= "<div class='sector_prod medium_exemption'>";
             $post_id = get_the_ID();
-            $prod_featured_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'prod_featured-small' ); 
+            $prod_featured_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'prod_featured-small' );
             if(!$prod_featured_img){
-               $prod_featured_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' ); 
+               $prod_featured_img = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
             }
             $output .="<div class='thumb-featured'><img src='".$prod_featured_img[0]."' ></div>";
             $logo_black = get_field('logo_black');
@@ -127,45 +123,45 @@ if( have_rows('carousel_items') ){
             $output .= "<a class='small-blue-btn' href='".get_the_permalink()."'>Read more</a>";
             $output .= "</div></div>";
             $output .="<div class='clear'></div>";
-      
-      
-      wp_reset_postdata();   
+
+
+      wp_reset_postdata();
    }
 
       $output .= "</div>";
       $output .= "</div>";
    $output .= "</div>";
    $output .="</div>";
-	endwhile; 
+	endwhile;
    $output .="</div>";
-} 
+}
 //Thumbnails
 
 if( have_rows('carousel_items') ){
-$output .= "<div class='slideshow'>";   
+$output .= "<div class='slideshow'>";
   $output .="<div id='sync2' class='owl-carousel'> ";
-   while( have_rows('carousel_items') ): the_row();  
-   
+   while( have_rows('carousel_items') ): the_row();
+
       $output .="<div class='item'>";
       $image = get_sub_field('c_img');
       $thumb = $image['sizes']['sector-case-thumb'];
       $output .= "<img src='". $thumb."' >";
       $output .="</div>";
-	endwhile; 
+	endwhile;
    $output .="</div>";
-$output .= "</div>"; // Closing div of prod_info    
-} 
-  
+$output .= "</div>"; // Closing div of prod_info
+}
+
 echo $output;
 ?>
 
               <?php ?>
-               
+
             </div>
-            
+
             <?php } ?>
          </div>
-      </section>         
+      </section>
 
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template.

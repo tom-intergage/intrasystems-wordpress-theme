@@ -1,0 +1,373 @@
+#go-to-basket {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0 1rem;
+
+  span {
+    line-height: 2rem;
+  }
+
+  &.items-added {
+    cursor: pointer;
+    background: $primary-blue;
+    color: $white;
+
+    &:hover {
+      background: $light-black;
+    }
+  }
+
+  &:not(.items-added) {
+    background: #eee;
+
+    &:hover {
+      background: #eee;
+    }
+
+    span {
+      color: #aaa;
+    }
+  }
+}
+
+.sample-basket {
+  position: fixed;
+  top: -150%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  box-sizing: border-box;
+  width: 1024px;
+  height: 768px;
+  max-width: 90vw;
+  max-height: 90vh;
+  transition: top 1s ease;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+
+  &.open {
+    top: 50%;
+  }
+
+  > div {
+    position: relative;
+    background: $primary-blue;
+    padding: 40px 0 0;
+    height: 100%;
+    display: block;
+  }
+
+  &__content {
+    background: $white;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    &__types {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+
+      &__type {
+        width: 32%;
+        position: relative;
+        background: $primary-blue;
+
+        p {
+          position: absolute;
+          color: $white;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          transform: translate(-50%,-50%);
+          text-align: center;
+          font-size: 2rem;
+          font-family: 'Raleway', sans-serif;
+        }
+
+        &:hover {
+          background: $light-black;
+          cursor: pointer;
+        }
+
+        &:after {
+          padding-top: 100%;
+          content: "";
+          display: block;
+        }
+      }
+    }
+
+    &__variants {
+      height: 100%;
+      width: 100%;
+      overflow-y: scroll;
+      position: relative;
+    }
+
+    .product-finishes-filter {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .product-finish {
+      box-sizing: border-box;
+      height: 2rem;
+      padding: 0 1rem;
+
+      &:not(.active) {
+        cursor: pointer;
+      }
+
+      &__name {
+        font-weight: 700;
+        line-height: 2rem;
+        display: block;
+        margin-bottom: 0;
+      }
+
+      &:hover {
+        background: #eee;
+      }
+
+      &.active {
+        background: $primary-blue;
+        color: $white;
+
+        &:hover {
+          background: $primary-blue;
+        }
+      }
+    }
+
+    .product-finish-list {
+      &:not(.active) {
+        display: none;
+      }
+    }
+
+    .product-variation {
+      &__title {
+        margin-bottom: 0;
+        background: #eee;
+        line-height: 2rem;
+        padding: 0 1rem;
+
+        &.active {
+          background: $primary-blue;
+          color: $white;
+        }
+
+        &:not(.active) {
+          cursor: pointer;
+
+          &:hover {
+            background: #aaa;
+          }
+
+          & + ul {
+            display: none;
+          }
+        }
+      }
+
+      &__list {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+        li {
+          width: 25%;
+          margin: 0;
+          padding: 10px;
+          text-align: center;
+
+          &.in-basket {
+            background: red;
+          }
+        }
+      }
+    }
+
+    &__products {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      height: 100%;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    &__stage {
+      width: 400%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      position: relative;
+      left: 0;
+
+      > div {
+        width: 25%;
+        height: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+      }
+    }
+  }
+
+  &__item {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 20%;
+    cursor: pointer;
+
+    p {
+      text-align: center;
+      color: $primary-blue;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    &__image {
+      position: relative;
+
+      &::after {
+        padding-top: 90%;
+        width: 100%;
+        display: block;
+        content: "";
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 100%;
+        transition: all 0.5s ease;
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%,-50%);
+      }
+    }
+
+    &:hover {
+      p {
+        color: $light-black;
+      }
+    }
+  }
+
+  &__title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+
+    p {
+      line-height: 40px;
+      color: $white;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+
+    > span {
+      position: relative;
+      width: 20px;
+      height: 20px;
+      display: block;
+      font-size: 0;
+
+      &::after,
+      &::before {
+        top: 8px;
+        width: 18px;
+        height: 2px;
+        display: block;
+        content: "";
+        position: absolute;
+        background-color: $white;
+      }
+
+      &::before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+        left: 1px;
+      }
+
+      &::after {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        right: 1px;
+      }
+    }
+
+    &:hover {
+      > span {
+        &::after,
+        &::before {
+          background-color: $light-black;
+        }
+      }
+    }
+  }
+}
+
+#sample-basket-tab {
+  position: fixed;
+  z-index: 300;
+  bottom: 0;
+  right: 1rem;
+  width: 200px;
+  max-width: 40vw;
+  padding: 0 1rem;
+  transition: top 1s ease;
+
+  &.hidden {
+    bottom: -2rem;
+  }
+  height: 2rem;
+  background: $primary-blue;
+  box-sizing: border-box;
+  display: block;
+  cursor: pointer;
+
+  &:hover {
+    background: $light-black;
+  }
+
+  p {
+    line-height: 2.1rem;
+    color: white;
+    font-size: 0.75rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  span {
+    float: right;
+  }
+}

@@ -1,0 +1,296 @@
+
+/*--------------------------------------------------------------
+## GLOBAL
+--------------------------------------------------------------*/
+
+.blue-solid-btn {
+  background: #00aeef;
+  color: #ffffff;
+  padding: 12px 75px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #ffffff;
+    background: #3cc2ff;
+  }
+}
+
+#masthead, .header-navigation {
+  background: transparent;
+}
+
+.site-header .site-branding > div {
+  width: 100%;
+  background: none;
+  padding: 30px 0;
+
+  a {
+    width: 577px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.header-navigation .main-logo {
+  a {
+    width: 155px;
+    display: block;
+  }
+
+  img {
+    padding-top: 7px;
+  }
+}
+
+#masthead .visible-xs {
+  display: none;
+}
+
+.footer-black, #masthead .menu-btn, section.secondary_bg {
+  background-color: #3f5666;
+}
+
+.footer-black .footer-top .footer-logos img {
+  max-height: 31px;
+  width: auto;
+  margin-bottom: 10px;
+}
+
+.yellow-btn {
+  color: #00aeef;
+  text-transform: uppercase;
+  border: 1px solid #ffc50a;
+  padding: 0.3125rem 0.625rem;
+  cursor: pointer;
+  text-align: center;
+  margin: 1.25rem auto;
+  display: inline-block;
+}
+
+.yellow-solid-btn {
+  background: #ffc50a;
+  color: #ffffff;
+  padding: 12px 50px;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #ffffff;
+    background: #ffcd2a;
+  }
+}
+
+#order-sample-pop-up {
+  width: 340px;
+  height: 490px;
+  background: url(/wp-content/themes/axishouse/img/pop-up-bg.jpg) no-repeat;
+  background-size: 340px 490px;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.2em;
+  padding: 30px 15px 0;
+
+  p {
+    font-size: 21px;
+    font-family: "Raleway", sans-serif;
+    line-height: 28px;
+    margin-bottom: 20px;
+
+    &.last {
+      font-size: 0.9em;
+      line-height: 22px;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #ffffff;
+      font-weight: 600;
+    }
+  }
+}
+
+#prod-video-wrapper {
+  max-width: 560px;
+  margin: 0 auto 10px;
+}
+
+#header.short-header {
+  min-height: 0;
+  height: 600px;
+
+  .header-content {
+    height: auto;
+
+    /*position: relative*/
+  }
+
+  #masthead {
+    height: 180px;
+    min-height: 0;
+  }
+
+  .header-navigation.sticky {
+    top: 358px;
+
+    &.sticktotop {
+      top: 0;
+    }
+  }
+
+  .btn--container {
+    display: none;
+  }
+
+  .header-page {
+    top: 51%;
+  }
+}
+
+.header-title {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#prod-mobile-intro {
+  display: none;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+@media only screen and (max-width: 1366px) {
+  #header.short-header {
+    height: 450px;
+
+    .header-navigation.sticky {
+      top: 208px;
+    }
+
+    .header-page {
+      top: 30%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .header-navigation .main-logo img {
+    margin-left: 12px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #masthead {
+    .hidden-xs {
+      display: none;
+    }
+
+    .visible-xs {
+      display: block;
+    }
+
+    .site-branding a {
+      padding: 0 15px;
+      display: block;
+    }
+  }
+
+  .site-header .site-branding > div a {
+    width: 280px;
+  }
+
+  #header.short-header {
+    height: 320px;
+
+    .header-content {
+      height: 150px;
+    }
+
+    #masthead {
+      height: 115px;
+    }
+
+    .header-page {
+      top: 54%;
+    }
+
+    .header-title {
+      font-size: 1.3rem;
+    }
+
+    .header-navigation.sticky {
+      top: 155px;
+    }
+  }
+
+  .rowdisclaimer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  /*.header-content {position: relative}*/
+
+  .header-prod {
+    top: 22%;
+    height: auto;
+    text-align: center;
+
+    .yellow-solid-btn, .blue-solid-btn, .info p {
+      display: none;
+    }
+
+    > div .info p.raleway-font {
+      font-size: 1.8em;
+      margin-bottom: 5px;
+      display: block;
+      text-align: center;
+    }
+
+    .prod-img {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
+
+  #btn-down {
+    margin-left: -17px;
+  }
+
+  #prod-mobile-intro {
+    display: block;
+  }
+
+  .home-down {
+    position: absolute;
+    left: 8px;
+    top: 8px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .rowdisclaimer {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  #order-sample-pop-up {
+    background-image: url(/wp-content/themes/axishouse/img/pop-up-bg-sm.jpg);
+    background-size: 235px 339px;
+    width: 235px;
+    height: 339px;
+    padding-top: 12px;
+
+    p {
+      font-size: 15px;
+      line-height: 20px;
+      margin-bottom: 7px;
+
+      &.last {
+        font-size: 0.8em;
+        line-height: 20px;
+        margin-top: 5px;
+      }
+    }
+  }
+}

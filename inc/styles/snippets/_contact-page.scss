@@ -1,0 +1,49 @@
+
+/*--------------------------------------------------------------
+## Contact Page
+--------------------------------------------------------------*/
+
+#contact-form {
+  input {
+    &[type="text"], &[type="email"] {
+      width: 100%;
+    }
+
+    &[type="checkbox"] {
+      float: left;
+      width: auto;
+      height: auto;
+      margin: 4px 10px 0 0;
+    }
+  }
+
+  .wpcf7-list-item {
+    display: block;
+    clear: both;
+
+    label {
+      text-align: left;
+      display: block;
+    }
+  }
+
+  .wpcf7-list-item-label {
+    display: block;
+    float: left;
+    width: 235px;
+    margin-bottom: 15px;
+  }
+
+  //.blue-solid-btn {
+  //  width: 100%;
+  //  background: #00aeef;
+  //  font-size: 1em;
+  //  padding-top: 10px;
+  //  padding-bottom: 10px;
+//    height: auto;
+  //}
+}
+
+.locations .wpcf7 .wpcf7-form {
+  margin-top: 0;
+}

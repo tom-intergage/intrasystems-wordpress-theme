@@ -151,9 +151,9 @@
       {
         "@context": "http://schema.org",
         "@type": "Organization",
-        "name": "INTRAmatting",
+        "name": "INTRAsystems",
         "description": "Entrance Matting manufacturers, suppliers & installers specialising in 21st Century Design using the latest technologies for long lasting heavy duty matting.",
-        "legalName": "INTRAmatting",
+        "legalName": "INTRAsystems",
         "url": "https://www.intrasystems.co.uk/",
         "logo": "https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/logo-intramatting-white.png",
         "address": {
@@ -189,7 +189,7 @@
 <script type="text/javascript" src="https://www.22-trk-srv.com/js/81975.js" ></script>
 <noscript><img src="https://www.22-trk-srv.com/81975.png" style="display:none;" /></noscript>
 -->
-<meta name="google-site-verification" content="riNo2wgbZuTKzATyliKbXNd8R8hI9kcZ-T7E3JlU3JQ" /> 
+<meta name="google-site-verification" content="riNo2wgbZuTKzATyliKbXNd8R8hI9kcZ-T7E3JlU3JQ" />
 </head>
 
 <body <?php body_class(); ?>>
@@ -369,7 +369,7 @@
 
       <?php
 
-      } 
+      }
 
       elseif ('news' == get_post_type() && is_archive()) {
 
@@ -381,10 +381,10 @@
 
       <?php
 
-      } 
+      }
 
-    
-      
+
+
       elseif ('news' == get_post_type() && !is_archive()) {
         ?>
         <div class="header-page">

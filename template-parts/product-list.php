@@ -1,56 +1,26 @@
-<?php $output = ""; ?>
-
-<script>
-   jQuery(document).ready(function() {
-
-      jQuery('.show_all').wrapInner('<li class="current-cat"></li>');
-
-      jQuery('.products-filter li a').click(function(e) {
-         e.preventDefault();
-         var newCategory = jQuery(this).text();
-         jQuery('.products-filter li').removeClass('current-cat');
-         jQuery(this).closest('li').addClass('current-cat');
-         console.log(newCategory);
-         if (newCategory == "All Products") {
-            jQuery('.individual-product').css({
-               display: "block"
-            });
-         } else {
-
-
-
-            jQuery('.individual-product').css({
-               display: "none"
-            });
-
-            jQuery('.individual-product.' + newCategory).css({
-               display: "block"
-            });
-         }
-
-
-      });
-
-   });
-</script>
-
-<style>
-   .prod_list {
-      flex-wrap: wrap;
-      display: flex;
-   }
-</style>
+<?php $output = ""; $category = get_field('category');?>
 
 <section>
-   <div class="row">
+   <div class="row" id="row-of-products">
       <?php
-      $args = array(
 
+      if ($category) {
+      $args = array(
+        'cat' => $category->term_id,
          'post_type'       => 'products',
          'order'           => 'ASC',
          'orderby'         => 'menu_order',
          'posts_per_page'  => '-1'
       );
+      }
+      else {
+        $args = array(
+           'post_type'       => 'products',
+           'order'           => 'ASC',
+           'orderby'         => 'menu_order',
+           'posts_per_page'  => '-1'
+        );
+      }
       $the_query = new WP_Query($args);
       if ($the_query->have_posts()) {
          ?>
@@ -59,14 +29,38 @@
                <div class="row">
 
                   <?php
-                     wp_list_categories('orderby=name&child_of=463&title_li=');
+                     //wp_list_categories('orderby=name&child_of=463&title_li=');
+                     $taxonomies = get_terms( array(
+                       'orderby'       => 'name',
+                       'child_of'           => 463,
+                       'taxonomy' => 'category'
+                     ));
 
+                     if ( !empty($taxonomies) ) :
+
+                           $outputC = '';
+
+                           foreach( $taxonomies as $subcategory ) {
+                             //print_r($subcategory);
+                             $ad = '';
+                             if ($category) {
+                               if ($category->term_id == $subcategory->term_id) $ad = ' current-cat';
+                             }
+
+                             $outputC .= '<li class="cat-item cat-item-'.esc_attr( $subcategory->term_id ).$ad.'"><a href="'.get_site_url().'/'.esc_attr( $subcategory->slug ).'-products/">'. esc_html( $subcategory->name ) .'</a></li>';
+                             }
+                             echo $outputC;
+                           endif;
                      ?>
 
                </div>
             </div>
             <div class="show_all">
-               <a href="<?php echo get_home_url(); ?>/products/" class="large-blue-btn">All Products</a>
+              <?php
+              $ad = 'large-blue-btn';
+              if ($category) $ad = 'large-white-btn';
+              ?>
+               <a href="<?php echo get_home_url(); ?>/products/" class="<?php echo $ad ?>">All Products</a>
             </div>
          </div>
       <?php
@@ -79,7 +73,7 @@
             }
             else if (in_category('Ceilings')) {
                $output .= "<div class='individual-product Ceilings'>";
-            } 
+            }
             else if (in_category('Grilles')) {
                $output .= "<div class='individual-product Grilles'>";
             }  else {

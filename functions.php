@@ -5,6 +5,8 @@
  * @package axishouse
  */
 
+ 
+
 if ( ! function_exists( 'axishouse_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -49,7 +51,7 @@ function axishouse_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-      
+
 		'primary' => esc_html__( 'Primary Menu', 'axishouse' ),
       'footer' => esc_html__( 'Footer Menu', 'axishouse' ),
       'mobile' => esc_html__( 'Mobile Menu', 'axishouse' ),
@@ -124,7 +126,7 @@ function axishouse_widgets_init() {
 		'description'   => '',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
-		'before_title'  => '<h2 class="widget-title">', 
+		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
 	register_sidebar( array(
@@ -151,9 +153,9 @@ add_action( 'widgets_init', 'axishouse_widgets_init' );
 
 
 // LOAD AXIS HOUSE CORE
-require_once(get_template_directory().'/inc/axishouse.php'); 
+require_once(get_template_directory().'/inc/axishouse.php');
 
-// LOAD AXIS HOUSE 
+// LOAD AXIS HOUSE
 require_once(get_template_directory().'/inc/custom-post-type.php');
 
 
@@ -187,7 +189,7 @@ require get_template_directory() . '/inc/jetpack.php';
  * CAD Form Fix
  */
 add_action( 'wp_footer', 'cad_wp_footer' );
- 
+
 function cad_wp_footer() {
 ?>
 <script type="text/javascript">
@@ -200,7 +202,7 @@ document.addEventListener( 'wpcf7mailsent', function( event ) {
 		document.getElementById('file_url1').style.display = 'block';
     } else if ('6992' == event.detail.contactFormId) {
 		document.getElementById('file_url1').style.display = 'block';
-	} else if ('7301' == event.detail.contactFormId) { 
+	} else if ('7301' == event.detail.contactFormId) {
 		document.getElementById('intralux_graphic_thankyou').style.display = 'block';
 	}
 }, false );
@@ -217,7 +219,7 @@ add_action('init', 'start_session', 1);
 function start_session() {
 	if(!session_id()) {
 		session_start();
-	} 
+	}
 }
 
 @ini_set( 'upload_max_size' , '10M' );

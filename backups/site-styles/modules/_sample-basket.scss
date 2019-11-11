@@ -1,0 +1,39 @@
+
+#sample-basket {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 600px;
+  max-width: 90vw;
+  height: 500px;
+  max-height: 90vh;
+}
+
+
+#sample-basket-tab {
+  position: fixed;
+  z-index: 300;
+  bottom: 0;
+  right: 1rem;
+  width: 200px;
+  max-width: 40vw;
+  padding: 0 1rem;
+  height: 2rem;
+  background: black;
+  box-sizing: border-box;
+  display: block;
+
+  p {
+    line-height: 2rem;
+    color: white;
+    margin: 0;
+  }
+
+  span {
+    float: right;
+  }
+}

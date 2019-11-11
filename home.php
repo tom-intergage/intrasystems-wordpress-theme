@@ -10,31 +10,31 @@
  * @package axishouse
  */
 $output = "";
-$parallax_img  =  get_field('parallax_img' ); 
+$parallax_img  =  get_field('parallax_img' );
 $parallax_thumb ="";
 if($parallax_img){
    $size = 'parallax';
    $parallax_thumb = $parallax_img['sizes'][ $size ];
 
    if (!$parallax_thumb){
-   $parallax_thumb = $parallax_img['sizes'][ 'full' ];  
+   $parallax_thumb = $parallax_img['sizes'][ 'full' ];
    }
 }
 
-get_header(); 
+get_header();
 
 ?>
-   
+
 <?php
 $args = array('post_type'=> 'post',
-            
-              
+
+
              );
 $query = new WP_Query( $args );
 if ( $query->have_posts() ){
 }
 ?>
-   
+
 
 	<div id="primary" class="blog-posts content-area">
 		<main id="main" class="site-main">
@@ -44,7 +44,7 @@ if ( $query->have_posts() ){
      <div class="categories">
      <div class="row">
       <?php
-       wp_list_categories('orderby=name&exclude=1,444,463&title_li='); 
+       wp_list_categories('orderby=name&exclude=1,444,463&title_li=');
        ?>
        </div>
        </div>
@@ -54,54 +54,54 @@ if ( $query->have_posts() ){
        </li>
        </div>
       </div></div>
-      
-		   
+
+
 		</section>
 		<section><div class="row">
-		
 
-      
-			<?php while ( have_posts() ) : the_post(); ?> 
-           
-        
+
+
+			<?php while ( have_posts() ) : the_post(); ?>
+
+
           <div class="single-case-study">
-            
-              <?php 
+
+              <?php
 if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
  $image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'case-study-thumb' ); ?>
- 
+
  <img src="<?php echo $image[0]; ?>">
- 
+
 
 
 
 <?php }else{
 ?>
  <img src="<?php echo get_template_directory_uri(); ?>/img/project-default.jpg">
- 
+
 
 <?php
 
-  } ?> 
+  } ?>
            <?php the_title( '<h4 class="entry-title">', '</h4>' ); ?>
-         
+
             <?php echo "<p>".get_intramatting_excerpt(get_the_excerpt(), 5)."</p>"; ?>
              <?php if (get_field('read_more_link') ){ ?>
 
 
-           
-            <a class="large-blue-btn"  href="<?php the_permalink() ?>">Read more</a>
+
+            <a class="button"  href="<?php the_permalink() ?>">Read more</a>
 
             <?php } ?>
-            
-  
-        
+
+
+
          <?php
-         
+
          ?>
-         
+
 </div>
-         
+
 
 			<?php endwhile; // End of the loop. ?>
 			</div></section><section>
@@ -117,22 +117,24 @@ $args = array(
 	'next_text'          => __(' ... Next >'),
    'after_page_number'  => ' | ',
 );
-   
-   
+
+
 echo paginate_links( $args );
 ?>
      </div>
       </section>
-			
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-  <?php get_template_part( 'template-parts/content', 'popup' ); ?> 
+
+
+  <?php get_template_part( 'template-parts/content', 'popup' ); ?>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
-<?php 
+<?php
 function get_intramatting_excerpt($excerpt, $limit ){
   if (str_word_count($excerpt , 0) > $limit) {
           $words = str_word_count($excerpt , 2);
@@ -145,4 +147,3 @@ function get_intramatting_excerpt($excerpt, $limit ){
 }
 
 ?>
-

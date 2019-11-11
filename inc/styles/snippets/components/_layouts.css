@@ -1,0 +1,78 @@
+/*
+Error: Undefined variable: "$primary-blue".
+        on line 6 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss, in `background-overlay'
+        from line 26 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss
+
+1: $pale-blue: #b9c2c1;
+2: $grey: #f2f6f7;
+3: @mixin background-shade ($col:$primary-blue) {
+4:   background-color: rgba($col,0.5);
+5: }
+6: @mixin background-overlay ($col:$primary-blue) {
+7:   position: relative;
+8: 
+9:   > * {
+10:     z-index: 10;
+11:   }
+
+Backtrace:
+/var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss:6:in `background-overlay'
+/var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss:26
+/usr/lib/ruby/vendor_ruby/sass/script/tree/variable.rb:49:in `_perform'
+/usr/lib/ruby/vendor_ruby/sass/script/tree/node.rb:58:in `perform'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:72:in `block in perform_arguments'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:65:in `zip'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:65:in `perform_arguments'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:361:in `block in visit_mixin'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:98:in `block in with_mixin'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:115:in `with_frame'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:98:in `with_mixin'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:349:in `visit_mixin'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `block in with_base'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:115:in `with_frame'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `with_base'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:433:in `block (2 levels) in visit_rule'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:433:in `map'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:433:in `block in visit_rule'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:431:in `visit_rule'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:160:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `block in with_base'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:115:in `with_frame'
+/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `with_base'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:160:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `map'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:169:in `block in visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:181:in `with_environment'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:168:in `visit_children'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `block in visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:188:in `visit_root'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:159:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:8:in `visit'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:36:in `css_tree'
+/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:381:in `_render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:298:in `render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:492:in `update_stylesheet'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:294:in `watch'
+/usr/lib/ruby/vendor_ruby/sass/plugin.rb:109:in `method_missing'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:356:in `watch_or_update'
+/usr/lib/ruby/vendor_ruby/sass/exec/sass_scss.rb:51:in `process_result'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:52:in `parse'
+/usr/lib/ruby/vendor_ruby/sass/exec/base.rb:19:in `parse!'
+/usr/bin/sass:8:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Undefined variable: \"$primary-blue\".\A         on line 6 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss, in `background-overlay'\A         from line 26 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss\A \A 1: $pale-blue: #b9c2c1;\A 2: $grey: #f2f6f7;\A 3: @mixin background-shade ($col:$primary-blue) {\A 4:   background-color: rgba($col,0.5);\A 5: }\A 6: @mixin background-overlay ($col:$primary-blue) {\A 7:   position: relative;\A 8: \A 9:   > * {\A 10:     z-index: 10;\A 11:   }"; }

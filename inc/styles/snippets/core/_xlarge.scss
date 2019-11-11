@@ -1,0 +1,27 @@
+/******************************************************************
+
+Stylesheet: X-Large Stylesheet
+
+Styles apply to 90.063em and up.
+
+
+******************************************************************/
+/*********************
+GENERAL STYLES
+*********************/
+
+#content section.secondary_bg{
+   padding-top: $section-v-space!important;
+   padding-bottom: $section-v-space;
+}
+
+.main-navigation{
+   padding-right:0;
+   padding-left:0;
+}
+
+.styled_checkbox_wrapper {
+ 
+  width:percentage(1/5);
+ 
+}
