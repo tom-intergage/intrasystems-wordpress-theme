@@ -344,7 +344,7 @@
   max-width: 40vw;
   padding: 0 1rem;
   transition: top 1s ease;
-
+display:none;
   &.hidden {
     bottom: -2rem;
   }
