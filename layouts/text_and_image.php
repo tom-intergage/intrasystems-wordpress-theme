@@ -7,7 +7,7 @@ $size = "large";
 
 
 $output .= '<section class="layout layout--text-and-image">';
-$output .= '<div class="row">';
+$output .= '<div class="row pad-around">';
 
 $output .= '<div class="layout--text-and-image__text textarea">';
 
