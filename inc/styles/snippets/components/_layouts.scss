@@ -136,7 +136,7 @@ $grey: #f2f6f7;
 }
 
 .case-studies-cat .categories .cat-item:not(.current-cat) a {
-  @include button($white,$primary-blue,$primary-blue,$primary-blue,$primary-blue,$white);
+  @include button($white,$primary-blue,$primary-blue,$white,$primary-blue,$primary-blue);
 }
 
 #contact-form .blue-solid-btn {
@@ -444,7 +444,7 @@ $grey: #f2f6f7;
       &__motif {
         z-index: 0;
         height: 100%;
-        background-size: auto 100%; 
+        background-size: auto 100%;
         background-position: right bottom;
         background-repeat: no-repeat;
         position: absolute;
