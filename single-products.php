@@ -145,6 +145,7 @@ echo $output;
 									$data['order'] = get_sub_field('gallery_priority');
 									$image = get_sub_field('image');
 									$data['image_main'] = $image['sizes']['showcase'];
+
 									$data['image_thumb'] = $image['sizes']['shape-selector-thumb'];
 									$data['description'] = get_sub_field('image_description');
 									$data['title'] = get_sub_field('image_title');
@@ -928,7 +929,7 @@ if( get_field('accessories') ){
      $output .="<div class='row'><div id='sync1' class='owl-carousel'> ";
       while( have_rows('showcase') ): the_row();
          $image = get_sub_field('showcase_img'); // Return object/array
-         $thumb = $image['sizes']['showcase'];
+         $thumb = $image['sizes']['large'];
          $output .="<div class='item' style='background-image:url(\"".$thumb."\");'>";
         // $output .= "<img src='". $thumb."' >";
          $output .= "<div class='row'>";

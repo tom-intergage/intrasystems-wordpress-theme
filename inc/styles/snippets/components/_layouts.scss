@@ -256,6 +256,24 @@ $grey: #f2f6f7;
   }
 }
 
+#content {
+.features {
+  ul {
+    li {
+      &::before {
+        color:$white;
+      }
+    }
+  }
+}
+}
+
+.main-content {
+  a {
+    text-decoration:underline;
+  }
+}
+
 .sl-caption {
   a {
     color:$white;
@@ -286,6 +304,12 @@ $grey: #f2f6f7;
 
   &--team-list {
     @include gridOfThings(100%);
+    h2 {
+      display:block;
+      text-align:center;
+      margin-bottom:0;
+      margin-top:3rem; 
+    }
   }
 
   &--resources-list {

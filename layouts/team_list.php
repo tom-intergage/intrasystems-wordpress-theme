@@ -3,13 +3,27 @@
 $output = "";
 $teamMembers = get_field('team', 'option');
 $size = 'medium';
+$teamTitle = get_field('team_title','option');
 //get_sub_field('teamMember');
 
 //BUILD OUTPUT
 $output .= '<section class="layout layout--team-list">';
+
+
+
 $output .= '<div class="row">';
 
+if ($teamTitle) {
+  $output .= '<h2>'.$teamTitle.'</h2>';
+}
+
+else {
+  $output .= '<h2>Meet The Team</h2>';
+}
+
 $output .= '<div class="layout--team-list__grid">';
+
+
 
 if( $teamMembers ):
     foreach( $teamMembers as $teamMember ):

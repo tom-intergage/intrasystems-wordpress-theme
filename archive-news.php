@@ -15,9 +15,11 @@ get_header(); ?>
   <div id="primary" class="inner-width content-area">
     <main id="main" class="site-main" role="main">
 
-      <?php 
+      <?php
       // the query
-      $wpb_all_query = new WP_Query(array('post_type'=>'news', 'post_status'=>'publish', 'posts_per_page'=>10)); ?> 
+      $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+
+      $wpb_all_query = new WP_Query(array('post_type'=>'news', 'post_status'=>'publish', 'posts_per_page'=>200,'paged' => $paged)); ?>
 
       <section>
 
@@ -30,7 +32,7 @@ get_header(); ?>
             <!-- the loop -->
             <?php while ( $wpb_all_query->have_posts() ) : $wpb_all_query->the_post(); ?>
 
-            <?php 
+            <?php
 
             $image_id = get_post_thumbnail_id();
             $imagesize = "large";
@@ -48,14 +50,30 @@ get_header(); ?>
                 <p class="prod-title"><strong><?php the_title(); ?></strong></p>
                 <p><em><?php the_date(); ?></em></p>
                 <p><?php the_excerpt(); ?></p>
-                
+
                 <a class="small-blue-btn" href="<?php the_permalink(); ?>" target="_self">Read more</a>
               </div>
             </div>
-          
+
             <?php endwhile; ?>
             <!-- end of the loop -->
 
+
+
+            </div>
+
+            <div class="prod_list pagination">
+              <?php
+
+              $big = 999999999; // need an unlikely integer
+ echo paginate_links( array(
+    'base' => str_replace( $big, '%#%', get_pagenum_link( $big ) ),
+    'format' => '?paged=%#%',
+    'current' => max( 1, get_query_var('paged') ),
+    'total' => $wpb_all_query->max_num_pages
+) );
+
+               ?>
             </div>
 
           </div>
@@ -66,7 +84,7 @@ get_header(); ?>
 
       <?php else : ?>
         <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-      <?php endif; ?> 
+      <?php endif; ?>
 
     </main>
   </div>
