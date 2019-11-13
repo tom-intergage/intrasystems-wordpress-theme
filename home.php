@@ -38,6 +38,24 @@ if ( $query->have_posts() ){
 
 	<div id="primary" class="blog-posts content-area">
 		<main id="main" class="site-main">
+      <?php
+
+      $introduction = get_field('introduction','403');
+
+
+
+      ?>
+
+        <section>
+       <div class="row" >
+
+      <div class="layout introduction">
+         <?php echo $introduction ?>
+      </div>
+
+     </div>
+     </section>
+
 		<section>
      <div class="row" >
      <div class="case-studies-cat">

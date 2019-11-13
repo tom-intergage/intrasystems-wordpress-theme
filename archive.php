@@ -31,8 +31,31 @@ if ( $query->have_posts() ){
 ?>
 	<div id="primary" class="content-area blog-posts loading">
 		<main id="main" class="site-main">
-		  <section>
+
+      <?php
+
+      $introduction = get_field('introduction');
+
+      print_r($introduction);
+
+      if ( $introduction ){ ?>
+
+        <section>
+       <div class="row" >
+
+      <div class="introduction-text">
+         <?php echo $introduction ?>
+      </div>
+
+     </div>
+     </section>
+
+      <?php }
+      ?>
+
+        <section>
      <div class="row" >
+
      <div class="case-studies-cat">
      <div class="categories">
      <div class="row">

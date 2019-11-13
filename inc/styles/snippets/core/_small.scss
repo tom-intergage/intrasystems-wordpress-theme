@@ -1497,7 +1497,7 @@ PROJECTS - POSTS
 
   h4,
   p {
-    text-transform: uppercase;
+    //text-transform: uppercase;
   }
 
   img {
@@ -1506,6 +1506,8 @@ PROJECTS - POSTS
 
   h4 {
     font-size: rem-calc(24);
+    font-family: $font-family-swiss-roman;
+    color:$primary-blue;
   }
 
   p {
@@ -1521,12 +1523,6 @@ PROJECTS - POSTS
 
   .large-blue-btn {
     margin: 0 auto;
-  }
-}
-
-.blog-posts {
-  h4 {
-    color: $primary-black;
   }
 }
 

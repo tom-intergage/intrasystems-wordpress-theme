@@ -257,6 +257,12 @@ $grey: #f2f6f7;
 }
 
 .layout {
+  &.introduction {
+    text-align:center;
+    p {
+      margin-bottom:0;
+    }
+  }
   h1,
   h2,
   h3,
