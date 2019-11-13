@@ -256,6 +256,13 @@ $grey: #f2f6f7;
   }
 }
 
+.sl-caption {
+  a {
+    color:$white;
+    display:block;
+  }
+}
+
 .layout {
   &.introduction {
     text-align:center;

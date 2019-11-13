@@ -8,7 +8,7 @@ $output .= '<div class="row">';
 
 $output .= '<h2>Ready to discuss your next project?</h2>';
 
-$output .= '<p><a class="button button--blue button--large" href="#contact">Get in Touch</a></p>';
+$output .= '<p><a class="button button--blue button--large" href="'.get_site_url().'/contact/">Get in Touch</a></p>';
 
 $output .= '</div>';
 

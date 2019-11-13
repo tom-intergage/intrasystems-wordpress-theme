@@ -5,8 +5,6 @@
  * @package axishouse
  */
 
- 
-
 if ( ! function_exists( 'axishouse_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

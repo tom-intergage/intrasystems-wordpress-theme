@@ -165,8 +165,11 @@ jQuery(document).ready(function($) {
   var lightboxImages = $('.lightbox-image');
 
   if (lightboxImages.length > 0) {
+
     var lightbox = $('.lightbox-image .light').simpleLightbox();
+
   }
+
 
   var sectorCarousel = $('.layout--thumbnail-gallery__gallery');
 

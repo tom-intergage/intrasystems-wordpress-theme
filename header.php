@@ -359,7 +359,27 @@
 
         /* - - - - - - - PROJECTS LISTING HEADER - START - - - - - - - - */
 
-      } elseif (is_home()) {
+      }
+
+      elseif (is_archive() && !single_cat_title('', true)) {
+
+        ?>
+
+        <div class="header-page">
+
+          <h1 class="header-title single-cat-title"><?php single_cat_title('', true); ?></h1>
+
+        </div>
+
+      <?php
+
+
+
+        /* - - - - - - - PROJECTS LISTING HEADER - START - - - - - - - - */
+
+      }
+
+      elseif (is_home()) {
 
         ?>
 
@@ -444,7 +464,7 @@
         /* - - - - - - - STANDARD HEADER - START - - - - - - - - */
 
         ?>
-        <div class="header-page">
+        <div class="header-page standard">
 
           <?php
 
