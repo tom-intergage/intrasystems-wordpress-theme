@@ -162,12 +162,16 @@ jQuery(document).ready(function($) {
   var sampleBasket = $('#sample-basket');
   var sampleBasketTab = $('#sample-basket-tab');
 
-  console.log('ig');
-
   var lightboxImages = $('.lightbox-image');
 
   if (lightboxImages.length > 0) {
     var lightbox = $('.lightbox-image .light').simpleLightbox();
+  }
+
+  var sectorCarousel = $('.layout--thumbnail-gallery__gallery');
+
+  if (sectorCarousel.length > 0) {
+    var sectorLightbox = $('.layout--thumbnail-gallery__gallery .item a').simpleLightbox();
   }
 
   $('.gallery-carousel').owlCarousel({

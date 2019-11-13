@@ -16,8 +16,9 @@ $output .= '<div class="layout--thumbnail-gallery__gallery gallery owl-carousel 
 if( $images ):
 
     foreach( $images as $image ):
-
-            $output .= '<div class="item"><span>'.wp_get_attachment_image( $image['ID'], $size ).'</span></div>';
+        $theimage = wp_get_attachment_image_src( $image['ID'], "large" );
+      
+            $output .= '<div class="item"><a href="'.$theimage[0].'">'.wp_get_attachment_image( $image['ID'], $size ).'</a></div>';
     endforeach;
 
 endif;
