@@ -25,7 +25,7 @@ of the styles inside media queries.
 @import "settings";
 
 // foundation.scss
-@import "../../bower_components/foundation/scss/foundation"; 
+@import "../../bower_components/foundation/scss/foundation";
 
 // joints.scss
 @import '../../library/jeet/index';
@@ -62,7 +62,7 @@ you can add resource intensive styles.
 */
 @media #{$large-up}{
 
-	// styles in large.scss
+	// styles in large.scss 
 	@import "snippets/core/large";
 
 } // end of media query

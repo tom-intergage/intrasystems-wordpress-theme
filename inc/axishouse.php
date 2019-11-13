@@ -240,7 +240,10 @@ function variations_filter($finishes) {
       'include'     => $finishes,
    );
     $terms = get_terms(  $tax , $args);
-    $count = count( $terms );
+
+    if (is_array($terms)) {
+      $count = count( $terms );
+    }
    $count2 = count ($finishes);
     $string = "";
     $counter = 0;

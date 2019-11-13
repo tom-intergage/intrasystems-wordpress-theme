@@ -43,8 +43,8 @@ if( have_rows('profile') ){
       $profile[$counter]['img'] = get_sub_field('profile_image');
       $counter++;
    endwhile;
-   
-   
+
+
 }
 //print_r($profile);
 
@@ -92,7 +92,7 @@ if( get_field('intrashape_content') ){
 } else {
 
    $output .= "<a class='blue-btn blue-solid-btn" . $sample_btn_class . "' href='" . $sample_url . "'>" . $sample_btn_txt . "</a>";
- 
+
 }
 
 $output .= "</div>";
@@ -130,20 +130,20 @@ if ($features){
 
 echo $output;
 
-	
+
  if( get_field('intrashape_content') ){ ?>
 
 		<div id="triangle-examples-gallery" class="gallery-holder" style="display:block">
-						<?php	
+						<?php
 							$galleryArray = array();
-	 
+
 	 						$dataArray = ['triangle_example_images','square_example_images','rectangle_example_images','diamond_example_images','hexagon_example_images'];
 							foreach($dataArray as $d)
 							{
 								while( have_rows($d) ): the_row();
 									$data = array();
 									$data['order'] = get_sub_field('gallery_priority');
-									$image = get_sub_field('image'); 
+									$image = get_sub_field('image');
 									$data['image_main'] = $image['sizes']['showcase'];
 									$data['image_thumb'] = $image['sizes']['shape-selector-thumb'];
 									$data['description'] = get_sub_field('image_description');
@@ -151,22 +151,22 @@ echo $output;
 									$galleryArray[] = $data;
 								endwhile;
 							}
-	 						
+
 	 						$order = array();
 							foreach ($galleryArray as $key => $row)
 							{
 								$order[$key] = $row['order'];
 							}
 							array_multisort($order, SORT_ASC, $galleryArray);
-	 
+
 	 						#echo '<pre>';
 							#print_r($galleryArray);
 							 $output = '';
 							 $output .="<div class='row'><div id='sync1' class='owl-carousel owl-main-image'> ";
 							 foreach($galleryArray as $data)
 							 {
-								
-									
+
+
 									$output .="<div class='item' style='background-image:url(\"".$data['image_main']."\");background-position: bottom center;'>";
 									$output .= "<div class='row'>";
 									$output .= "<div class='plus'>";
@@ -183,37 +183,37 @@ echo $output;
 									$output .= "</div>";
 									$output .= "</div>";
 									$output .="</div>";
-								 
+
 							 }
 							  $output .="</div></div>";
-						   
+
 
 						   //Thumbnails
 						   $output .= "<div class='slideshow'>";
-						   
+
 							 $output .="<div id='sync2' class='owl-carousel owl-thumb-images'> ";
 	 						foreach($galleryArray as $data)
-							 {							 
-							 
+							 {
+
 
 								 $output .="<div class='item'>";
 								 $output .= "<img src='". $data['image_thumb']."' >";
 								 $output .="</div>";
-							
+
 							 }
 							  $output .="</div>";
-						   
-						   $output .= "</div>"; // Closing div of prod_info				 
-							echo $output;							 
+
+						   $output .= "</div>"; // Closing div of prod_info
+							echo $output;
 						?>
 					</div>
- 
- 
+
+
          <!-- - - - INTRAShape Content START - - - -->
 
-               <div id="intrashape-version"> 
+               <div id="intrashape-version">
 
-                  <section id="shape-selector-step-1">                 
+                  <section id="shape-selector-step-1">
 
                      <div class="iv-grey-bg">
 
@@ -221,7 +221,7 @@ echo $output;
 
                            <div class="excert-width">
 
-                              <h2 class="entry-title">Choose your shape</h2> 
+                              <h2 class="entry-title">Choose your shape</h2>
 
                               <p>Select a shape or pattern from the section below to view our specially selected examples. These examples feature patterns and colours availble for your preferred shape. In addition you will also find a downloadable Photoshop document resource for selecting your own colour configerations</p>
 
@@ -332,22 +332,22 @@ echo $output;
                                     <div style="clear:both"></div>
 
                                  </div>
-								 
-									 
+
+
 									 <div style="clear:both"></div>
 
 								</div>
 							</div>
 						</div>
 					</div>
-					
-								
+
+
 					<div class="row">
 
                         <div class="excert-width">
 
                            <div class="example-wrapper" rel="square-examples">
-                              
+
 							  <div id="square-examples" class="example-images">
 
                                  <div class="shape-intro">
@@ -410,18 +410,18 @@ echo $output;
                                     <div style="clear:both"></div>
 
                                  </div>
-								
+
                                 </div>
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="row">
 
                         <div class="excert-width">
 
                            <div class="example-wrapper" rel="rectangle-examples">
-						   
+
                               <div id="rectangle-examples" class="example-images">
 
                                  <div class="shape-intro">
@@ -490,13 +490,13 @@ echo $output;
 						  </div>
 					  </div>
 				</div>
-				
+
 				<div class="row">
 
                         <div class="excert-width">
 
                            <div class="example-wrapper" rel="diamond-examples">
-						   
+
                               <div id="diamond-examples" class="example-images">
 
                                  <div class="shape-intro">
@@ -539,7 +539,7 @@ echo $output;
                                                 <td>Shape</td>
                                                 <td>
                                                    Small Diamond – 230mm x 230mm<br/>
-                                                   Medium Slim Diamond – 115mm x 575mm (45&deg; Angle)<br/> 
+                                                   Medium Slim Diamond – 115mm x 575mm (45&deg; Angle)<br/>
                                                    Large Diamond – 460mm – 460mm (60&deg; Angle)
                                                 </td>
                                              </tr>
@@ -552,7 +552,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/axishouse/img/intrashape/diamond-shapes.jpg" alt="Diamond Shape Carpets" id="diamond-shapes"> 
+                                       <img src="/wp-content/themes/axishouse/img/intrashape/diamond-shapes.jpg" alt="Diamond Shape Carpets" id="diamond-shapes">
 
                                     </div>
 
@@ -560,7 +560,7 @@ echo $output;
 
                                  </div>
 
-                                 
+
 
 							</div>
 						</div>
@@ -571,7 +571,7 @@ echo $output;
                         <div class="excert-width">
 
                            <div class="example-wrapper" rel="hexagon-examples">
-							
+
                               <div id="hexagon-examples" class="example-images">
 
                                  <div class="shape-intro">
@@ -633,13 +633,13 @@ echo $output;
 
                                  </div>
 
-                                 
+
 
                               </div>
                               </div>
                               </div>
                               </div>
-							 
+
 
                   </section>
 
@@ -647,7 +647,7 @@ echo $output;
 
          <!-- - - - INTRAShape Content END - - - -->
 
-         <?php } 
+         <?php }
 $output = "";
 if( get_field('accessories') ){
 
@@ -657,13 +657,13 @@ if( get_field('accessories') ){
    //left col
    $output .= "<div class='col'><h2>Matwell Framing</h2>";
 
-   $output .= "<div class='accessory-listing accessory-listing-space'><h3>INT019</h3><img src='" . get_stylesheet_directory_uri() . "/img/accessories/int019.png' alt='INT019' class='int-img int019' /><p>Supplied in 2.4m length</p></div>"; 
+   $output .= "<div class='accessory-listing accessory-listing-space'><h3>INT019</h3><img src='" . get_stylesheet_directory_uri() . "/img/accessories/int019.png' alt='INT019' class='int-img int019' /><p>Supplied in 2.4m length</p></div>";
 
    $output .= "<div class='accessory-listing accessory-listing-space'><h3>INT014</h3><img src='" . get_stylesheet_directory_uri() . "/img/accessories/int014.png' alt='INT014' class='int-img int019' /><p>Supplied in 2.4m length</p></div>";
 
-   $output .= "<div class='accessory-listing'><h3>INTR012</h3><img src='" . get_stylesheet_directory_uri() . "/img/accessories/intr012.png' alt='INTR012' class='int-img intr012' /><p>Supplied in 2.7m length</p></div>"; 
+   $output .= "<div class='accessory-listing'><h3>INTR012</h3><img src='" . get_stylesheet_directory_uri() . "/img/accessories/intr012.png' alt='INTR012' class='int-img intr012' /><p>Supplied in 2.7m length</p></div>";
 
-   
+
 
    //right col
    $output .= "</div><div class='col'><h2>Dividing T-bar Profiles</h2>";
@@ -704,7 +704,7 @@ if( get_field('accessories') ){
          $output .= "</div>";
       }
 
-      
+
 
       if( get_field('product_video') ){
 
@@ -919,7 +919,7 @@ if( get_field('accessories') ){
    }
 
 
-  
+
 
    //************* Product Imagery - slider *****************
    // Big image
@@ -1006,7 +1006,7 @@ if( get_field('accessories') ){
 
          if( have_rows('other_docs') ){
             while( have_rows('other_docs') ): the_row();
-			
+
 			#echo '<pre>';print_r(get_fields());
 			#exit;
             if(get_sub_field('popup_info_request')){
@@ -1022,7 +1022,7 @@ if( get_field('accessories') ){
                $output .= "</a>";
 
             }
-			
+
             elseif( get_field('intrashape_content') )
 			{
 				#info@intrasystems.co.uk
@@ -1054,16 +1054,20 @@ if( get_field('accessories') ){
    }
 
    if( have_rows('prod_var') || get_field('spec_img') ){
-      
+
       $output .= "<div class='prod_variations'>";
 
       $small_msn ="";
+
+			if (get_field('finishes')) {
 
       $count = count( get_field('finishes') );
 
       if ($count > 1){
          $small_msn = " <small>Select insert option to view detail image</small>";
       }
+
+			}
 
       $output .= "<h3>".get_field('var_main_title').$small_msn. "</h3>";
 
@@ -1128,16 +1132,16 @@ if( get_field('accessories') ){
 
             $output .= "<div style='clear:both;'><p>".get_sub_field('availability')."</p><div>";
             $output .= "</div>"; //end class=Prod_variation
-	
+
          endwhile;
-         
+
          $output .= "<div style='clear:both;'>";
 
          if( get_field('intrashape_content') ){
 
             $output .= "<a class='yellow-btn yellow-solid-btn' href='/shape-selector/' target='_self' style='width:100%;max-width:420px;'>Download PSD to Create Your Own Design</a>
 			<a class='blue-btn blue-solid-btn free-samples' href='#free-samples'  style='width:100%;max-width:420px;margin-top:0px;'>Request Free Samples</a>";
-			
+
          } else if( get_field('intralux_grafic_content') ){
 
             $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
@@ -1147,7 +1151,7 @@ if( get_field('accessories') ){
 
             $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
 
-         }         
+         }
 
          $output .= "<div></div>";
 
@@ -1161,7 +1165,7 @@ if( get_field('accessories') ){
       $output .= "</div>"; //end class=prod_variations
       $output .= "</div>"; // end class=prod_info
       $output .= "</section>";
-   
+
    }
 
 
@@ -1220,7 +1224,7 @@ echo $output;
 
 		<?php endwhile; // End of the loop. ?>
 
-     
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
@@ -1251,16 +1255,16 @@ echo $output;
       document.getElementById("file_url1").innerHTML = "Thanks! Click <a href='"+form_url+"'>here</a> to download your file.</a>";
       document.getElementById("file_url").innerHTML = form_url;
    }
-   
-   
-   
+
+
+
 </script>
 
 <?php
 function createForm(){
    $form = "";
 
-   
+
 
    if( get_field('intrashape_content') ){
 
@@ -1269,27 +1273,27 @@ function createForm(){
 		$form .= "<p id='file_url' style='display:none;'></p>";
 		$form .= "<p id='file_url1' style='display:none;'></p>";
 		$form .= "</div>";
-		
+
 		$form .= "<div id='free-samples' class='popup-form-download' style='display:none;'>";
 		$form .= '<div style="text-align:center;width:450px;" id="mainformsampleselect"><h3>Choose your Shape</h3><p>Select one or more shapes and submit your request to<br />enter your postal details</p>';
 		$form .= '<table class="freesamplestable" cellpadding="50">';
-		
+
 		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/triangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/square.png" /></td></tr>';
 		$form .= '<tr><td>Triange <input type="checkbox" value="Triangle" class="freesamplecheckbox" /></td><td>Square <input value="Square" type="checkbox" class="freesamplecheckbox" /></td></tr>';
 		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/rectangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/diamond.png" /></td></tr>';
 		$form .= '<tr><td>Rectangle <input type="checkbox" value="Rectangle" class="freesamplecheckbox" /></td><td>Diamond<input value="Diamond" type="checkbox" class="freesamplecheckbox" /></td></tr>';
 		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/hexagon.png" /></td><td></td></tr>';
 		$form .= '<tr><td>Hexagon <input type="checkbox" value="Hexagon" class="freesamplecheckbox" /></td><td></td></tr>';
-		
+
 		$form .= '</table>';
-		
+
 		$form .= '<button class="blue-btn blue-solid-btn" id="freesmapleorder">Order Free Samples</button>';
 		$form .= "</div>";
 		$form .= '<div style="display:none;" id="mainformsamples">'.do_shortcode('[contact-form-7 id="6993" title="Free Shape Request"]').'</div>';
 		$form .= "</div>";
-		
+
 	} else if( get_field('intralux_grafic_content') ){
-   
+
       $form .= "<div id='free-sample-folder' class='popup-form-download' style='display:none;'>";
       $form .= do_shortcode('[contact-form-7 id="7303" title="INTRAlux Grafic Sample Request"]');
       $form .= "<p id='intralux_graphic_thankyou' style='display:none'>Thank you for your request.</p>";
@@ -1302,7 +1306,7 @@ function createForm(){
 		$form .= "<p id='file_url1' style='display:none;'></p>";
 		$form .= "</div>";
 	}
-   
+
    return $form;
 
 }

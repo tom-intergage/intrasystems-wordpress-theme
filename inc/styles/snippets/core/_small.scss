@@ -915,11 +915,14 @@ SEARCH FILTER
   }
 }
 
+.responsive-menu {
 #site-navigation {
-  background-color: #000000;
+  background-color: $primary-blue;
+  .sub-menu {
+    display:none;
+  }
 }
 
-.responsive-menu {
   &.menu-scroll-down {
     bottom: 40px;
   }
@@ -1425,7 +1428,7 @@ PROJECTS - POSTS
 }
 
 .project_spec_box_inner {
-  background-color: $gray;
+  background-color: $primary-blue;
   padding: rem-calc(30) rem-calc(30) rem-calc(15);
 
   .project_spec_box_row {
@@ -1440,9 +1443,9 @@ PROJECTS - POSTS
         text-transform: uppercase;
       }
 
-      &:nth-child(2) {
+
         color: $white;
-      }
+
     }
   }
 }
@@ -1455,11 +1458,6 @@ PROJECTS - POSTS
 
   &:not(:last-child) {
     border-bottom: 10px solid $light-gray;
-  }
-
-  .large-blue-btn {
-    max-width: rem-calc(164);
-    margin: 0 auto rem-calc(30);
   }
 
   .thumb-featured {

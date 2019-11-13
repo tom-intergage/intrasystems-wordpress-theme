@@ -1,6 +1,9 @@
 
 #header {
   min-height: 90vh;
+  @media (max-width: 700px) {
+    min-height: 50vh;
+  }
   position: relative;
   background-position: center center !important;
 }
@@ -32,6 +35,9 @@
 
 .header-page {
   top: 50%;
+  @media (max-width: 700px) {
+    top: 58%;
+  }
   transform: translateY(-50%);
 }
 

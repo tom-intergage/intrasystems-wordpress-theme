@@ -296,7 +296,7 @@
 
 
               <?php
-
+              $site_url = get_site_url();
               $sample_url = $site_url . "/request-free-samples/#" . $post->post_name;
               $sample_btn_txt = 'Request Free Sample';
               $sample_btn_class = '';

@@ -57,8 +57,9 @@
             </div>
             <div class="show_all">
               <?php
-              $ad = 'large-blue-btn';
-              if ($category) $ad = 'large-white-btn';
+
+              $ad = ($category) ? 'large-white-btn' : 'large-blue-btn';
+
               ?>
                <a href="<?php echo get_home_url(); ?>/products/" class="<?php echo $ad ?>">All Products</a>
             </div>

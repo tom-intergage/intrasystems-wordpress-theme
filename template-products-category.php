@@ -37,9 +37,9 @@ get_header();
             <div class="excerpt-width">
             <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
             <?php echo "<p>".get_the_content()."</p>"; ?>
-            <a class="large-blue-btn" href="/wp-content/themes/axishouse/pdf/Intrasystems-Brochure.pdf" target="_blank">Brochure Download</a>
 
-				   <?php //get_template_part( 'template-parts/content', 'page' ); ?>
+
+				   <?php //<a class="large-blue-btn" href="/wp-content/themes/axishouse/pdf/Intrasystems-Brochure.pdf" target="_blank">Brochure Download</a>get_template_part( 'template-parts/content', 'page' ); ?>
                </div>
                </div>
             </section>

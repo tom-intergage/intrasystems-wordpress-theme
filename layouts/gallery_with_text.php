@@ -8,6 +8,8 @@ $content = get_sub_field('content');
 $images = get_sub_field('gallery');
 $size = 'medium';
 
+$cta_text = get_sub_field('cta_text');
+$cta_link = get_sub_field('cta_link');
 
 
 //BUILD OUTPUT
@@ -33,7 +35,15 @@ $output .= '<div>';
 
 $output .= '<h2 class="heading--boxed">'.$title.'</h2>';
 
-$output .= '<div class="layout__content"><p>'.$content.'</p></div>';
+$output .= '<div class="layout__content">';
+$output .= '<p>'.$content.'</p>';
+
+if ($cta_link && $cta_text) {
+
+  $output .= '<p><a class="button button--primary" href="'.$cta_link["url"].'">'.$cta_text.'</a></p>';
+}
+
+$output .= '</div>';
 
 $output .= '</div>';
 
