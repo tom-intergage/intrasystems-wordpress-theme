@@ -70,7 +70,8 @@
   $bg_header = get_field('bg_header');
 
   if ($bg_header) {
-    $bg_header_url = $bg_header['url'];
+    //$bg_header_url = $bg_header['url'];
+    $bg_header_url = $bg_header["sizes"]["large"];
   } else {
     $bg_header_url =   get_template_directory_uri() . "/img/intramatting-header-bg-default.jpg";
   }
@@ -313,9 +314,6 @@
                 ?>
                 <a class="yellow-btn yellow-solid-btn" href="/shape-selector/" target="_self" style="width:100%;max-width:420px;">Download PSD to Create Your Own Design</a>
                 <a class="blue-btn blue-solid-btn free-samples" href="#free-samples" target="_self" style="width:100%;max-width:420px;">Request Free Sample</a>
-
-
-
 
               <?php
 
