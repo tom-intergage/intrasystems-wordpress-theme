@@ -16,7 +16,7 @@ $output .= '<section class="sustainable-goals" style="background-image:url(\''.$
 
 $output .= '<div class="row">';
 
-$output .= '<h2><span>'.$lineOne.'</span>'.$lineTwo.'</h2>';
+$output .= '<h2>'.$lineOne.'<span>'.$lineTwo.'</span></h2>';
 
 $output .= '<p><a class="button button--primary button--large" href="'.get_site_url().'/sustainability/">Learn More</a></p>';
 
