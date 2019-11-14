@@ -86,7 +86,32 @@ $footer_zipcode = get_field('zipcode', 153 );
 
 	<div id="sample-basket" class="sample-basket">
 		<div>
-			<div class="sample-basket__title"></div>
+			<div class="sample-basket__progress">
+				<div class="sample-basket__progress__stage">
+					<article>
+						<span class="sample-basket__progress__stage__number">1</span>
+						<span class="sample-basket__progress__stage__title">Select Type</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage">
+					<article>
+						<span class="sample-basket__progress__stage__number">2</span>
+						<span class="sample-basket__progress__stage__title">Select Product</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage">
+					<article>
+						<span class="sample-basket__progress__stage__number">3</span>
+						<span class="sample-basket__progress__stage__title">Select Finishes</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage">
+					<article>
+						<span class="sample-basket__progress__stage__number">4</span>
+						<span class="sample-basket__progress__stage__title">Submit Request</span>
+					</article>
+				</div>
+			</div>
 			<div class="sample-basket__close">
 				<span>x</span>
 			</div>
@@ -97,10 +122,12 @@ $footer_zipcode = get_field('zipcode', 153 );
 					<div class="sample-basket__content__variants"></div>
 					<div class="sample-basket__content__basket"></div>
 				</div>
+
 			</div>
+			<div class="sample-basket__items"></div>
 		</div>
 	</div>
-	<div id="sample-basket-tab"><p>Sample Request<span id="basket-count">1</span></p></div>
+	<div id="sample-basket-tab"><p>Sample Request</p></div>
 
 
 </div>

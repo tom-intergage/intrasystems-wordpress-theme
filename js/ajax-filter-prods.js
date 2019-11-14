@@ -40,11 +40,28 @@ jQuery(document).ready(function($) {
 
   //SAMPLE BASKET TRIGGER SETUP
 
+  function addToBasket(itemToAdd) {
+    var currentFinish = $('.product-finish.active p').text();
+    var basketItemText = $(itemToAdd).find('span').text() + ' ('+currentFinish+' | '+$(itemToAdd).closest('.product-variation').find('.product-variation__title').text()+')';
+    var basketImage = $(itemToAdd).find('img').attr('src');
+    $('.sample-basket__items').append('<div class="sample-in-basket" data-text="'+basketItemText+'"><img src="'+basketImage+'"/><span>'+basketItemText+'</span></div>');
+  }
+
+  function removeFromBasket(itemToRemove,self) {
+    if (self) {
+      console.log($(this));
+      $(this).remove();
+    }
+    else {
+      var currentFinish = $('.product-finish.active p').text();
+      var basketItemText = $(itemToRemove).find('span').text() + ' ('+currentFinish+' | '+$(itemToRemove).closest('.product-variation').find('.product-variation__title').text()+')';
+      $('.sample-basket__items > div[data-text="'+basketItemText+'"]').remove();
+    }
+  }
+
 
   //SB
-  var listBasketProductVariants = function(title, data) {
-
-    console.log(data);
+  var listBasketProductVariants = function(title, mydata) {
 
     $('#sample-basket .sample-basket__title').html(function() {
       return '<p><span id="go-to-products">Products</span> > <span id="product-name" data-product-id="">' + title + '</span></p>';
@@ -56,7 +73,7 @@ jQuery(document).ready(function($) {
 
     //console.log(data.acf);
 
-    var endpoint = '/intrasystems/wp-json/acf/v3/var_finish/';
+    var endpoint = '/intrasystems/wp-json/wp/v2/var_finish/';
     $.ajax({
       url: endpoint,
       method: 'GET'
@@ -68,40 +85,90 @@ jQuery(document).ready(function($) {
         var finishFilter = '<div class="product-finishes-filter">';
         var toreturn = '<div class="product-finishes">';
 
-        $.each(data.acf.finishes, function(index) {
+        $.each(mydata.acf.finishes, function(index) {
 
-          var finishID = this,
-            finish = getObjects(finishes, 'id', finishID),
-            finishName = finish[0]["name"];
+          var finishID = this;
+          var finish = getObjects(finishes, 'id', finishID);
+          var finishName = finish[0]["name"];
 
           finishFilter += '<div class="product-finish"><p class="product-finish__name">' + finishName + '</p></div>';
 
-          toreturn += '<div class="product-finish-list">';
-
-          $.each(data.acf.prod_var, function(index) {
-
-
-
-            var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
-
-            toreturn += '<article class="product-variation"><p class="product-variation__title">' + productVariationTitle + '</p><ul class="product-variation__list">';
-            $.each(this.variations, function() {
-
-              toreturn += '<li>' + this.name + '</li>';
-            });
-            toreturn += '</ul></article>';
-          });
-          toreturn += '</div>';
+          toreturn += '<div class="product-finish-list" id="pfl-'+index+'"></div>';
 
         });
 
-        toreturn += '</div><div id="go-to-basket"><span>Request Samples</span></div>';
-
         finishFilter += '</div>';
+
+        toreturn += '<div id="go-to-basket"><span>Request Samples</span></div>';
 
         return finishFilter + toreturn;
 
       });
+
+      $('.product-finish-list').on('click', '.basket-item', function(event) {
+        if ($(this).hasClass('in-basket')) {
+          $(this).removeClass('in-basket');
+          removeFromBasket(this,false);
+        }
+        else {
+          $(this).addClass('in-basket');
+          addToBasket(this);
+        }
+       });
+
+$('.sample-basket__items').on('click', '.sample-in-basket', function(event) {
+$(this).remove();
+
+var thisItemsName = $(this).attr('data-text');
+var thisItemsNameAsAnObject = thisItemsName.split(' (');
+var thisItemsListName = thisItemsNameAsAnObject[0];
+var tr = thisItemsNameAsAnObject[1];
+var thisItemsStyle = tr.replace(")","");
+
+var selector = '.product-variation[data-variation-title="'+thisItemsStyle+'"] li[data-name="'+thisItemsListName+'"]';
+
+
+$(selector).removeClass('in-basket');
+
+});
+
+      $.each(mydata.acf.finishes, function(index) {
+
+        var finishID = this;
+        var finish = getObjects(finishes, 'id', finishID);
+        var finishName = finish[0]["name"];
+
+        var finishIndex = index;
+
+        $.each(mydata.acf.prod_var, function(index) {
+
+          var pvlID = index;
+          var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+
+          $('#pfl-'+finishIndex).append('<article class="product-variation" data-variation-title="'+finishName+' | '+productVariationTitle+'"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
+
+          $.each(this.variations, function() {
+
+            var endpoint = '/intrasystems/wp-json/wp/v2/variations/?_embed&var_prod=' + this.term_id + '&var_finish=' + finishID;
+            var variantName = this.name;
+            $.ajax({
+              url: endpoint,
+              method: 'GET'
+            }).done(function(response) {
+
+              var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
+              var featuredImage = response[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+
+              $(myListID).append('<li data-name="'+variantName+'" class="basket-item"><img src="'+featuredImage+'"/><span>' + variantName + '</span></li>');
+            });
+
+          });
+
+        });
+
+      });
+
+
 
       $('.product-finish:nth-child(1)').addClass('active');
       $('.product-finish-list:nth-child(1)').addClass('active');
@@ -179,7 +246,7 @@ jQuery(document).ready(function($) {
       var toreturn = "";
       $.each(data, function(index) {
 
-        var featuredImage = this._embedded['wp:featuredmedia']['0'].source_url;
+        var featuredImage = this._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
         var itemTitle = this.title.rendered;
         var itemID = this.id;
 
