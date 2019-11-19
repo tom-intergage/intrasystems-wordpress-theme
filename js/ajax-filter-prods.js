@@ -36,8 +36,8 @@ jQuery(document).ready(function($) {
   if ($('.prod_thumbs img').length == 0) $('.tax-variation_1 .prod-filter').trigger('click');
 
   /*
-  * SAMPLE BASKET
-  */
+   * SAMPLE BASKET
+   */
 
   function generateBasketItem(itemID, basketItemText, basketImage) {
     $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span></div>');
@@ -109,6 +109,8 @@ jQuery(document).ready(function($) {
 
   var listBasketProductVariants = function(title, mydata) {
 
+
+
     setActiveLocation(3);
 
     $('#sample-basket .sample-basket__title').html(function() {
@@ -125,24 +127,52 @@ jQuery(document).ready(function($) {
     }).done(function(response) {
       var finishes = response;
 
+
       $('.sample-basket__content__variants__list').html(function() {
 
-        var finishFilter = '<div class="product-finishes-filter">';
-        var toreturn = '<div class="product-finishes">';
+        var finishFilter;
+        var toreturn;
 
-        $.each(mydata.acf.finishes, function(index) {
 
-          var finishID = this;
-          var finish = getObjects(finishes, 'id', finishID);
-          var finishName = finish[0]["name"];
+        if (mydata.acf.finishes) {
 
-          finishFilter += '<div class="product-finish"><p class="product-finish__name">' + finishName + '</p></div>';
+          finishFilter = '<div class="product-finishes-filter">';
+          toreturn = '<div class="product-finishes">';
 
-          toreturn += '<div class="product-finish-list" id="pfl-' + index + '"></div>';
+          $.each(mydata.acf.finishes, function(index) {
 
-        });
+            var finishID = this;
+            var finish = getObjects(finishes, 'id', finishID);
+            var finishName = finish[0]["name"];
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">' + finishName + '</p></div>';
+            toreturn += '<div class="product-finish-list" id="pfl-' + index + '"></div>';
 
-        finishFilter += '</div>';
+          });
+          finishFilter += '</div>';
+        } else {
+          console.log(mydata.acf.alt_text);
+          //BUILD THE INTRASHAPE FILTERS MANUALLY
+          if (mydata.acf.alt_text == "INTRAshape") {
+            finishFilter = '<div class="product-finishes-filter">';
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">Triangle</p></div>';
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">Square</p></div>';
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">Rectangle</p></div>';
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">Diamond</p></div>';
+            finishFilter += '<div class="product-finish"><p class="product-finish__name">Hexagon</p></div>';
+            finishFilter += '</div>';
+            toreturn = '<div class="product-finishes">';
+            toreturn += '<div class="product-finish-list" id="pfl-0"></div>';
+            toreturn += '<div class="product-finish-list" id="pfl-1"></div>';
+            toreturn += '<div class="product-finish-list" id="pfl-2"></div>';
+            toreturn += '<div class="product-finish-list" id="pfl-3"></div>';
+            toreturn += '<div class="product-finish-list" id="pfl-4"></div>';
+            toreturn += '</div>';
+          }
+          else {
+            finishFilter = '<div style="display:none" class="product-finishes-filter"><div class="product-finish"><p class="product-finish__name">Regular</p></div></div>';
+            toreturn = '<div class="product-finishes"><div class="product-finish-list active" id="pfl-0"></div></div>';
+          }
+        }
 
         return finishFilter + toreturn;
 
@@ -162,46 +192,94 @@ jQuery(document).ready(function($) {
       $('.sample-basket__items').on('click', '.sample-in-basket', function(event) {
         var itemID = $(this).attr('data-id');
         removeFromBasket(itemID);
-
       });
 
-      $.each(mydata.acf.finishes, function(index) {
+      if (mydata.acf.finishes) {
 
-        var finishID = this;
-        var finish = getObjects(finishes, 'id', finishID);
-        var finishName = finish[0]["name"];
-        var finishIndex = index;
+        $.each(mydata.acf.finishes, function(index) {
 
-        $.each(mydata.acf.prod_var, function(index) {
+          var finishID = this;
+          var finish = getObjects(finishes, 'id', finishID);
+          var finishName = finish[0]["name"];
+          var finishIndex = index;
 
-          var pvlID = index;
-          var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
-          var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
+          $.each(mydata.acf.prod_var, function(index) {
 
-          $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
+            var pvlID = index;
+            var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+            var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
-          $.each(this.variations, function() {
+            $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
 
-            var endpoint = '/intrasystems/wp-json/wp/v2/variations/?_embed&var_prod=' + this.term_id + '&var_finish=' + finishID;
-            var variantName = this.name;
-            $.ajax({
-              url: endpoint,
-              method: 'GET'
-            }).done(function(response) {
-              var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
-              var featuredImage = response[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
-              var addClass = (currentBasket) ? returnProductTrue(response[0].id, currentBasket) : "";
+            $.each(this.variations, function() {
 
+              var endpoint = '/intrasystems/wp-json/wp/v2/variations/?_embed&var_prod=' + this.term_id + '&var_finish=' + finishID;
+              var variantName = this.name;
+              $.ajax({
+                url: endpoint,
+                method: 'GET'
+              }).done(function(response) {
+                var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
+                var featuredImage = response[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+                var addClass = (currentBasket) ? returnProductTrue(response[0].id, currentBasket) : "";
 
+                $(myListID).append('<li data-id="' + response[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
+              });
 
-              $(myListID).append('<li data-id="' + response[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
             });
 
           });
 
         });
 
-      });
+      } else {
+
+        var shapes = ["Triangle","Square","Rectangle","Diamond","Hexagon"];
+
+
+
+
+
+
+
+        //console.log(mydata.acf.prod_var);
+        $.each(mydata.acf.prod_var, function(index) {
+
+          var pvlID = index;
+          var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+          var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
+
+          for (var i = 0; i < 5; i++) {
+            var finishID = i;
+            var finishName = shapes[i];
+            var finishIndex = i;
+            $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
+          }
+
+          $.each(this.variations, function() {
+
+            var endpoint = '/intrasystems/wp-json/wp/v2/variations/?_embed&var_prod=' + this.term_id;
+            var variantName = this.name;
+            $.ajax({
+              url: endpoint,
+              method: 'GET'
+            }).done(function(response) {
+
+              for (var i = 0; i < 5; i++) {
+
+                var myListID = '#pv-list-' + i + '-' + pvlID;
+                var featuredImage = response[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+                var addClass = (currentBasket) ? returnProductTrue(response[0].id, currentBasket) : "";
+
+                  $(myListID).append('<li data-id="' + response[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
+                }
+            });
+
+          });
+
+        });
+
+      }
 
 
       $('.product-finish:nth-child(1)').addClass('active');
@@ -236,6 +314,7 @@ jQuery(document).ready(function($) {
       url: endpoint,
       method: 'GET'
     }).done(function(response) {
+
       new listBasketProductVariants(title, response);
     }).fail(function(response) {
       // Show error message
@@ -315,7 +394,9 @@ jQuery(document).ready(function($) {
       return toreturn;
     });
     $('.sample-basket__item').click(function() {
+
       var productID = $(this).attr('data-product-id');
+
       var productTitle = $(this).find('p').text();
       new getBasketProductVariants(productTitle, productID);
     });
@@ -387,8 +468,19 @@ jQuery(document).ready(function($) {
   new sampleBasket;
 
   $('#go-to-basket').click(function() {
+
     if ($(this).prev().children().length > 0) {
       if ($('.sample-basket__progress__stage.checkout').hasClass('active')) {
+        //GENERATE TEXT FOR INPUT FIELD HERE
+        var basketContents = JSON.parse(sessionStorage.getItem('__insys_basketList'));
+        var fieldSubmit = "";
+
+        $.each(basketContents, function() {
+          fieldSubmit += this.title + ' \r\n';
+        });
+
+        $('#sampleRequestInputField').val(fieldSubmit);
+
         $('.sample-basket__content__basket .submit-btn input').trigger('click');
       } else {
         new goCheckout;
