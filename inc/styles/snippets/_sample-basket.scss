@@ -1,36 +1,3 @@
-#go-to-basket {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  padding: 0 1rem;
-
-  span {
-    line-height: 2rem;
-  }
-
-  &.items-added {
-    cursor: pointer;
-    background: $primary-blue;
-    color: $white;
-
-    &:hover {
-      background: $light-black;
-    }
-  }
-
-  &:not(.items-added) {
-    background: #eee;
-
-    &:hover {
-      background: #eee;
-    }
-
-    span {
-      color: #aaa;
-    }
-  }
-}
-
 .sample-basket {
   position: fixed;
   top: -150%;
@@ -74,8 +41,6 @@
     justify-content: space-between;
 
     &__stage {
-      cursor: pointer;
-
       &__number {
         font-size: 1.2rem;
       }
@@ -93,14 +58,16 @@
         }
       }
 
+      &:not(.active) {
+        opacity: 0.5;
 
-        &:not(.active) {
-          opacity: 0.5;
+        &.type {
           &:hover {
-            opacity:1;
+            cursor: pointer;
+            opacity: 1;
           }
         }
-
+      }
     }
   }
 
@@ -110,12 +77,56 @@
   }
 
   &__items {
-    background: #eee;
-    width: 25%;
-    position: relative;
-    height: 92.5%;
-    overflow: hidden;
-    box-sizing: border-box;
+    &__wrapper {
+      background: #eee;
+      width: 25%;
+      position: relative;
+      height: 92.5%;
+      overflow: hidden;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      #go-to-basket {
+        width: 100%;
+        position: relative;
+        background: #eee;
+        flex: 1;
+
+        span {
+          line-height: 2rem;
+          color: #aaa;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          border: 1px solid #aaa;
+          width: 90%;
+          text-align: center;
+        }
+      }
+    }
+    height: calc(100% - 4rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+
+    &:not(:empty) {
+      & + #go-to-basket {
+        cursor: pointer;
+
+        span {
+          color: $white!important;
+          background: $primary-blue;
+          border: 1px solid $primary-blue;
+
+          &:hover {
+            background: $light-black;
+          }
+        }
+      }
+    }
 
     > div {
       display: flex;
@@ -168,10 +179,17 @@
     width: 75%;
 
     &__types {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      align-items: center;
+      h2,
+      p {
+        width: 100%;
+      }
+
+      &__list {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+      }
 
       &__type {
         width: 32%;
@@ -293,7 +311,6 @@
           &:not(:nth-child(5n+5)) {
             margin-right: 1.25%;
           }
-          position: relative;
           box-sizing: border-box;
           text-align: center;
           cursor: pointer;
@@ -305,17 +322,34 @@
           }
 
           &.in-basket {
-            > * {
-              opacity: 0.5;
-            }
+            > div {
+              position: relative;
+              z-index: 1;
 
-            &:after {
-              opacity: 1;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              content: "In Basket";
-              transform: translate(-50%,-50%);
+              img {
+                position: relative;
+                z-index: 10;
+                opacity:0.5;
+              }
+
+              &:after {
+                z-index: 20;
+                opacity: 1;
+                position: absolute;
+                text-align:center;
+                width: 3rem;
+                height: 3rem;
+                background: $primary-blue;
+                top: 50%;
+                left: 50%;
+                line-height:3rem;
+                font-weight:900;
+                color:$white;
+                font-size:2rem;
+                content: "\2713";
+                transform: translate(-50%,-50%);
+                border-radius:50%;
+              }
             }
           }
         }
@@ -323,12 +357,53 @@
     }
 
     &__products {
-      display: flex;
-      justify-content: flex-start;
-      flex-wrap: wrap;
+
       height: 100%;
       max-height: 100%;
       overflow-y: auto;
+      &__list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+
+      }
+    }
+
+    &__basket {
+      overflow-y: auto;
+
+      .wpcf7 {
+        .wpcf7-form {
+          .wpcf7-not-valid-tip {
+            text-align:left;
+            display:block;
+            color:#8B0000;
+          }
+          .form_fields {
+            @media (min-width:900px) {
+              display:flex;
+              flex-wrap:wrap;
+              justify-content:space-between;
+              p {
+                width:49%;
+              }
+            }
+
+            .submit-btn {
+              display:none;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="url"],
+            input[type="password"],
+            input[type="search"],
+            select {
+              width: 100%;
+            }
+          }
+        }
+      }
     }
 
     &__stage {
