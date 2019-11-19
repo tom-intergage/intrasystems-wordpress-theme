@@ -770,7 +770,7 @@ jQuery(document).ready(function($) {
     }
   });
 
-	$(".free-samples").fancybox({
+	$(".NOfree-samples").fancybox({
 		maxWidth	: 800,
          maxHeight	: 950,
 

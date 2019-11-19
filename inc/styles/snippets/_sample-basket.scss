@@ -179,6 +179,14 @@
     width: 75%;
 
     &__types {
+      .loading {
+        &:not(.loaded) ~ * {
+          display:none;
+        }
+        &.loaded {
+          display:none;
+        }
+      }
       h2,
       p {
         width: 100%;
@@ -226,6 +234,7 @@
       width: 100%;
       overflow-y: scroll;
       position: relative;
+      overflow-x:hidden;
     }
 
     .product-finishes-filter {

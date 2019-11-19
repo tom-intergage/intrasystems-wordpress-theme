@@ -313,7 +313,7 @@
 
                 ?>
                 <a class="yellow-btn yellow-solid-btn" href="/shape-selector/" target="_self" style="width:100%;max-width:420px;">Download PSD to Create Your Own Design</a>
-                <a class="blue-btn blue-solid-btn free-samples" href="#free-samples" target="_self" style="width:100%;max-width:420px;">Request Free Sample</a>
+                <a class="blue-btn blue-solid-btn free-samples" href="#" target="_self" style="width:100%;max-width:420px;">Request Free Sample</a>
 
               <?php
 

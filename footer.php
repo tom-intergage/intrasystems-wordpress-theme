@@ -84,7 +84,7 @@ $footer_zipcode = get_field('zipcode', 153 );
 </div>
 	</footer>
 
-	<div id="sample-basket" class="sample-basket">
+	<div id="sample-basket" class="sample-basket" data-url="<?php echo site_url() ?>">
 		<div>
 			<div class="sample-basket__progress">
 				<div class="sample-basket__progress__stage type">
@@ -120,13 +120,16 @@ $footer_zipcode = get_field('zipcode', 153 );
 					<div class="sample-basket__content__types">
 						<h2>Sample Select Tool</h2>
 
+						<p class="loading">Loading Sample Select Tool</p>
+
 						<p>Explain how to use the tool in a paragraph...</p>
 						<div class="sample-basket__content__types__list">
 							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings"><p>Ceilings</p></article>
 							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles"><p>Grilles</p></article>
 							<article class="sample-basket__content__types__type" data-product-category="464" data-product-type="matting"><p>Matting</p></article>
-
 						</div>
+
+
 
 					</div>
 					<div class="sample-basket__content__products">

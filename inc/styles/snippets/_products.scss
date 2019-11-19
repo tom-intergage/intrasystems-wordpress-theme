@@ -217,3 +217,24 @@
     padding: 0 15px 15px;
   }
 }
+
+.downloads_area {
+  background:$primary-blue;
+  .downloads {
+    width:100%!important;
+    color:$white;
+    float:none;
+    display:flex;
+    justify-content:space-around;
+    a,span,p {
+      color:$white;
+    }
+    .download {
+      width:auto;
+      div {
+        width:100%;
+
+      }
+    }
+  }
+}
