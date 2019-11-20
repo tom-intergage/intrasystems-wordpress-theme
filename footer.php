@@ -124,7 +124,7 @@ if ( is_user_logged_in() ) {
 
 						<p class="loading">Loading Sample Select Tool</p>
 
-						<p>Explain how to use the tool in a paragraph...</p>
+						<p>Our sample select tool allows you to order samples of any of our products. It's a new feature that we're constantly working on - if you're having any issues please give us a call on <a href="tel:+441425472000"> +44(0)1425 472000</a></p>
 						<div class="sample-basket__content__types__list">
 							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings"><p>Ceilings</p></article>
 							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles"><p>Grilles</p></article>
@@ -147,7 +147,7 @@ if ( is_user_logged_in() ) {
 					<div class="sample-basket__content__basket">
 
 						<h2>Submit Request</h2>
-<p>Explain how to  submit your request</p>
+<p>Please complete the form below tosubmit your request. We will be in touch as soon as possible to confirm your selection.</p>
 							<?php echo do_shortcode('[contact-form-7 id="3133" title="Free Sample Request"]'); ?>
 
 					</div>
