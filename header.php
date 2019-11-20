@@ -129,7 +129,7 @@
 
         "brand": "INTRAmatting",
 
-        "logo": "https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/intrasystems-logo.png",
+        "logo": "https://www.intrasystems.co.uk/wp-content/themes/intrasystems-wordpress-theme/img/intrasystems-logo.png",
 
         "name": "<?php echo get_field('alt_text'); ?>",
 
@@ -156,7 +156,7 @@
         "description": "Entrance Matting manufacturers, suppliers & installers specialising in 21st Century Design using the latest technologies for long lasting heavy duty matting.",
         "legalName": "INTRAsystems",
         "url": "https://www.intrasystems.co.uk/",
-        "logo": "https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/logo-intramatting-white.png",
+        "logo": "https://www.intrasystems.co.uk/wp-content/themes/intrasystems-wordpress-theme/img/logo-intramatting-white.png",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "14 Salisbury Road, Headlands Business Park",
@@ -212,7 +212,7 @@
 
       <div class="site-branding">
         <div>
-          <a href="http://www.intrasystems.co.uk/">
+          <a href="<?php echo get_site_url(); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/img/intrasystems-logo.png" alt="<?php bloginfo('name'); ?>">
           </a>
         </div><!-- .site-branding -->
