@@ -534,12 +534,21 @@ var prefix = $('#sample-basket').attr('data-url');
     }
   });
 
+
+
 $('.header-prod').click(function(e) {
   e.preventDefault();
+  if ($('#sample-basket-tab')) {
   new sampleBasketPreload;
 $('#sample-basket-tab').addClass('hidden');
   $('#sample-basket').addClass('open');
+  }
+  else {
+    window.location = 'http://intrasystems.co.uk/request-free-samples/';
+  }
 });
+
+
 
   $('#sample-basket-tab').click(function() {
     new sampleBasketPreload;

@@ -27,11 +27,7 @@ $footer_zipcode = get_field('zipcode', 153 );
 
 	<footer id="colophon" class="site-footer">
 
-
-
 	<div class="footer-black">
-
-
 
 		<div class="footer-middle">
 
@@ -84,6 +80,12 @@ $footer_zipcode = get_field('zipcode', 153 );
 </div>
 	</footer>
 
+	<?php
+
+if ( is_user_logged_in() ) {
+?>
+
+
 	<div id="sample-basket" class="sample-basket" data-url="<?php echo site_url() ?>">
 		<div>
 			<div class="sample-basket__progress">
@@ -129,8 +131,6 @@ $footer_zipcode = get_field('zipcode', 153 );
 							<article class="sample-basket__content__types__type" data-product-category="464" data-product-type="matting"><p>Matting</p></article>
 						</div>
 
-
-
 					</div>
 					<div class="sample-basket__content__products">
 						<h2>Select a Product</h2>
@@ -163,6 +163,11 @@ $footer_zipcode = get_field('zipcode', 153 );
 	</div>
 	<div id="sample-basket-tab"><p>Sample Request</p></div>
 
+	<?php
+
+	}
+
+		 ?>
 
 </div>
 
