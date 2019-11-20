@@ -127,9 +127,99 @@ if ($features){
 }
 
 
+/* START NEW DOWNLOADS SECTIONS */
+if ($specification || $f_operational || $f_maintenance ){
+$output .= "<section class='downloads_area'>";
+	$output .= "<div class='row'>";
+	 //BREAK AWAY
+	 if ($f_operational || $f_maintenance || have_rows('other_docs')){
+			$output .= "<div>";
 
+			$output .= "<div class='downloads'>";
+
+			if ($f_operational){
+				 $output .= "<a href='".$f_operational."' target='_blank'>";
+				 $output .= "<div class='download'>";
+				 $output .= "<p>Operational Manual</p>";
+				 $output .= "</div>";
+				 $output .= "</a>";
+			}
+			if ($f_maintenance){
+				 $output .= "<a href='".$f_maintenance."' target='_blank'>";
+				 $output .= "<div class='download'>";
+				 $output .= "<p>Maintenance Manual</p>";
+				 $output .= "</div>";
+				 $output .= "</a>";
+			}
+
+			if( have_rows('other_docs') ){
+				 while( have_rows('other_docs') ): the_row();
+
+	 #echo '<pre>';print_r(get_fields());
+	 #exit;
+				 if(get_sub_field('popup_info_request')){
+
+						$file_download = get_sub_field('doc');
+						$file_label = get_sub_field('doc_label');
+						//$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+						 $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+
+						$output .= "<div class='download'>";
+						$output .= "<p>". get_sub_field('doc_label')."</p>";
+						$output .= "</div>";
+						$output .= "</a>";
+
+				 }
+
+				 elseif(get_sub_field('popup_info_request_nbs')){
+
+
+
+						$file_download = (get_sub_field('url')) ? get_sub_field('url') : get_sub_field('doc');
+						$file_label = get_sub_field('doc_label');
+						//$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+						 $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+
+						$output .= "<div class='download'>";
+						$output .= "<p>". get_sub_field('doc_label')."</p>";
+						$output .= "</div>";
+						$output .= "</a>";
+
+				 }
+
+				 elseif( get_field('intrashape_content') )
+	 {
+		 #info@intrasystems.co.uk
+						$file_download = get_sub_field('doc');
+						$file_label = get_sub_field('doc_label');
+						//$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+						 $output .="<a class=' various small-grey-btn brochure-download' href='#brochure-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+
+						$output .= "<div class='download'>";
+						$output .= "<p>". get_sub_field('doc_label')."</p>";
+						$output .= "</div>";
+						$output .= "</a>";
+				 }
+
+	 else
+	 {
+
+		 $output .= "<a href='". get_sub_field('doc')."' target='_blank'>";
+						$output .= "<div class='download'>";
+						$output .= "<p>". get_sub_field('doc_label')."</p>";
+						$output .= "</div>";
+						$output .= "</a>";
+	 }
+				 endwhile;
+			}
+
+	 }
+	  $output .= "</div>";
+	 $output .= "</div>";  // end class=specification
+	 $output .= "</section>";
+}
+/* END NEW DOWNLOADS SECTIONS */
 echo $output;
-
 
  if( get_field('intrashape_content') ){ ?>
 
@@ -162,7 +252,7 @@ echo $output;
 
 	 						#echo '<pre>';
 							#print_r($galleryArray);
-							 $output = '';
+
 							 $output .="<div class='row'><div id='sync1' class='owl-carousel owl-main-image'> ";
 							 foreach($galleryArray as $data)
 							 {
@@ -983,10 +1073,12 @@ if( get_field('accessories') ){
          $output .= "<h3>Specification</h3>";
          $output .= $specification;
       }
-      if ($f_operational || $f_maintenance || have_rows('other_docs')){
+
+			//BREAK AWAY
+      if ($f_operational == "Red Five!" && $f_maintenance && have_rows('other_docs')){
          $output .= "<div>";
          $output .= "<div class='downloads_title'>";
-         $output .= "<p>Downloads</p>";
+         $output .= "<p>sDownloads</p>";
          $output .= "</div>";
          $output .= "<div class='downloads'>";
 
@@ -1024,6 +1116,22 @@ if( get_field('accessories') ){
 
             }
 
+						elseif(get_sub_field('popup_info_request_nbs')){
+
+
+
+               $file_download = (get_sub_field('url')) ? get_sub_field('url') : get_sub_field('doc');
+               $file_label = get_sub_field('doc_label');
+               //$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+                $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+
+               $output .= "<div class='download'>";
+               $output .= "<p>". get_sub_field('doc_label')."</p>";
+               $output .= "</div>";
+               $output .= "</a>";
+
+            }
+
             elseif( get_field('intrashape_content') )
 			{
 				#info@intrasystems.co.uk
@@ -1037,8 +1145,10 @@ if( get_field('accessories') ){
                $output .= "</div>";
                $output .= "</a>";
             }
+
 			else
 			{
+
 				$output .= "<a href='". get_sub_field('doc')."' target='_blank'>";
                $output .= "<div class='download'>";
                $output .= "<p>". get_sub_field('doc_label')."</p>";

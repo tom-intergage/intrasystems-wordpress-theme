@@ -45,7 +45,7 @@ else :
 endif;
 
 
-?>	
+?>
 </div>
 </section>
 	</div>
@@ -58,7 +58,7 @@ endif;
             <div class="row">
 				<?php get_template_part( 'template-parts/content', 'page' );
 
-							
+
 				 ?>
 				</div>
 				</section>
@@ -67,42 +67,6 @@ endif;
 		</main>
 	</div>
 
-	<div class="secondary-bg text-center">
-		
-		<section>
-		<div class="row ">
-				<?php 
-
-				if ($cycle_title){
-					echo "<h2>".$cycle_title."</h2>";
-				}
-				if($cycle_desktop){
-					?>
-					<div class="show-for-large-up">
-
-					<?php
-					echo wp_get_attachment_image( $cycle_desktop, 'full' );
-
-					
-					?>
-					</div>
-
-					<?php
-				}
-				if($cycle_mobile){
-					?>
-					<div class="hide-for-large-up">
-
-					<?php
-					echo wp_get_attachment_image( $cycle_mobile, 'full' );
-					?>
-					</div>
-					<?php
-				}				
-				 ?>
-				</div>
-		</section>
-	</div>
 
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -84,23 +84,84 @@ $footer_zipcode = get_field('zipcode', 153 );
 </div>
 	</footer>
 
-	<div id="sample-basket" class="sample-basket">
+	<div id="sample-basket" class="sample-basket" data-url="<?php echo site_url() ?>">
 		<div>
-			<div class="sample-basket__title"></div>
+			<div class="sample-basket__progress">
+				<div class="sample-basket__progress__stage type">
+					<article>
+						<span class="sample-basket__progress__stage__number">1</span>
+						<span class="sample-basket__progress__stage__title">Select Type</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage product">
+					<article>
+						<span class="sample-basket__progress__stage__number">2</span>
+						<span class="sample-basket__progress__stage__title">Select Product</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage finish">
+					<article>
+						<span class="sample-basket__progress__stage__number">3</span>
+						<span class="sample-basket__progress__stage__title">Select Finishes</span>
+					</article>
+				</div>
+				<div class="sample-basket__progress__stage checkout">
+					<article>
+						<span class="sample-basket__progress__stage__number">4</span>
+						<span class="sample-basket__progress__stage__title">Submit Request</span>
+					</article>
+				</div>
+			</div>
 			<div class="sample-basket__close">
 				<span>x</span>
 			</div>
 			<div class="sample-basket__content">
 				<div class="sample-basket__content__stage">
-					<div class="sample-basket__content__types"></div>
-					<div class="sample-basket__content__products"></div>
-					<div class="sample-basket__content__variants"></div>
-					<div class="sample-basket__content__basket"></div>
+					<div class="sample-basket__content__types">
+						<h2>Sample Select Tool</h2>
+
+						<p class="loading">Loading Sample Select Tool</p>
+
+						<p>Explain how to use the tool in a paragraph...</p>
+						<div class="sample-basket__content__types__list">
+							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings"><p>Ceilings</p></article>
+							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles"><p>Grilles</p></article>
+							<article class="sample-basket__content__types__type" data-product-category="464" data-product-type="matting"><p>Matting</p></article>
+						</div>
+
+
+
+					</div>
+					<div class="sample-basket__content__products">
+						<h2>Select a Product</h2>
+						<div class="sample-basket__content__products__list">
+
+						</div>
+					</div>
+					<div class="sample-basket__content__variants">
+						<h2>Select Finishes</h2>
+						<div class="sample-basket__content__variants__list">
+
+						</div>
+					</div>
+					<div class="sample-basket__content__basket">
+
+						<h2>Submit Request</h2>
+<p>Explain how to  submit your request</p>
+							<?php echo do_shortcode('[contact-form-7 id="3133" title="Free Sample Request"]'); ?>
+
+					</div>
 				</div>
+
 			</div>
+			<div class="sample-basket__items__wrapper">
+				<div class="sample-basket__items"></div>
+				<div id="go-to-basket"><span>Request Samples</span></div>
+			</div>
+
 		</div>
 	</div>
-	<div id="sample-basket-tab"><p>Sample Request<span id="basket-count">1</span></p></div>
+	<div id="sample-basket-tab"><p>Sample Request</p></div>
 
 
 </div>
