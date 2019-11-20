@@ -74,17 +74,20 @@ $blue:#3f5666;
         margin:0;
       }
       > * {
-        width:33%;
+
         color:white;
 
         &:nth-child(1) {
           text-align:left;
+          width:24%;
         }
         &:nth-child(2) {
           text-align:center;
+          width:50%;
         }
         &:last-child {
           text-align:right;
+            width:24%;
         }
         a {
           color:white;
