@@ -536,15 +536,15 @@ var prefix = $('#sample-basket').attr('data-url');
 
 
 
-$('.header-prod').click(function(e) {
+$('.header-prod .blue-solid-btn').click(function(e) {
   e.preventDefault();
-  if ($('#sample-basket-tab')) {
+  if ($('.sample-basket').length > 0) {
   new sampleBasketPreload;
 $('#sample-basket-tab').addClass('hidden');
   $('#sample-basket').addClass('open');
   }
   else {
-    window.location = 'http://intrasystems.co.uk/request-free-samples/';
+    window.location = 'https://intrasystems.co.uk/request-free-samples/';
   }
 });
 

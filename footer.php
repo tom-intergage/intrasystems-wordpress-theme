@@ -86,7 +86,7 @@ if ( is_user_logged_in() ) {
 ?>
 
 
-	<div id="sample-basket" class="sample-basket" data-url="<?php echo site_url() ?>">
+	<div id="sample-basket" class="sample-basket" data-url="<?php echo get_site_url() ?>">
 		<div>
 			<div class="sample-basket__progress">
 				<div class="sample-basket__progress__stage type">
@@ -124,7 +124,7 @@ if ( is_user_logged_in() ) {
 
 						<p class="loading">Loading Sample Select Tool</p>
 
-						<p>Our sample select tool allows you to order samples of any of our products. It's a new feature that we're constantly working on - if you're having any issues please give us a call on <a href="tel:+441425472000"> +44(0)1425 472000</a></p>
+						<p>Our sample select tool allows you to order samples of any of our products. It's a new feature that we're working on - if you're having any issues please give us a call on <a href="tel:+441425472000"> +44(0)1425 472000</a></p>
 						<div class="sample-basket__content__types__list">
 							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings"><p>Ceilings</p></article>
 							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles"><p>Grilles</p></article>
@@ -161,7 +161,7 @@ if ( is_user_logged_in() ) {
 
 		</div>
 	</div>
-	<div id="sample-basket-tab"><p>Sample Request</p></div>
+	<div id="sample-basket-tab"><p>Request a Sample</p></div>
 
 	<?php
 

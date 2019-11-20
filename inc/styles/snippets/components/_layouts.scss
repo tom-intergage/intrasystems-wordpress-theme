@@ -308,7 +308,7 @@ $grey: #f2f6f7;
       display:block;
       text-align:center;
       margin-bottom:0;
-      margin-top:3rem; 
+      margin-top:3rem;
     }
   }
 
@@ -471,8 +471,13 @@ $grey: #f2f6f7;
       overflow-x: hidden;
 
       .row {
-        min-height: 30rem;
+        @media (max-width:1023px) {
+          * {
+            text-align:center;
+          }
+        }
         @media (min-width:1024px) {
+          min-height: 30rem;
           display: flex;
           justify-content: flex-end;
           align-items: center;
@@ -494,6 +499,9 @@ $grey: #f2f6f7;
         left: 25%;
         transform: translateX(-50%);
         width: 55%;
+        @media (max-width:1023px) {
+          display:none;
+        }
       }
     }
   }
@@ -654,7 +662,10 @@ $grey: #f2f6f7;
 
   &:not(:hover) {
     .button {
-      display: none;
+      @media (min-width:1025px) {
+        display: none;
+      }
+
     }
   }
 

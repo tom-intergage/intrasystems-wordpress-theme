@@ -63,7 +63,7 @@ get_header(); ?>
 <?php
    while( have_rows('showcase') ): the_row();
       $image = get_sub_field('showcase_img'); // Return object/array
-      $thumb = $image['sizes']['showcase'];
+      $thumb = $image['sizes']['large'];
 ?>
 <div class='item' style="background-image:url('<?php echo $thumb; ?>')">
 
