@@ -64,32 +64,7 @@ get_header();
          <?php }?>
 
 
-            <section>
-            <div class="row">
-            <div class="excerpt-width">
-
-            <?php
-               $id = 24;
-               $temp = $post;
-               $post = get_post( $id );
-               setup_postdata( $post );
-               ?>
-
-               <h2 class="h1"><?php the_title(); ?></h2>
-
-              <?php the_excerpt(); ?>
-               <?php  echo "<a class='large-blue-btn' href='".get_the_permalink()."'>Read more</a>"; ?>
-
-               <?php
-               wp_reset_postdata();
-               $post = $temp;
-               ?>
-               </div>
-               </div>
-
-            </section>
-
-
+          
 
 			<?php endwhile; // End of the loop. ?>
 

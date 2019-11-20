@@ -25,7 +25,7 @@
       if ($the_query->have_posts()) {
          ?>
          <div class="case-studies-cat products-filter">
-            <div class="categories">
+            <div class="categories" style="width:83%;">
                <div class="row">
 
                   <?php
@@ -55,14 +55,7 @@
 
                </div>
             </div>
-            <div class="show_all">
-              <?php
 
-              $ad = ($category) ? 'large-white-btn' : 'large-blue-btn';
-
-              ?>
-               <a href="<?php echo get_home_url(); ?>/products/" class="<?php echo $ad ?>">All Products</a>
-            </div>
          </div>
       <?php
 
