@@ -163,7 +163,7 @@ var prefix = $('#sample-basket').attr('data-url');
           //BUILD THE INTRASHAPE FILTERS MANUALLY
           if (mydata.acf.alt_text == "INTRAshape") {
             finishFilter = '<div class="product-finishes-filter">';
-            console.log(shapes);
+
             for (var i = 0; i < 5; i++) {
               finishFilter += '<div class="product-finish"><p class="product-finish__name">' + shapes[i] + '</p></div>';
             }
@@ -337,7 +337,6 @@ var prefix = $('#sample-basket').attr('data-url');
 
   var listProductTypes = function(data) {
 
-    console.log("listing product types");
 
     $('.sample-basket__content__types .loading').addClass('loaded');
 
@@ -463,9 +462,11 @@ var prefix = $('#sample-basket').attr('data-url');
   }
 
   var addBasketItems = function() {
+
     var basketItems = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
     if (basketItems) {
+      $('.sample-basket__items').html(function() {return null});
       for (var i = 0; i < basketItems.length; i++) {
         generateBasketItem(basketItems[i].id, basketItems[i].title, basketItems[i].image);
       }
@@ -490,8 +491,6 @@ var prefix = $('#sample-basket').attr('data-url');
         $('.sample-basket__content__stage').css({
           left: "0%"
         });
-
-
 
       function getPage(page) {
 
