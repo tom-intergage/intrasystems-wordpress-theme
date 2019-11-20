@@ -171,7 +171,7 @@ $output .= "<section class='downloads_area'>";
 
 				 }
 
-				 elseif(get_sub_field('popup_info_request_nbs')){
+				 elseif(get_sub_field('url')){
 
 
 

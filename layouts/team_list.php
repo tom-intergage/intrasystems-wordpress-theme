@@ -34,7 +34,9 @@ if( $teamMembers ):
               $output .= '<p class="layout--team-list__grid__item__title">'.$teamMember["name"].'</p>';
               $output .= '<p class="layout--team-list__grid__item__description">'.$teamMember["role"].'</p>';
               $output .= '<p class="layout--team-list__grid__item__location">'.$teamMember["location"].'</p>';
+              if ($teamMember["linkedin"] !== "") {
               $output .= '<p class="layout--team-list__grid__item__link"><a class="button" target="_blank" href="'.$teamMember["linkedin"].'">LinkedIn</a></p>';
+              }
               $output .= '</div>';
             $output .= '</div>';
     endforeach;
