@@ -128,9 +128,8 @@ if ($features){
 
 
 /* START NEW DOWNLOADS SECTIONS */
-//if ($specification  || $f_operational || $f_maintenance ){
-   if ($specification  == "TEMPORARY MEASURE" ){
-   $output .= "<section class='downloads_area'>";
+if ($specification || $f_operational || $f_maintenance ){
+$output .= "<section class='downloads_area'>";
 	$output .= "<div class='row'>";
 	 //BREAK AWAY
 	 if ($f_operational || $f_maintenance || have_rows('other_docs')){
@@ -236,6 +235,7 @@ echo $output;
 									$data['order'] = get_sub_field('gallery_priority');
 									$image = get_sub_field('image');
 									$data['image_main'] = $image['sizes']['showcase'];
+
 									$data['image_thumb'] = $image['sizes']['shape-selector-thumb'];
 									$data['description'] = get_sub_field('image_description');
 									$data['title'] = get_sub_field('image_title');
@@ -252,7 +252,7 @@ echo $output;
 
 	 						#echo '<pre>';
 							#print_r($galleryArray);
-                     $output = '';
+
 							 $output .="<div class='row'><div id='sync1' class='owl-carousel owl-main-image'> ";
 							 foreach($galleryArray as $data)
 							 {
@@ -402,8 +402,8 @@ echo $output;
                                              <tr>
                                                 <td>Shape</td>
                                                 <td>
-                                                   Small Triangle  230mm<br/>
-                                                   Large Triangle  460mm
+                                                   Small Triangle – 230mm<br/>
+                                                   Large Triangle – 460mm
                                                 </td>
                                              </tr>
                                           </tbody>
@@ -480,8 +480,8 @@ echo $output;
                                              <tr>
                                                 <td>Shape</td>
                                                 <td>
-                                                   Small Square  230mm x 230mm<br/>
-                                                   Large Square  480mm x 480mm
+                                                   Small Square – 230mm x 230mm<br/>
+                                                   Large Square – 480mm x 480mm
                                                 </td>
                                              </tr>
                                           </tbody>
@@ -554,11 +554,11 @@ echo $output;
                                              <tr>
                                                 <td>Shape</td>
                                                 <td>
-                                                   XS Rectangle  115mm x 345mm<br/>
-                                                   Small Rectangle  230mm x 460mm<br/>
+                                                   XS Rectangle – 115mm x 345mm<br/>
+                                                   Small Rectangle – 230mm x 460mm<br/>
                                                    Medium Rectangle - 230mm x 690mm<br/>
                                                    Medium Slim Rectangle - 115mm x 690mm<br/>
-                                                   Large Rectangle  460mm x 690mm
+                                                   Large Rectangle – 460mm x 690mm
                                                 </td>
                                              </tr>
                                           </tbody>
@@ -629,9 +629,9 @@ echo $output;
                                              <tr>
                                                 <td>Shape</td>
                                                 <td>
-                                                   Small Diamond  230mm x 230mm<br/>
-                                                   Medium Slim Diamond  115mm x 575mm (45&deg; Angle)<br/>
-                                                   Large Diamond  460mm  460mm (60&deg; Angle)
+                                                   Small Diamond – 230mm x 230mm<br/>
+                                                   Medium Slim Diamond – 115mm x 575mm (45&deg; Angle)<br/>
+                                                   Large Diamond – 460mm – 460mm (60&deg; Angle)
                                                 </td>
                                              </tr>
                                           </tbody>
@@ -704,7 +704,7 @@ echo $output;
                                              <tr>
                                                 <td>Shape</td>
                                                 <td>
-                                                   Small Hexagon  230mm
+                                                   Small Hexagon – 230mm
                                                 </td>
                                              </tr>
                                           </tbody>
@@ -765,7 +765,7 @@ if( get_field('accessories') ){
 
    $output .= "<p>Used to create a clean division between matwell sections where required. (see Installation page opposite)</p>";
 
-   $output .= "<div id='further-options'><h2>Further Options</h2><p><strong>INTF019 & INTF014</strong>  21mm and 14mm Formable versions, to suit curved applications<br/><strong>INTS020</strong>  Stainless Steel 20 x 20 x 3mm angle for individual applications<br/><strong>INTR016 & INTR018</strong>  Ramped aluminium framing to suit 16 and 18mm deep matting systems</p><p>Bespoke Stainless Steel Options made to suit INTRAgrille product</p></div>";
+   $output .= "<div id='further-options'><h2>Further Options</h2><p><strong>INTF019 & INTF014</strong> – 21mm and 14mm Formable versions, to suit curved applications<br/><strong>INTS020</strong> – Stainless Steel 20 x 20 x 3mm angle for individual applications<br/><strong>INTR016 & INTR018</strong> – Ramped aluminium framing to suit 16 and 18mm deep matting systems</p><p>Bespoke Stainless Steel Options made to suit INTRAgrille product</p></div>";
 
 
 
@@ -1073,10 +1073,12 @@ if( get_field('accessories') ){
          $output .= "<h3>Specification</h3>";
          $output .= $specification;
       }
-      if ($f_operational || $f_maintenance || have_rows('other_docs')){
+
+			//BREAK AWAY
+      if ($f_operational == "Red Five!" && $f_maintenance && have_rows('other_docs')){
          $output .= "<div>";
          $output .= "<div class='downloads_title'>";
-         $output .= "<p>Downloads</p>";
+         $output .= "<p>sDownloads</p>";
          $output .= "</div>";
          $output .= "<div class='downloads'>";
 
@@ -1099,189 +1101,183 @@ if( get_field('accessories') ){
             while( have_rows('other_docs') ): the_row();
 
 			#echo '<pre>';print_r(get_fields());
-         #exit;
+			#exit;
+            if(get_sub_field('popup_info_request')){
 
-         if( get_sub_field('url') ){
+               $file_download = get_sub_field('doc');
+               $file_label = get_sub_field('doc_label');
+               //$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+                $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
 
-            $url  = get_sub_field('url');
-
-            $output .="<a class=' various small-grey-btn' href='" . $url . "' target='_blank'><div class='download'><p>" . get_sub_field('doc_label') . "</p></div></a>";
-
-
-         } else if( get_sub_field('popup_info_request') || get_sub_field('popup_info_request_bim_rfa') || get_sub_field('popup_info_request_bim_ifc') || get_sub_field('popup_info_request_nbs') ){
-
-            $file_download = get_sub_field('doc');
-            $file_label = get_sub_field('doc_label');
-
-            if( get_sub_field('popup_info_request') ){
-
-               $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+               $output .= "<div class='download'>";
+               $output .= "<p>". get_sub_field('doc_label')."</p>";
+               $output .= "</div>";
+               $output .= "</a>";
 
             }
 
-            if(get_sub_field('popup_info_request_bim_rfa')){
+						elseif(get_sub_field('popup_info_request_nbs')){
 
-               $output .="<a class=' various small-grey-btn form-download' href='#bim-rfa-form-download' onclick=\"file_to_download_bim_rfa('".$file_download."', '".$file_label."');\">";
 
-            }
 
-            if(get_sub_field('popup_info_request_bim_ifc')){
+               $file_download = (get_sub_field('url')) ? get_sub_field('url') : get_sub_field('doc');
+               $file_label = get_sub_field('doc_label');
+               //$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+                $output .="<a class=' various small-grey-btn form-download' href='#form-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
 
-               $output .="<a class=' various small-grey-btn form-download' href='#bim-ifc-form-download' onclick=\"file_to_download_bim_ifc('".$file_download."', '".$file_label."');\">";
-
-            }
-
-            if(get_sub_field('popup_info_request_nbs')){
-
-               $output .="<a class=' various small-grey-btn form-download' href='#nbs-form-download' onclick=\"file_to_download_nbs('".$file_download."', '".$file_label."');\">";
+               $output .= "<div class='download'>";
+               $output .= "<p>". get_sub_field('doc_label')."</p>";
+               $output .= "</div>";
+               $output .= "</a>";
 
             }
 
-            $output .= "<div class='download'>";
-            $output .= "<p>". get_sub_field('doc_label')."</p>";
-            $output .= "</div>";
-            $output .= "</a>";
+            elseif( get_field('intrashape_content') )
+			{
+				#info@intrasystems.co.uk
+               $file_download = get_sub_field('doc');
+               $file_label = get_sub_field('doc_label');
+               //$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
+                $output .="<a class=' various small-grey-btn brochure-download' href='#brochure-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
 
-         } elseif( get_field('intrashape_content') ){
+               $output .= "<div class='download'>";
+               $output .= "<p>". get_sub_field('doc_label')."</p>";
+               $output .= "</div>";
+               $output .= "</a>";
+            }
 
-            $file_download = get_sub_field('doc');
-            $file_label = get_sub_field('doc_label');
-            //$output .="<a class=' various small-grey-btn fancybox.iframe' href='/form-to-download?file=".$file_download."' >";
-             $output .="<a class=' various small-grey-btn brochure-download' href='#brochure-download' onclick=\"file_to_download('".$file_download."', '".$file_label."');\">";
+			else
+			{
 
-            $output .= "<div class='download'>";
-            $output .= "<p>". get_sub_field('doc_label')."</p>";
-            $output .= "</div>";
-            $output .= "</a>";
-         } else {
-
-            $output .= "<a href='". get_sub_field('doc')."' target='_blank'>";
-            $output .= "<div class='download'>";
-            $output .= "<p>". get_sub_field('doc_label')."</p>";
-            $output .= "</div>";
-            $output .= "</a>";
+				$output .= "<a href='". get_sub_field('doc')."' target='_blank'>";
+               $output .= "<div class='download'>";
+               $output .= "<p>". get_sub_field('doc_label')."</p>";
+               $output .= "</div>";
+               $output .= "</a>";
+			}
+            endwhile;
          }
+
+         $output .= "</div>";
+         $output .= "</div>";
+      }
+      $output .= "</div>";  // end class=specification
+   }
+
+   if( have_rows('prod_var') || get_field('spec_img') ){
+
+      $output .= "<div class='prod_variations'>";
+
+      $small_msn ="";
+
+			if (get_field('finishes')) {
+
+      $count = count( get_field('finishes') );
+
+      if ($count > 1){
+         $small_msn = " <small>Select insert option to view detail image</small>";
+      }
+
+			}
+
+      $output .= "<h3>".get_field('var_main_title').$small_msn. "</h3>";
+
+
+
+      if(get_field('show_variations')){
+
+         //$output .= "<p><span class='prod_std'>Standard</span> | <span class='prod_black'>Black Anodised</span> | <span class='prod_bronze'>Bronze Anodised</span> </p>";
+         $output .=variations_filter(get_field('finishes'));
+         $output .= "<div class='prod_thumbs'>";
+
+         while( have_rows('prod_var') ): the_row();
+
+            $output .= "<div class='prod_variation'>";
+
+            $output .= "<h3>".get_sub_field('var_cat')."</h3>";
+
+            $variations = get_sub_field('variations');
+
+            if($variations){
+
+               foreach($variations as $v){
+
+                  //  echo get_term_link($v);
+                  $args  = array(
+                  'post_type' => 'variations',
+                  'tax_query' => array(
+                      array(
+                      'taxonomy' => 'var_prod',
+                      'field' => 'id',
+                      'terms' => $v->term_id
+                       ),
+                     array(
+                      'taxonomy' => 'var_finish',
+                      'field' => 'name',
+                      'terms' => 'Standard'
+                       ),
+                    )
+                  );
+
+                  $var_query = new WP_query($args);
+                  if($var_query->have_posts()){
+                     while($var_query->have_posts()){
+
+                        $var_query->the_post();
+                        $post_id = get_the_ID();
+                        $var_img = get_the_post_thumbnail( $post_id , 'variations-thumb');
+                        $var_img_full = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
+                       $output .= "<div class='variation' onMouseEnter='changeImage(\"".$var_img_full[0]."\")' onMouseLeave='hideImage()'>";
+
+                        $output .= "<div class='var_img'>".$var_img."</div>";
+                        $output .= get_field('var_label');
+                        $output .= "</div>";
+                     }
+
+                  }
+                  wp_reset_postdata();
+
+               }
+
+            }
+
+            $output .= "<div style='clear:both;'><p>".get_sub_field('availability')."</p><div>";
+            $output .= "</div>"; //end class=Prod_variation
 
          endwhile;
 
-      }
+         $output .= "<div style='clear:both;'>";
 
-      $output .= "</div>";
-      $output .= "</div>";
-   }
-   $output .= "</div>";  // end class=specification
-}
+         if( get_field('intrashape_content') ){
 
-if( have_rows('prod_var') || get_field('spec_img') ){
+            $output .= "<a class='yellow-btn yellow-solid-btn' href='/shape-selector/' target='_self' style='width:100%;max-width:420px;'>Download PSD to Create Your Own Design</a>
+			<a class='blue-btn blue-solid-btn free-samples' href='#free-samples'  style='width:100%;max-width:420px;margin-top:0px;'>Request Free Samples</a>";
 
-   $output .= "<div class='prod_variations'>";
+         } else if( get_field('intralux_grafic_content') ){
 
-   $small_msn ="";
+            $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
+            $output .= "<div><a class='blue-btn free-sample-folder' href='#free-sample-folder' style='margin-top:0'>Request FREE Sample Folder</a></div>";
 
-   $count = count( get_field('finishes') );
+         } else {
 
-   if ($count > 1){
-      $small_msn = " <small>Select insert option to view detail image</small>";
-   }
-
-   $output .= "<h3>".get_field('var_main_title').$small_msn. "</h3>";
-
-
-
-   if(get_field('show_variations')){
-
-      //$output .= "<p><span class='prod_std'>Standard</span> | <span class='prod_black'>Black Anodised</span> | <span class='prod_bronze'>Bronze Anodised</span> </p>";
-      $output .=variations_filter(get_field('finishes'));
-      $output .= "<div class='prod_thumbs'>";
-
-      while( have_rows('prod_var') ): the_row();
-
-         $output .= "<div class='prod_variation'>";
-
-         $output .= "<h3>".get_sub_field('var_cat')."</h3>";
-
-         $variations = get_sub_field('variations');
-
-         if($variations){
-
-            foreach($variations as $v){
-
-               //  echo get_term_link($v);
-               $args  = array(
-               'post_type' => 'variations',
-               'tax_query' => array(
-                   array(
-                   'taxonomy' => 'var_prod',
-                   'field' => 'id',
-                   'terms' => $v->term_id
-                    ),
-                  array(
-                   'taxonomy' => 'var_finish',
-                   'field' => 'name',
-                   'terms' => 'Standard'
-                    ),
-                 )
-               );
-
-               $var_query = new WP_query($args);
-               if($var_query->have_posts()){
-                  while($var_query->have_posts()){
-
-                     $var_query->the_post();
-                     $post_id = get_the_ID();
-                     $var_img = get_the_post_thumbnail( $post_id , 'variations-thumb');
-                     $var_img_full = wp_get_attachment_image_src( get_post_thumbnail_id( $post_id ), 'full' );
-                    $output .= "<div class='variation' onMouseEnter='changeImage(\"".$var_img_full[0]."\")' onMouseLeave='hideImage()'>";
-
-                     $output .= "<div class='var_img'>".$var_img."</div>";
-                     $output .= get_field('var_label');
-                     $output .= "</div>";
-                  }
-
-               }
-               wp_reset_postdata();
-
-            }
+            $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
 
          }
 
-         $output .= "<div style='clear:both;'><p>".get_sub_field('availability')."</p><div>";
-         $output .= "</div>"; //end class=Prod_variation
-
-      endwhile;
-
-      $output .= "<div style='clear:both;'>";
-
-      if( get_field('intrashape_content') ){
-
-         $output .= "<a class='yellow-btn yellow-solid-btn' href='/shape-selector/' target='_self' style='width:100%;max-width:420px;'>Download PSD to Create Your Own Design</a>
-      <a class='blue-btn blue-solid-btn free-samples' href='#free-samples'  style='width:100%;max-width:420px;margin-top:0px;'>Request Free Samples</a>";
-
-      } else if( get_field('intralux_grafic_content') ){
-
-         $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
-         $output .= "<div><a class='blue-btn free-sample-folder' href='#free-sample-folder' style='margin-top:0'>Request FREE Sample Folder</a></div>";
-
-      } else {
-
-         $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
+         $output .= "<div></div>";
 
       }
 
-      $output .= "<div></div>";
+      if(get_field('spec_img')){
+         $spec_img = get_field('spec_img');
+         $output .= "<img src='".$spec_img['url']."' >";
+      }
+
+      $output .= "</div>"; //end class=prod_variations
+      $output .= "</div>"; // end class=prod_info
+      $output .= "</section>";
 
    }
-
-   if(get_field('spec_img')){
-      $spec_img = get_field('spec_img');
-      $output .= "<img src='".$spec_img['url']."' >";
-   }
-
-   $output .= "</div>"; //end class=prod_variations
-   $output .= "</div>"; // end class=prod_info
-   $output .= "</section>";
-
-}
 
 
 
@@ -1371,60 +1367,7 @@ echo $output;
       document.getElementById("file_url").innerHTML = form_url;
    }
 
-   function file_to_download_bim_rfa(form_url, file_label){
-      document.getElementById("bim_rfa_url1").innerHTML = "Thanks! Click <a href='"+form_url+"'>here</a> to download your file.</a>";
-      document.getElementById("bim_rfa_url").innerHTML = form_url;
-   }
 
-   function file_to_download_bim_ifc(form_url, file_label){
-      document.getElementById("bim_ifc_url1").innerHTML = "Thanks! Click <a href='"+form_url+"'>here</a> to download your file.</a>";
-      document.getElementById("bim_ifc_url").innerHTML = form_url;
-   }
-
-   function file_to_download_nbs(form_url, file_label){
-      document.getElementById("nbs_url1").innerHTML = "Thanks! Click <a href='"+form_url+"'>here</a> to download your file.</a>";
-      document.getElementById("nbs_url").innerHTML = form_url;
-   }
-
-
-   var cad_form = document.querySelector( '#wpcf7-f21-o1' );
-
-   cad_form.addEventListener( 'wpcf7mailsent', function( event ) {
-      document.getElementById('wpcf7-f21-o1').style.display = "none";
-      document.getElementById('file_url1').style.display = "block";
-   }, false );
-
-
-   var bim_ifc_form = document.querySelector( '#wpcf7-f7654-o3' );
-
-   bim_ifc_form.addEventListener( 'wpcf7mailsent', function( event ) {
-      document.getElementById('wpcf7-f7654-o3').style.display = "none";
-      document.getElementById('bim_ifc_url1').style.display = "block";
-   }, false );
-
-
-   var bim_rfa_form = document.querySelector( '#wpcf7-f7653-o2' );
-
-   bim_rfa_form.addEventListener( 'wpcf7mailsent', function( event ) {
-      document.getElementById('wpcf7-f7653-o2').style.display = "none";
-      document.getElementById('bim_rfa_url1').style.display = "block";
-   }, false );
-
-   var nbs_form = document.querySelector( '#wpcf7-f7679-o4' );
-
-   nbs_form.addEventListener( 'wpcf7mailsent', function( event ) {
-      document.getElementById('wpcf7-f7679-o4').style.display = "none";
-      document.getElementById('nbs_url1').style.display = "block";
-
-      dataLayer = window.dataLayer || [];
-      dataLayer.push({
-        'event' : 'GAEvent',
-        'eventCategory' : 'NBS Specification',
-        'eventAction' : 'Download',
-        'eventLabel' : 'NBS Specification Download'
-      });
-
-   }, false );
 
 </script>
 
@@ -1468,30 +1411,11 @@ function createForm(){
       $form .= "</div>";
 
    } else {
-      $form .= "<div id='form-download' class='popup-form-download' style='display:none;'>";
-      $form .= do_shortcode('[contact-form-7 id="21" title="CAD Download"]');
+		$form .= "<div id='form-download' class='popup-form-download' style='display:none;'>";
+		$form .= do_shortcode('[contact-form-7 id="21" title="Contact form 1"]');
 		$form .= "<p id='file_url' style='display:none;'></p>";
 		$form .= "<p id='file_url1' style='display:none;'></p>";
-      $form .= "</div>";
-
-      $form .= "<div id='bim-rfa-form-download' class='popup-form-download' style='display:none;'>";
-      $form .= do_shortcode('[contact-form-7 id="7653" title="BIM RFA Download"]');
-      $form .= "<p id='bim_rfa_url' style='display:none;'></p>";
-      $form .= "<p id='bim_rfa_url1' style='display:none;'></p>";
-      $form .= "</div>";
-
-      $form .= "<div id='bim-ifc-form-download' class='popup-form-download' style='display:none;'>";
-      $form .= do_shortcode('[contact-form-7 id="7654" title="BIM IFC Download"]');
-      $form .= "<p id='bim_ifc_url' style='display:none;'></p>";
-      $form .= "<p id='bim_ifc_url1' style='display:none;'></p>";
-      $form .= "</div>";
-
-      $form .= "<div id='nbs-form-download' class='popup-form-download' style='display:none;'>";
-      $form .= do_shortcode('[contact-form-7 id="7679" title="NBS Specification Download"]');
-      $form .= "<p id='nbs_url' style='display:none;'></p>";
-      $form .= "<p id='nbs_url1' style='display:none;'></p>";
-      $form .= "</div>";
-
+		$form .= "</div>";
 	}
 
    return $form;
@@ -1501,4 +1425,3 @@ function createForm(){
 
 ?>
 <?php get_footer(); ?>
- 
