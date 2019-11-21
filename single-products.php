@@ -1178,11 +1178,11 @@ if( have_rows('prod_var') || get_field('spec_img') ){
 
    $small_msn ="";
 
-   $count = count( get_field('finishes') );
+   //$count = count( get_field('finishes') );
 
-   if ($count > 1){
-      $small_msn = " <small>Select insert option to view detail image</small>";
-   }
+   //if ($count > 1){
+      //$small_msn = " <small>Select insert option to view detail image</small>";
+   //}
 
    $output .= "<h3>".get_field('var_main_title').$small_msn. "</h3>";
 
