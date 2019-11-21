@@ -1446,6 +1446,18 @@ function createForm(){
 		$form .= '<div style="text-align:center;width:450px;" id="mainformsampleselect"><h3>Choose your Shape</h3><p>Select one or more shapes and submit your request to<br />enter your postal details</p>';
 		$form .= '<table class="freesamplestable" cellpadding="50">';
 
+    $form .= "<div id='form-download' class='popup-form-download' style='display:none;'>";
+    $form .= do_shortcode('[contact-form-7 id="21" title="CAD Download"]');
+  $form .= "<p id='file_url' style='display:none;'></p>";
+  $form .= "<p id='file_url1' style='display:none;'></p>";
+    $form .= "</div>";
+
+    $form .= "<div id='bim-ifc-form-download' class='popup-form-download' style='display:none;'>";
+    $form .= do_shortcode('[contact-form-7 id="7654" title="BIM IFC Download"]');
+    $form .= "<p id='bim_ifc_url' style='display:none;'></p>";
+    $form .= "<p id='bim_ifc_url1' style='display:none;'></p>";
+    $form .= "</div>";
+
 		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/triangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/square.png" /></td></tr>';
 		$form .= '<tr><td>Triange <input type="checkbox" value="Triangle" class="freesamplecheckbox" /></td><td>Square <input value="Square" type="checkbox" class="freesamplecheckbox" /></td></tr>';
 		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/rectangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/axishouse/img/intrashape/diamond.png" /></td></tr>';
