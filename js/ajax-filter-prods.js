@@ -165,7 +165,7 @@ var prefix = $('#sample-basket').attr('data-url');
             finishFilter = '<div class="product-finishes-filter">';
 
             for (var i = 0; i < 5; i++) {
-              finishFilter += '<div class="product-finish"><p class="product-finish__name">' + shapes[i] + '</p></div>';
+              finishFilter += '<div class="product-finish product-finish--'+shapes[i]+'"><p class="product-finish__name">' + shapes[i] + '</p></div>';
             }
             finishFilter += '</div>';
             toreturn = '<div class="product-finishes">';
@@ -235,12 +235,18 @@ var prefix = $('#sample-basket').attr('data-url');
                 el.var_finish[0] == parseInt(finishID);
               });
 
+              console.log(filteredProductVariation);
+
+              if (filteredProductVariation.length > 0) {
+
+
+
               var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
               var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
               var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
 
               $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
-
+}
             });
 
           });
@@ -264,6 +270,8 @@ var prefix = $('#sample-basket').attr('data-url');
             var finishIndex = i;
             $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
           }
+
+          console.log(this.variations);
 
           $.each(this.variations, function() {
 

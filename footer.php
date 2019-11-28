@@ -124,11 +124,24 @@ if ( is_user_logged_in() ) {
 
 						<p class="loading">Loading Sample Select Tool</p>
 
-						<p>Our sample select tool allows you to order samples of any of our products. It's a new feature that we're working on - if you're having any issues please give us a call on <a href="tel:+441425472000"> +44(0)1425 472000</a></p>
+						<p>Our sample select tool allows you to order samples of any of our products. It's a new feature that we're working on - if you're having any issues please give us a call on <a href="tel:+441425472000">+44(0)1425 472000</a> or email on <a href="mailto:info@intrasystems.co.uk">info@intrasystems.co.uk</a></p>
 						<div class="sample-basket__content__types__list">
-							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings"><p>Ceilings</p></article>
-							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles"><p>Grilles</p></article>
-							<article class="sample-basket__content__types__type" data-product-category="464" data-product-type="matting"><p>Matting</p></article>
+
+
+							<article class="sample-basket__content__types__type" data-product-category="464" data-product-type="matting">
+								<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2018/09/INTRAflex-XT-172x134.png" alt="Ceilings Image"/>
+
+								<p>Matting</p>
+							</article>
+							<article class="sample-basket__content__types__type" data-product-category="465" data-product-type="grilles">
+										<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2019/08/INFD231-172x107.png" alt="Ceilings Image"/>
+								<p>Grilles</p>
+							</article>
+							<article class="sample-basket__content__types__type" data-product-category="466" data-product-type="ceilings">
+								<img src="<?php echo get_site_url(); ?>/wp-content/uploads/2019/08/IN32B31-172x107.png" alt="Ceilings Image"/>
+
+								<p>Ceilings</p>
+							</article>
 						</div>
 
 					</div>

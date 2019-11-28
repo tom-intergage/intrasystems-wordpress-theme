@@ -196,28 +196,29 @@
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        align-items: center;
+        align-items: flex-start;
       }
 
       &__type {
         width: 32%;
         position: relative;
-        background: $primary-blue;
-
+        //background: $primary-blue;
+        text-align:center;
+        transition:all 0.5s ease;
+        img {
+          height:150px!important;
+          width:auto!important;
+        }
         p {
-          position: absolute;
-          color: $white;
-          top: 50%;
-          left: 50%;
+          color: $primary-blue;
           width: 100%;
-          transform: translate(-50%,-50%);
           text-align: center;
           font-size: 2rem;
           font-family: 'Raleway', sans-serif;
         }
 
         &:hover {
-          background: $light-black;
+          transform:scale(1.1);
           cursor: pointer;
         }
 
@@ -246,7 +247,7 @@
 
     .product-finish {
       box-sizing: border-box;
-      height: 2rem;
+
       padding: 0 1rem;
 
       &:not(.active) {
@@ -272,6 +273,52 @@
           background: $primary-blue;
         }
       }
+      &--Triangle,&--Square,&--Rectangle,&--Hexagon,&--Diamond {
+        background:white!important;
+        color:$primary-blue!important;
+        align-self:flex-start;
+        &:not(.active) {
+          &:before {
+            opacity:0.2;
+          }
+        }
+        &:before {
+          width:100%;
+          content:"";
+          padding-top:3rem;
+          background-size:100% auto;
+          background-position:center center;
+          display:block;
+          background-repeat:no-repeat;
+          margin-bottom:1rem;
+        }
+      }
+      &--Triangle {
+        &:before {
+          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/triangle.png');
+        }
+      }
+      &--Square {
+      &:before {
+          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/square.png');
+        }
+      }
+      &--Rectangle {
+      &:before {
+          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/rectangle.png');
+        }
+      }
+      &--Hexagon {
+      &:before {
+          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/hexagon.png');
+        }
+      }
+      &--Diamond {
+      &:before {
+          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/diamond.png');
+        }
+      }
+
     }
 
     .product-finish-list {
