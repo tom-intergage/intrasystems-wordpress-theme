@@ -115,7 +115,6 @@ var prefix = $('#sample-basket').attr('data-url');
 
     var thisProduct = prodID;
 
-
     $('.sample-basket__content__variants__list').html('<p>Loading...</p>');
 
     setActiveLocation(3);
@@ -176,7 +175,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
             toreturn += '</div>';
           } else {
-            finishFilter = '<div style="display:none" class="product-finishes-filter"><div class="product-finish"><p class="product-finish__name">Regular</p></div></div>';
+            finishFilter = '<div style="display:none" class="product-finishes-filter"><div class="product-finish"><p class="product-finish__name">Zone 1 Inserts</p></div></div>';
             toreturn = '<div class="product-finishes"><div class="product-finish-list active" id="pfl-0"></div></div>';
           }
         }
@@ -204,9 +203,7 @@ var prefix = $('#sample-basket').attr('data-url');
       var productVariations = JSON.parse(localStorage.getItem('__insys_variationList'));
       var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
-      if (mydata.acf.finishes) {
-
-
+      if (mydata.acf.finishes.length > 1) {
 
         $.each(mydata.acf.finishes, function(index) {
 
@@ -215,12 +212,13 @@ var prefix = $('#sample-basket').attr('data-url');
           var finishName = finish[0]["name"];
           var finishIndex = index;
 
-          var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+          var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
 
           $.each(mydata.acf.prod_var, function(index) {
 
             var pvlID = index;
-            var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+            var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
+            var variationCount = this.variations.length;
 
             $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
 
@@ -235,7 +233,9 @@ var prefix = $('#sample-basket').attr('data-url');
                 el.var_finish[0] == parseInt(finishID);
               });
 
-              console.log(filteredProductVariation);
+              //console.log(variationCount, variationID, finishID, filteredProductVariation);
+
+            //  console.log(filteredProductVariation);
 
               if (filteredProductVariation.length > 0) {
 
@@ -261,7 +261,7 @@ var prefix = $('#sample-basket').attr('data-url');
         $.each(mydata.acf.prod_var, function(index) {
 
           var pvlID = index;
-          var productVariationTitle = (this.var_cat) ? this.var_cat : "Regular";
+          var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
           var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
           for (var i = 0; i < 5; i++) {
@@ -345,7 +345,6 @@ var prefix = $('#sample-basket').attr('data-url');
 
   var listProductTypes = function(data) {
 
-
     $('.sample-basket__content__types .loading').addClass('loaded');
 
     setActiveLocation(1);
@@ -370,6 +369,25 @@ var prefix = $('#sample-basket').attr('data-url');
       left: "-300%"
     });
   }
+
+
+  $('.sample-basket__progress__stage.product').click(function() {
+
+    if ($('.sample-basket__progress__stage.finish').hasClass('active')) {
+      if ($('.sample-basket__content__products__list > article').length > 0) {
+        setActiveLocation(2);
+        $('.sample-basket__content__stage').css({
+          left: "-100%"
+        });
+      }
+      else {
+        setActiveLocation(1);
+      new listProductTypes;
+      }
+
+    }
+
+  });
 
   $('.sample-basket__progress__stage.type').click(function() {
     new listProductTypes;
@@ -444,7 +462,7 @@ var prefix = $('#sample-basket').attr('data-url');
     } else {
 
       // Use the main Wordpress API to make the initial call to reduce page load if someone isn't using the tool
-      var endpoint = prefix+'/wp-json/wp/v2/products?_embed&per_page=100';
+      var endpoint = prefix+'/wp-json/wp/v2/products?_embed&per_page=100&exclude=6476,4967';
       $.ajax({
         url: endpoint,
         method: 'GET', // POST means "add friend" for example.
@@ -483,17 +501,23 @@ var prefix = $('#sample-basket').attr('data-url');
 
 
   var sampleBasket = function() {
-
     new listProductTypes;
     new addBasketItems;
   }
 
-  var sampleBasketPreload = function() {
+  var sampleBasketPreload = function(product) {
+
 
     var storedVariations = localStorage.getItem('__insys_variationList');
 
     if (storedVariations !== null) {
-      new sampleBasket;
+      if (product) {
+        new getBasketProductVariants(product.title, product.id);
+        new addBasketItems;
+      }
+      else {
+        new sampleBasket;
+      }
     } else {
 
         $('.sample-basket__content__stage').css({
@@ -512,7 +536,14 @@ var prefix = $('#sample-basket').attr('data-url');
       $.when(getPage(1), getPage(2), getPage(3), getPage(4), getPage(5)).then(function(p1, p2, p3, p4, p5) {
         var variations = p1.concat(p2).concat(p3).concat(p4).concat(p5);
         localStorage.setItem('__insys_variationList', JSON.stringify(variations));
-        new sampleBasket;
+        if (product) {
+          new getBasketProductVariants(product.title, product.id);
+        }
+
+        else {
+          new sampleBasket;
+        }
+
       });
     }
 
@@ -546,9 +577,19 @@ var prefix = $('#sample-basket').attr('data-url');
 $('.header-prod .blue-solid-btn').click(function(e) {
   e.preventDefault();
   if ($('.sample-basket').length > 0) {
-  new sampleBasketPreload;
-$('#sample-basket-tab').addClass('hidden');
-  $('#sample-basket').addClass('open');
+
+    $('body').addClass('basket-open');
+
+    if ($('.product-page').length > 0) {
+      var prod = {};
+      prod.title = $('.product-page').attr('data-title');
+      prod.id = $('.product-page').attr('id');
+      new sampleBasketPreload(prod);
+    }
+    else {
+      new sampleBasketPreload;
+    }
+
   }
   else {
     window.location = 'https://intrasystems.co.uk/request-free-samples/';
@@ -559,12 +600,10 @@ $('#sample-basket-tab').addClass('hidden');
 
   $('#sample-basket-tab').click(function() {
     new sampleBasketPreload;
-    $(this).addClass('hidden');
-    $('#sample-basket').addClass('open');
+    $('body').addClass('basket-open');
   });
   $('.sample-basket__close').click(function() {
-    $('#sample-basket-tab').removeClass('hidden');
-    $(this).closest('.sample-basket').removeClass('open');
+    $('body').removeClass('basket-open');
   });
 
   //if ($('body.logged-in').length > 0) $('#sample-basket-tab').removeClass('hidden').trigger("click");

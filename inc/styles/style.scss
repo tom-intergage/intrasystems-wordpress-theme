@@ -29,7 +29,7 @@ of the styles inside media queries.
 
 // joints.scss
 @import '../../library/jeet/index';
-
+ 
 @import  "snippets/main";
 @import  "snippets/carousel";
 @import "snippets/axis-forms";
@@ -62,7 +62,7 @@ you can add resource intensive styles.
 */
 @media #{$large-up}{
 
-	// styles in large.scss 
+	// styles in large.scss
 	@import "snippets/core/large";
 
 } // end of media query

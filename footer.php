@@ -85,7 +85,7 @@ $footer_zipcode = get_field('zipcode', 153 );
 if ( is_user_logged_in() ) {
 ?>
 
-
+<div id="sample-basket-outer">
 	<div id="sample-basket" class="sample-basket" data-url="<?php echo get_site_url() ?>">
 		<div>
 			<div class="sample-basket__progress">
@@ -115,7 +115,7 @@ if ( is_user_logged_in() ) {
 				</div>
 			</div>
 			<div class="sample-basket__close">
-				<span>x</span>
+				<span>Close</span>
 			</div>
 			<div class="sample-basket__content">
 				<div class="sample-basket__content__stage">
@@ -174,6 +174,7 @@ if ( is_user_logged_in() ) {
 
 		</div>
 	</div>
+</div>
 	<div id="sample-basket-tab"><p>Request a Sample</p></div>
 
 	<?php

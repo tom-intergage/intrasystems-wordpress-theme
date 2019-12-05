@@ -13,7 +13,7 @@ get_header(); ?>
 $_POST['test_prod'] = get_the_ID();
 $postid = get_the_ID();
 ?>
-<div class="page_id" id="<?php echo get_the_ID();?>" >
+<div class="page_id product-page" data-title="<?php echo get_the_title()?>" id="<?php echo get_the_ID();?>" >
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 

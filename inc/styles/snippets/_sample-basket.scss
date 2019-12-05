@@ -1,3 +1,14 @@
+#sample-basket-outer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+}
+
 .sample-basket {
   position: fixed;
   top: -150%;
@@ -17,10 +28,6 @@
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
-
-  &.open {
-    top: 50%;
-  }
 
   > div {
     position: relative;
@@ -49,6 +56,15 @@
         font-size: 0.7rem;
       }
 
+      &.type.active {
+        & + div {
+          &:hover {
+            cursor: auto!important;
+            opacity: 0.5!important;
+          }
+        }
+      }
+
       article {
         color: $white;
         text-align: center;
@@ -61,6 +77,7 @@
       &:not(.active) {
         opacity: 0.5;
 
+        &.product,
         &.type {
           &:hover {
             cursor: pointer;
@@ -181,12 +198,14 @@
     &__types {
       .loading {
         &:not(.loaded) ~ * {
-          display:none;
+          display: none;
         }
+
         &.loaded {
-          display:none;
+          display: none;
         }
       }
+
       h2,
       p {
         width: 100%;
@@ -203,12 +222,14 @@
         width: 32%;
         position: relative;
         //background: $primary-blue;
-        text-align:center;
-        transition:all 0.5s ease;
+        text-align: center;
+        transition: all 0.5s ease;
+
         img {
-          height:150px!important;
-          width:auto!important;
+          height: 150px!important;
+          width: auto!important;
         }
+
         p {
           color: $primary-blue;
           width: 100%;
@@ -218,7 +239,7 @@
         }
 
         &:hover {
-          transform:scale(1.1);
+          transform: scale(1.1);
           cursor: pointer;
         }
 
@@ -235,7 +256,7 @@
       width: 100%;
       overflow-y: scroll;
       position: relative;
-      overflow-x:hidden;
+      overflow-x: hidden;
     }
 
     .product-finishes-filter {
@@ -247,11 +268,14 @@
 
     .product-finish {
       box-sizing: border-box;
-
       padding: 0 1rem;
 
       &:not(.active) {
         cursor: pointer;
+      }
+
+      &:only-child {
+        display:none;
       }
 
       &__name {
@@ -273,52 +297,63 @@
           background: $primary-blue;
         }
       }
-      &--Triangle,&--Square,&--Rectangle,&--Hexagon,&--Diamond {
-        background:white!important;
-        color:$primary-blue!important;
-        align-self:flex-start;
+
+      &--Diamond,
+      &--Hexagon,
+      &--Rectangle,
+      &--Square,
+      &--Triangle {
+        background: white!important;
+        color: $primary-blue!important;
+        align-self: flex-start;
+
         &:not(.active) {
           &:before {
-            opacity:0.2;
+            opacity: 0.2;
           }
         }
+
         &:before {
-          width:100%;
-          content:"";
-          padding-top:3rem;
-          background-size:100% auto;
-          background-position:center center;
-          display:block;
-          background-repeat:no-repeat;
-          margin-bottom:1rem;
-        }
-      }
-      &--Triangle {
-        &:before {
-          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/triangle.png');
-        }
-      }
-      &--Square {
-      &:before {
-          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/square.png');
-        }
-      }
-      &--Rectangle {
-      &:before {
-          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/rectangle.png');
-        }
-      }
-      &--Hexagon {
-      &:before {
-          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/hexagon.png');
-        }
-      }
-      &--Diamond {
-      &:before {
-          background-image:url('https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/diamond.png');
+          width: 100%;
+          content: "";
+          padding-top: 3rem;
+          background-size: 100% auto;
+          background-position: center center;
+          display: block;
+          background-repeat: no-repeat;
+          margin-bottom: 1rem;
         }
       }
 
+      &--Triangle {
+        &:before {
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/triangle.png");
+        }
+      }
+
+      &--Square {
+        &:before {
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/square.png");
+        }
+      }
+
+      &--Rectangle {
+        &:before {
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/rectangle.png");
+        }
+      }
+
+      &--Hexagon {
+        &:before {
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/hexagon.png");
+        }
+      }
+
+      &--Diamond {
+        &:before {
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/diamond.png");
+        }
+      }
     }
 
     .product-finish-list {
@@ -349,6 +384,13 @@
           & + ul {
             display: none;
           }
+        }
+
+      }
+
+      &:only-child {
+        > p {
+          display:none;
         }
       }
 
@@ -385,26 +427,26 @@
               img {
                 position: relative;
                 z-index: 10;
-                opacity:0.5;
+                opacity: 0.5;
               }
 
               &:after {
                 z-index: 20;
                 opacity: 1;
                 position: absolute;
-                text-align:center;
+                text-align: center;
                 width: 3rem;
                 height: 3rem;
                 background: $primary-blue;
                 top: 50%;
                 left: 50%;
-                line-height:3rem;
-                font-weight:900;
-                color:$white;
-                font-size:2rem;
+                line-height: 3rem;
+                font-weight: 900;
+                color: $white;
+                font-size: 2rem;
                 content: "\2713";
                 transform: translate(-50%,-50%);
-                border-radius:50%;
+                border-radius: 50%;
               }
             }
           }
@@ -413,40 +455,45 @@
     }
 
     &__products {
-
       height: 100%;
       max-height: 100%;
       overflow-y: auto;
+
       &__list {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-
       }
     }
 
     &__basket {
       overflow-y: auto;
 
+      .screen-reader-response {
+        display:none;
+      }
+
       .wpcf7 {
         .wpcf7-form {
           .wpcf7-not-valid-tip {
-            text-align:left;
-            display:block;
-            color:#8B0000;
+            text-align: left;
+            display: block;
+            color: #8B0000;
           }
+
           .form_fields {
             @media (min-width:900px) {
-              display:flex;
-              flex-wrap:wrap;
-              justify-content:space-between;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+
               p {
-                width:49%;
+                width: 49%;
               }
             }
 
             .submit-btn {
-              display:none;
+              display: none;
             }
 
             input[type="text"],
@@ -536,21 +583,30 @@
 
   &__close {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 40px;
-    padding: 10px;
+    top: 5px;
+    right: 5px;
+    width: 50px;
+    height: 50px;
+
     cursor: pointer;
 
     > span {
       position: relative;
-      width: 20px;
-      height: 20px;
+      width: 50px;
+      height: 50px;
       display: block;
       font-size: 0;
 
-      &::after,
+      &::before {
+        position:absolute;
+        top:25%;
+        left:50%;
+        transform:translate(-50%,-50%);
+        content: '\2304';
+        color:white;
+        font-size:2rem;
+      }
+      /*&::after,
       &::before {
         top: 8px;
         width: 18px;
@@ -573,15 +629,16 @@
         -moz-transform: rotate(-45deg);
         transform: rotate(-45deg);
         right: 1px;
-      }
+      }*/
     }
 
     &:hover {
       > span {
-        &::after,
-        &::before {
-          background-color: $light-black;
+        &:before {
+            color: $light-black;
         }
+
+
       }
     }
   }
@@ -592,20 +649,18 @@
   z-index: 300;
   bottom: 0;
   right: 1rem;
-  width: 200px;
+  width: 230px;
   max-width: 40vw;
   padding: 0 1rem;
   transition: top 1s ease;
-
-  &.hidden {
-    bottom: -2rem;
-  }
+  bottom: 0;
   height: 2rem;
   background: $primary-blue;
   box-sizing: border-box;
   display: block;
   cursor: pointer;
-
+  border:1px solid $light-black;
+  border-bottom:0px solid;
   &:hover {
     background: $light-black;
   }
@@ -613,13 +668,29 @@
   p {
     line-height: 2.1rem;
     color: white;
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     font-family: 'Raleway', sans-serif;
-    font-weight: 500;
+    font-weight: 700;
     margin: 0;
   }
 
   span {
     float: right;
+  }
+}
+
+body.basket-open {
+  overflow: hidden;
+
+  .sample-basket {
+    top: 50%;
+  }
+
+  #sample-basket-outer {
+    display: block;
+  }
+
+  #sample-basket-tab {
+    bottom: -2rem;
   }
 }
