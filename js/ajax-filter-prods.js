@@ -228,25 +228,17 @@ var prefix = $('#sample-basket').attr('data-url');
               var variantName = this.name;
 
               var filteredProductVariation = productVariations.filter(function(el) {
-                //if (finishIndex == 0) console.log(el.var_finish[0]);
+
                 return el.var_prod[0] == parseInt(variationID) &&
                 el.var_finish[0] == parseInt(finishID);
               });
 
-              //console.log(variationCount, variationID, finishID, filteredProductVariation);
-
-            //  console.log(filteredProductVariation);
-
               if (filteredProductVariation.length > 0) {
-
-
-
-              var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
-              var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
-              var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
-
-              $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
-}
+                var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
+                var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+                var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
+                $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
+              }
             });
 
           });
@@ -270,8 +262,6 @@ var prefix = $('#sample-basket').attr('data-url');
             var finishIndex = i;
             $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
           }
-
-          console.log(this.variations);
 
           $.each(this.variations, function() {
 
@@ -452,6 +442,13 @@ var prefix = $('#sample-basket').attr('data-url');
     return objects;
   }
 
+  var clearBasket = function() {
+    sessionStorage.removeItem("__insys_basketList");
+    $('.sample-basket__items').html(function() {
+      return;
+    });
+  }
+
   var sampleBasketProducts = function(category) {
 
     var storedProducts = sessionStorage.getItem("__insys_productList");
@@ -565,6 +562,30 @@ var prefix = $('#sample-basket').attr('data-url');
         $('#sampleRequestInputField').val(fieldSubmit);
 
         $('.sample-basket__content__basket .submit-btn input').trigger('click');
+
+        var mailCheck = setInterval(checkForSending, 1000);
+
+        function checkForSending() {
+          if ($('.wpcf7-mail-sent-ok').length > 0) {
+            ga('send', 'event', 'Sample Request Form', 'submission');
+            stopTheChecking();
+          }
+          else if ($('.wpcf7-mail-sent-ng').length > 0 || $('.wpcf7-validation-errors').length > 0) {
+
+            stopTheChecking();
+          }
+          else {
+            //Still Checking...
+          }
+        }
+
+        function stopTheChecking() {
+          clearInterval(mailCheck);
+        }
+
+
+
+
       } else {
         new goCheckout;
       }
