@@ -80,11 +80,6 @@ $footer_zipcode = get_field('zipcode', 153 );
 </div>
 	</footer>
 
-	<?php
-
-if ( is_user_logged_in() ) {
-?>
-
 <div id="sample-basket-outer">
 	<div id="sample-basket" class="sample-basket" data-url="<?php echo get_site_url() ?>">
 		<div>
@@ -176,12 +171,6 @@ if ( is_user_logged_in() ) {
 	</div>
 </div>
 	<div id="sample-basket-tab"><p>Request a Sample</p></div>
-
-	<?php
-
-	}
-
-		 ?>
 
 </div>
 

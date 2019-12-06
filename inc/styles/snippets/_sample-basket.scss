@@ -153,9 +153,25 @@
       align-items: center;
       background: #fff;
       cursor: pointer;
-
+      position:relative;
+      .remove-basket-item {
+        width:32px;
+        height:20px;
+        border-radius:50%;
+        text-align:center;
+        font-size:1.4rem;
+        color:white;
+        font-family:monospace;
+        line-height:18px;
+        box-sizing:border-box;
+        display:block;
+      }
       &:hover {
-        opacity: 0.9;
+
+        .remove-basket-item {
+background:#c33131;
+color:white;
+        }
       }
 
       &:not(:last-child) {
@@ -598,13 +614,15 @@
       font-size: 0;
 
       &::before {
-        position:absolute;
-        top:25%;
+        width:40%;
+        height:0.25rem;
+        background:white;
+        display:block;
+        position: absolute;
+        top:50%;
         left:50%;
         transform:translate(-50%,-50%);
-        content: '\2304';
-        color:white;
-        font-size:2rem;
+        content:"";
       }
       /*&::after,
       &::before {
@@ -635,7 +653,7 @@
     &:hover {
       > span {
         &:before {
-            color: $light-black;
+            opacity:0.5;
         }
 
 

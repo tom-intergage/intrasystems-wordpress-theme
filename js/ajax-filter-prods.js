@@ -2,6 +2,26 @@
 
 jQuery(document).ready(function($) {
 
+
+var checkStorage = function() {
+  var hours = 1;
+  var now = new Date().getTime();
+  var setupTime = localStorage.getItem('__insys_dataTime');
+  if (setupTime == null) {
+    localStorage.setItem('__insys_dataTime', now)
+}
+else {
+    if(now-setupTime > hours*60*60*1000) {
+        localStorage.removeItem('__insys_variationList');
+        localStorage.removeItem('__insys_dataTime');
+        localStorage.setItem('__insys_dataTime', now);
+    }
+}
+}
+
+new checkStorage;
+
+
 var prefix = $('#sample-basket').attr('data-url');
   $('.prod-filter').click(function(event) {
 
@@ -44,7 +64,7 @@ var prefix = $('#sample-basket').attr('data-url');
    */
 
   function generateBasketItem(itemID, basketItemText, basketImage) {
-    $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span></div>');
+    $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span><div class="remove-basket-item">x</div></div>');
   }
 
   function addToBasket(itemToAdd) {
@@ -195,8 +215,8 @@ var prefix = $('#sample-basket').attr('data-url');
         }
       });
 
-      $('.sample-basket__items').on('click', '.sample-in-basket', function(event) {
-        var itemID = $(this).attr('data-id');
+      $('.sample-basket__items').on('click', '.remove-basket-item', function(event) {
+        var itemID = $(this).parent().attr('data-id');
         removeFromBasket(itemID);
       });
 
@@ -567,7 +587,6 @@ var prefix = $('#sample-basket').attr('data-url');
 
         function checkForSending() {
           if ($('.wpcf7-mail-sent-ok').length > 0) {
-            ga('send', 'event', 'Sample Request Form', 'submission');
             new clearBasket;
             stopTheChecking();
           }
@@ -619,6 +638,11 @@ $('.header-prod .blue-solid-btn').click(function(e) {
 });
 
 
+$('a[href="#sample-request-tool"').click(function(e) {
+  e.preventDefault();
+  new sampleBasketPreload;
+  $('body').addClass('basket-open');
+});
 
   $('#sample-basket-tab').click(function() {
     new sampleBasketPreload;

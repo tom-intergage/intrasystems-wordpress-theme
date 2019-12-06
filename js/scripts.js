@@ -795,7 +795,8 @@ jQuery(document).ready(function($) {
 		},
 	});
 
-  if( $("#order-sample-pop-up-button").length > 0 ){
+//DEPRICATED ORDER SAMPLE POPUP
+  if( $("#Sorder-sample-pop-up-button").length > 0 ){
 
     var order_popup = false;
 
