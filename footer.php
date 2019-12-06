@@ -170,7 +170,7 @@ $footer_zipcode = get_field('zipcode', 153 );
 		</div>
 	</div>
 </div>
-	<div id="sample-basket-tab"><p>Request a Sample</p></div>
+	<div id="sample-basket-tab">Request a Sample</div>
 
 </div>
 

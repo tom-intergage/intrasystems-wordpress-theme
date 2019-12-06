@@ -725,3 +725,21 @@ $grey: #f2f6f7;
     }
   }
 }
+
+.form-area {
+  .row {
+    @media (min-width:992px) {
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    .form-area__form,.form-area__image {
+      width:48%;
+    }
+    }
+  }
+  &__form {
+    text-align:left;
+  }
+
+}
