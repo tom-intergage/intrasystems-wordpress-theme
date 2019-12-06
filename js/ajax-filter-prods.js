@@ -445,7 +445,7 @@ var prefix = $('#sample-basket').attr('data-url');
   var clearBasket = function() {
     sessionStorage.removeItem("__insys_basketList");
     $('.sample-basket__items').html(function() {
-      return;
+      return "";
     });
   }
 
@@ -568,6 +568,7 @@ var prefix = $('#sample-basket').attr('data-url');
         function checkForSending() {
           if ($('.wpcf7-mail-sent-ok').length > 0) {
             ga('send', 'event', 'Sample Request Form', 'submission');
+            new clearBasket;
             stopTheChecking();
           }
           else if ($('.wpcf7-mail-sent-ng').length > 0 || $('.wpcf7-validation-errors').length > 0) {
