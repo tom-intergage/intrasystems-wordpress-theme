@@ -166,8 +166,16 @@ $footer_zipcode = get_field('zipcode', 153 );
 				<div class="sample-basket__items"></div>
 				<div id="go-to-basket"><span>Request Samples</span></div>
 			</div>
-
+			<div class="sample-basket__message">
+				<div>
+					<article>
+						<p>The maximum number of samples you can request using the tool is 10. If you'd like to discuss a larger sample request, please call us on <a href="tel:+441425472000">+44(0)1425 472000</a> or email <a href="mailto:info@intrasystems.co.uk">info@intrasystems.co.uk</a></p>
+						<p><a href="#" class="sample-basket__message__close">Close</a></p>
+					</article>
+				</div>
+			</div>
 		</div>
+
 	</div>
 </div>
 	<div id="sample-basket-tab">Request a Sample</div>

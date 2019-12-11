@@ -17,6 +17,7 @@ else {
         localStorage.setItem('__insys_dataTime', now);
     }
 }
+
 }
 
 new checkStorage;
@@ -67,13 +68,34 @@ var prefix = $('#sample-basket').attr('data-url');
     $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span><div class="remove-basket-item">x</div></div>');
   }
 
+  $('.sample-basket__message__close').click(function(e){
+    e.preventDefault();
+    $('.sample-basket__message').removeClass('active');
+  });
+
+  function basketFull() {
+    $('.sample-basket__message').addClass('active');
+  }
+
   function addToBasket(itemToAdd) {
 
     var currentFinish = $('.product-finish.active p').text();
-    var basketItemText = $(itemToAdd).find('span').text() + ' (' + currentFinish + ' | ' + $(itemToAdd).closest('.product-variation').find('.product-variation__title').text() + ')';
+    var basketItemText;
+
+
+    var isThereHeading = $(itemToAdd).closest('.product-finishes').prev().find('.product-finish').length;
+    
+    if (isThereHeading < 2) {
+      basketItemText = $(itemToAdd).find('span').text();
+    }
+    else {
+      basketItemText = $(itemToAdd).find('span').text() + ' (' + currentFinish + ' | ' + $(itemToAdd).closest('.product-variation').find('.product-variation__title').text() + ')';
+    }
     var basketImage = $(itemToAdd).find('img').attr('src');
     var currentBasket = sessionStorage.getItem('__insys_basketList');
     var itemID = $(itemToAdd).attr('data-id');
+
+    var item = $(itemToAdd);
 
     var st = {
       id: itemID,
@@ -82,16 +104,28 @@ var prefix = $('#sample-basket').attr('data-url');
     }
 
     if (currentBasket) {
+
       //PARSE TEXT FROM SESSION STORAGE
       var bo = JSON.parse(currentBasket);
-      bo.push(st);
-      sessionStorage.setItem('__insys_basketList', JSON.stringify(bo));
+
+        if (bo.length < 10) {
+          bo.push(st);
+          sessionStorage.setItem('__insys_basketList', JSON.stringify(bo));
+          generateBasketItem(itemID, basketItemText, basketImage);
+          item.addClass('in-basket');
+        }
+        else {
+          basketFull();
+        }
+
     } else {
       var toR = [];
       toR.push(st);
       sessionStorage.setItem('__insys_basketList', JSON.stringify(toR));
+      generateBasketItem(itemID, basketItemText, basketImage);
+      item.addClass('in-basket');
     }
-    generateBasketItem(itemID, basketItemText, basketImage);
+
     //$('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span></div>');
   }
 
@@ -134,6 +168,8 @@ var prefix = $('#sample-basket').attr('data-url');
   var listBasketProductVariants = function(title, mydata, prodID) {
 
     var thisProduct = prodID;
+
+    $('.sample-basket__content__variants h2').html(function() {return title;});
 
     $('.sample-basket__content__variants__list').html('<p>Loading...</p>');
 
@@ -210,7 +246,7 @@ var prefix = $('#sample-basket').attr('data-url');
           $(this).removeClass('in-basket');
           removeFromBasket(basketItemID);
         } else {
-          $(this).addClass('in-basket');
+
           addToBasket(this);
         }
       });
@@ -240,6 +276,8 @@ var prefix = $('#sample-basket').attr('data-url');
             var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
             var variationCount = this.variations.length;
 
+            if (this.variations) {
+
             $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
 
             $.each(this.variations, function() {
@@ -260,6 +298,7 @@ var prefix = $('#sample-basket').attr('data-url');
                 $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
               }
             });
+            }
 
           });
 
@@ -463,10 +502,17 @@ var prefix = $('#sample-basket').attr('data-url');
   }
 
   var clearBasket = function() {
+    $('.sample-basket form').removeClass('sent');
     sessionStorage.removeItem("__insys_basketList");
     $('.sample-basket__items').html(function() {
       return "";
     });
+
+    $('.sample-basket').click( function() {
+      $('.sample-basket .wpcf7-mail-sent-ok').css({'display':'none'});
+
+    });
+
   }
 
   var sampleBasketProducts = function(category) {
