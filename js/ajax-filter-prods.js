@@ -68,6 +68,11 @@ var prefix = $('#sample-basket').attr('data-url');
     $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span><div class="remove-basket-item">x</div></div>');
   }
 
+  $('.sample-basket__basket-tray').click(function(e){
+    e.preventDefault();
+    $('.sample-basket__items__wrapper').toggleClass('slide');
+  });
+
   $('.sample-basket__message__close').click(function(e){
     e.preventDefault();
     $('.sample-basket__message').removeClass('active');
@@ -84,7 +89,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
 
     var isThereHeading = $(itemToAdd).closest('.product-finishes').prev().find('.product-finish').length;
-    
+
     if (isThereHeading < 2) {
       basketItemText = $(itemToAdd).find('span').text();
     }
@@ -414,6 +419,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
   var goCheckout = function() {
     setActiveLocation(4);
+    $('.sample-basket__items__wrapper').removeClass('slide');
     $('.sample-basket__content__stage').css({
       left: "-300%"
     });
@@ -616,49 +622,49 @@ var prefix = $('#sample-basket').attr('data-url');
   $('#go-to-basket').click(function() {
 
     if ($(this).prev().children().length > 0) {
-      if ($('.sample-basket__progress__stage.checkout').hasClass('active')) {
-        //GENERATE TEXT FOR INPUT FIELD HERE
-        var basketContents = JSON.parse(sessionStorage.getItem('__insys_basketList'));
-        var fieldSubmit = "";
-
-        $.each(basketContents, function() {
-          fieldSubmit += this.title + ' \r\n';
-        });
-
-        $('#sampleRequestInputField').val(fieldSubmit);
-
-        $('.sample-basket__content__basket .submit-btn input').trigger('click');
-
-        var mailCheck = setInterval(checkForSending, 1000);
-
-        function checkForSending() {
-          if ($('.wpcf7-mail-sent-ok').length > 0) {
-            new clearBasket;
-            stopTheChecking();
-          }
-          else if ($('.wpcf7-mail-sent-ng').length > 0 || $('.wpcf7-validation-errors').length > 0) {
-
-            stopTheChecking();
-          }
-          else {
-            //Still Checking...
-          }
-        }
-
-        function stopTheChecking() {
-          clearInterval(mailCheck);
-        }
-
-
-
-
-      } else {
-        new goCheckout;
-      }
-
+  new goCheckout;
     }
+
+
+
   });
 
+
+$('.sample-basket__content__basket .submit-btn input').click(function(e){
+
+      //GENERATE TEXT FOR INPUT FIELD HERE
+      var basketContents = JSON.parse(sessionStorage.getItem('__insys_basketList'));
+      var fieldSubmit = "";
+
+      $.each(basketContents, function() {
+        fieldSubmit += this.title + ' \r\n';
+      });
+
+      $('#sampleRequestInputField').val(fieldSubmit);
+
+      $('.sample-basket__content__basket .submit-btn input').trigger('click');
+
+      var mailCheck = setInterval(checkForSending, 1000);
+
+      function checkForSending() {
+        if ($('.wpcf7-mail-sent-ok').length > 0) {
+          new clearBasket;
+          stopTheChecking();
+        }
+        else if ($('.wpcf7-mail-sent-ng').length > 0 || $('.wpcf7-validation-errors').length > 0) {
+
+          stopTheChecking();
+        }
+        else {
+          //Still Checking...
+        }
+      }
+
+      function stopTheChecking() {
+        clearInterval(mailCheck);
+      }
+
+});
 
 
 $('.header-prod .blue-solid-btn').click(function(e) {

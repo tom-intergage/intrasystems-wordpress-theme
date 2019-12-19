@@ -109,6 +109,9 @@ $footer_zipcode = get_field('zipcode', 153 );
 					</article>
 				</div>
 			</div>
+			<div class="sample-basket__basket-tray">
+				<span>Show Samples</span>
+			</div>
 			<div class="sample-basket__close">
 				<span>Close</span>
 			</div>
