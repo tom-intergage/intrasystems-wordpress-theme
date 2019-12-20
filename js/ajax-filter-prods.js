@@ -1,29 +1,27 @@
-
-
 jQuery(document).ready(function($) {
 
 
-var checkStorage = function() {
-  var hours = 1;
-  var now = new Date().getTime();
-  var setupTime = localStorage.getItem('__insys_dataTime');
-  if (setupTime == null) {
-    localStorage.setItem('__insys_dataTime', now)
-}
-else {
-    if(now-setupTime > hours*60*60*1000) {
+  var checkStorage = function() {
+    var hours = 1;
+    var now = new Date().getTime();
+    var setupTime = localStorage.getItem('__insys_dataTime');
+    var variations = localStorage.getItem('__insys_variationList');
+    if (setupTime == null) {
+      localStorage.setItem('__insys_dataTime', now);
+    } else {
+      if (now - setupTime > hours * 60 * 60 * 1000) {
         localStorage.removeItem('__insys_variationList');
         localStorage.removeItem('__insys_dataTime');
         localStorage.setItem('__insys_dataTime', now);
+      }
     }
-}
 
-}
+  };
 
-new checkStorage;
+  new checkStorage();
 
 
-var prefix = $('#sample-basket').attr('data-url');
+  var prefix = $('#sample-basket').attr('data-url');
   $('.prod-filter').click(function(event) {
 
     // Prevent default action - opening tag page
@@ -55,7 +53,7 @@ var prefix = $('#sample-basket').attr('data-url');
         $('.prod_thumbs').html(response);
         // Restore div visibility
         $('.prod_thumbs').fadeIn();
-      };
+      }
     });
   });
   if ($('.prod_thumbs img').length == 0) $('.tax-variation_1 .prod-filter').trigger('click');
@@ -68,12 +66,12 @@ var prefix = $('#sample-basket').attr('data-url');
     $('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span><div class="remove-basket-item">x</div></div>');
   }
 
-  $('.sample-basket__basket-tray').click(function(e){
+  $('.sample-basket__basket-tray').click(function(e) {
     e.preventDefault();
     $('.sample-basket__items__wrapper').toggleClass('slide');
   });
 
-  $('.sample-basket__message__close').click(function(e){
+  $('.sample-basket__message__close').click(function(e) {
     e.preventDefault();
     $('.sample-basket__message').removeClass('active');
   });
@@ -92,8 +90,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
     if (isThereHeading < 2) {
       basketItemText = $(itemToAdd).find('span').text();
-    }
-    else {
+    } else {
       basketItemText = $(itemToAdd).find('span').text() + ' (' + currentFinish + ' | ' + $(itemToAdd).closest('.product-variation').find('.product-variation__title').text() + ')';
     }
     var basketImage = $(itemToAdd).find('img').attr('src');
@@ -106,22 +103,21 @@ var prefix = $('#sample-basket').attr('data-url');
       id: itemID,
       title: basketItemText,
       image: basketImage
-    }
+    };
 
     if (currentBasket) {
 
       //PARSE TEXT FROM SESSION STORAGE
       var bo = JSON.parse(currentBasket);
 
-        if (bo.length < 10) {
-          bo.push(st);
-          sessionStorage.setItem('__insys_basketList', JSON.stringify(bo));
-          generateBasketItem(itemID, basketItemText, basketImage);
-          item.addClass('in-basket');
-        }
-        else {
-          basketFull();
-        }
+      if (bo.length < 10) {
+        bo.push(st);
+        sessionStorage.setItem('__insys_basketList', JSON.stringify(bo));
+        generateBasketItem(itemID, basketItemText, basketImage);
+        item.addClass('in-basket');
+      } else {
+        basketFull();
+      }
 
     } else {
       var toR = [];
@@ -130,6 +126,8 @@ var prefix = $('#sample-basket').attr('data-url');
       generateBasketItem(itemID, basketItemText, basketImage);
       item.addClass('in-basket');
     }
+
+    updateHiddenField();
 
     //$('.sample-basket__items').append('<div class="sample-in-basket" data-id="' + itemID + '" data-text="' + basketItemText + '"><img src="' + basketImage + '"/><span>' + basketItemText + '</span></div>');
   }
@@ -168,13 +166,14 @@ var prefix = $('#sample-basket').attr('data-url');
 
     $('.basket-item[data-id="' + itemID + '"').removeClass('in-basket');
     $('.sample-basket__items > div[data-id="' + itemID + '"]').remove();
+    updateHiddenField();
   }
 
   var listBasketProductVariants = function(title, mydata, prodID) {
 
-    var thisProduct = prodID;
-
-    $('.sample-basket__content__variants h2').html(function() {return title;});
+    $('.sample-basket__content__variants h2').html(function() {
+      return title;
+    });
 
     $('.sample-basket__content__variants__list').html('<p>Loading...</p>');
 
@@ -188,7 +187,7 @@ var prefix = $('#sample-basket').attr('data-url');
     });
 
 
-    var endpoint =   prefix+'/wp-json/wp/v2/var_finish/';
+    var endpoint = prefix + '/wp-json/wp/v2/var_finish/';
     $.ajax({
       url: endpoint,
       method: 'GET'
@@ -212,7 +211,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
             var finishID = this;
             var finish = getObjects(finishes, 'id', finishID);
-            var finishName = finish[0]["name"];
+            var finishName = finish[0].name;
             finishFilter += '<div class="product-finish"><p class="product-finish__name">' + finishName + '</p></div>';
             toreturn += '<div class="product-finish-list" id="pfl-' + index + '"></div>';
 
@@ -225,7 +224,7 @@ var prefix = $('#sample-basket').attr('data-url');
             finishFilter = '<div class="product-finishes-filter">';
 
             for (var i = 0; i < 5; i++) {
-              finishFilter += '<div class="product-finish product-finish--'+shapes[i]+'"><p class="product-finish__name">' + shapes[i] + '</p></div>';
+              finishFilter += '<div class="product-finish product-finish--' + shapes[i] + '"><p class="product-finish__name">' + shapes[i] + '</p></div>';
             }
             finishFilter += '</div>';
             toreturn = '<div class="product-finishes">';
@@ -270,39 +269,36 @@ var prefix = $('#sample-basket').attr('data-url');
 
           var finishID = this;
           var finish = getObjects(finishes, 'id', finishID);
-          var finishName = finish[0]["name"];
+          var finishName = finish[0].name;
           var finishIndex = index;
-
-          var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
 
           $.each(mydata.acf.prod_var, function(index) {
 
             var pvlID = index;
             var productVariationTitle = (this.var_cat) ? this.var_cat : "Zone 1 Inserts";
-            var variationCount = this.variations.length;
 
             if (this.variations) {
 
-            $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
+              $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
 
-            $.each(this.variations, function() {
+              $.each(this.variations, function() {
 
-              var variationID = this.term_id;
-              var variantName = this.name;
+                var variationID = this.term_id;
+                var variantName = this.name;
 
-              var filteredProductVariation = productVariations.filter(function(el) {
+                var filteredProductVariation = productVariations.filter(function(el) {
 
-                return el.var_prod[0] == parseInt(variationID) &&
-                el.var_finish[0] == parseInt(finishID);
+                  return el.var_prod[0] == parseInt(variationID) &&
+                    el.var_finish[0] == parseInt(finishID);
+                });
+
+                if (filteredProductVariation.length > 0) {
+                  var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
+                  var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+                  var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
+                  $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
+                }
               });
-
-              if (filteredProductVariation.length > 0) {
-                var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
-                var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
-                var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
-                $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
-              }
-            });
             }
 
           });
@@ -321,7 +317,6 @@ var prefix = $('#sample-basket').attr('data-url');
           var currentBasket = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
           for (var i = 0; i < 5; i++) {
-            var finishID = i;
             var finishName = shapes[i];
             var finishIndex = i;
             $('#pfl-' + finishIndex).append('<article class="product-variation" data-variation-title="' + finishName + ' | ' + productVariationTitle + '"><p class="product-variation__title">' + productVariationTitle + '</p><ul id="pv-list-' + finishIndex + '-' + pvlID + '" class="product-variation__list"></ul>');
@@ -331,19 +326,19 @@ var prefix = $('#sample-basket').attr('data-url');
 
             for (var i = 0; i < 5; i++) {
 
-            var variationID = this.term_id;
-            var variantName = this.name;
+              var variationID = this.term_id;
+              var variantName = this.name;
 
-            var filteredProductVariation = productVariations.filter(function(el) {
+              var filteredProductVariation = productVariations.filter(function(el) {
 
-              return el.var_prod[0] == parseInt(variationID)
-            });
+                return el.var_prod[0] == parseInt(variationID)
+              });
 
-            var myListID = '#pv-list-' + i + '-' + pvlID;
-            var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
-            var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
+              var myListID = '#pv-list-' + i + '-' + pvlID;
+              var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+              var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
 
-            $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
+              $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
 
             }
 
@@ -381,7 +376,7 @@ var prefix = $('#sample-basket').attr('data-url');
 
   var getBasketProductVariants = function(title, id) {
 
-    var endpoint = prefix+'/wp-json/acf/v3/products/' + id + '/';
+    var endpoint = prefix + '/wp-json/acf/v3/products/' + id + '/';
     $.ajax({
       url: endpoint,
       method: 'GET'
@@ -434,10 +429,9 @@ var prefix = $('#sample-basket').attr('data-url');
         $('.sample-basket__content__stage').css({
           left: "-100%"
         });
-      }
-      else {
+      } else {
         setActiveLocation(1);
-      new listProductTypes;
+        new listProductTypes;
       }
 
     }
@@ -507,6 +501,21 @@ var prefix = $('#sample-basket').attr('data-url');
     return objects;
   }
 
+
+  function updateHiddenField() {
+    var basketContents = JSON.parse(sessionStorage.getItem('__insys_basketList'));
+    var fieldSubmit = "";
+
+    $.each(basketContents, function() {
+      fieldSubmit += this.title + ' \r\n';
+    });
+
+    $('#sampleRequestInputField').val(fieldSubmit);
+
+    console.log(  $('#sampleRequestInputField').val());
+
+  }
+
   var clearBasket = function() {
     $('.sample-basket form').removeClass('sent');
     sessionStorage.removeItem("__insys_basketList");
@@ -514,10 +523,14 @@ var prefix = $('#sample-basket').attr('data-url');
       return "";
     });
 
-    $('.sample-basket').click( function() {
-      $('.sample-basket .wpcf7-mail-sent-ok').css({'display':'none'});
+    $('.sample-basket').click(function() {
+      $('.sample-basket .wpcf7-mail-sent-ok').css({
+        'display': 'none'
+      });
 
     });
+
+    updateHiddenField();
 
   }
 
@@ -531,7 +544,7 @@ var prefix = $('#sample-basket').attr('data-url');
     } else {
 
       // Use the main Wordpress API to make the initial call to reduce page load if someone isn't using the tool
-      var endpoint = prefix+'/wp-json/wp/v2/products?_embed&per_page=100&exclude=6476,4967';
+      var endpoint = prefix + '/wp-json/wp/v2/products?_embed&per_page=100&exclude=6476,4967';
       $.ajax({
         url: endpoint,
         method: 'GET', // POST means "add friend" for example.
@@ -561,7 +574,9 @@ var prefix = $('#sample-basket').attr('data-url');
     var basketItems = JSON.parse(sessionStorage.getItem('__insys_basketList'));
 
     if (basketItems) {
-      $('.sample-basket__items').html(function() {return null});
+      $('.sample-basket__items').html(function() {
+        return null
+      });
       for (var i = 0; i < basketItems.length; i++) {
         generateBasketItem(basketItems[i].id, basketItems[i].title, basketItems[i].image);
       }
@@ -574,6 +589,15 @@ var prefix = $('#sample-basket').attr('data-url');
     new addBasketItems;
   }
 
+  function getPage(page) {
+
+    var finishEndpoint = prefix + '/wp-json/wp/v2/variations/?_embed&per_page=100&page=' + page;
+
+    return $.get(finishEndpoint).then(function(r) {
+      return r;
+    });
+  }
+
   var sampleBasketPreload = function(product) {
 
 
@@ -583,33 +607,44 @@ var prefix = $('#sample-basket').attr('data-url');
       if (product) {
         new getBasketProductVariants(product.title, product.id);
         new addBasketItems;
-      }
-      else {
+      } else {
         new sampleBasket;
       }
     } else {
 
-        $('.sample-basket__content__stage').css({
-          left: "0%"
-        });
+      $('.sample-basket__content__stage').css({
+        left: "0%"
+      });
 
-      function getPage(page) {
 
-        var finishEndpoint = prefix+'/wp-json/wp/v2/variations/?_embed&per_page=100&page=' + page;
-
-        return $.get(finishEndpoint).then(function(r) {
-          return r;
-        });
-      }
 
       $.when(getPage(1), getPage(2), getPage(3), getPage(4), getPage(5)).then(function(p1, p2, p3, p4, p5) {
         var variations = p1.concat(p2).concat(p3).concat(p4).concat(p5);
+        var variationsFiltered = [];
+
+
+      //  console.log(variations);
+
+        for(var i = 0;i < variations.length;i++) {
+
+          //console.log(variations[i].id);
+
+          var newVariation = {};
+          newVariation.id = variations[i].id;
+          newVariation.title = variations[i].title;
+          newVariation.acf = variations[i].acf;
+          newVariation._embedded = variations[i]._embedded;
+          newVariation.var_finish = variations[i].var_finish;
+          newVariation.var_prod = variations[i].var_prod;
+
+          variationsFiltered.push(newVariation);
+
+        }
+
         localStorage.setItem('__insys_variationList', JSON.stringify(variations));
         if (product) {
           new getBasketProductVariants(product.title, product.id);
-        }
-
-        else {
+        } else {
           new sampleBasket;
         }
 
@@ -622,7 +657,7 @@ var prefix = $('#sample-basket').attr('data-url');
   $('#go-to-basket').click(function() {
 
     if ($(this).prev().children().length > 0) {
-  new goCheckout;
+      new goCheckout;
     }
 
 
@@ -630,71 +665,34 @@ var prefix = $('#sample-basket').attr('data-url');
   });
 
 
-$('.sample-basket__content__basket .submit-btn input').click(function(e){
 
-      //GENERATE TEXT FOR INPUT FIELD HERE
-      var basketContents = JSON.parse(sessionStorage.getItem('__insys_basketList'));
-      var fieldSubmit = "";
 
-      $.each(basketContents, function() {
-        fieldSubmit += this.title + ' \r\n';
-      });
+  $('.header-prod .blue-solid-btn').click(function(e) {
+    e.preventDefault();
+    if ($('.sample-basket').length > 0) {
 
-      $('#sampleRequestInputField').val(fieldSubmit);
+      $('body').addClass('basket-open');
 
-      $('.sample-basket__content__basket .submit-btn input').trigger('click');
-
-      var mailCheck = setInterval(checkForSending, 1000);
-
-      function checkForSending() {
-        if ($('.wpcf7-mail-sent-ok').length > 0) {
-          new clearBasket;
-          stopTheChecking();
-        }
-        else if ($('.wpcf7-mail-sent-ng').length > 0 || $('.wpcf7-validation-errors').length > 0) {
-
-          stopTheChecking();
-        }
-        else {
-          //Still Checking...
-        }
+      if ($('.product-page').length > 0) {
+        var prod = {};
+        prod.title = $('.product-page').attr('data-title');
+        prod.id = $('.product-page').attr('id');
+        new sampleBasketPreload(prod);
+      } else {
+        new sampleBasketPreload;
       }
 
-      function stopTheChecking() {
-        clearInterval(mailCheck);
-      }
+    } else {
+      window.location = 'https://intrasystems.co.uk/request-free-samples/';
+    }
+  });
 
-});
 
-
-$('.header-prod .blue-solid-btn').click(function(e) {
-  e.preventDefault();
-  if ($('.sample-basket').length > 0) {
-
+  $('a[href="#sample-request-tool"]').click(function(e) {
+    e.preventDefault();
+    new sampleBasketPreload;
     $('body').addClass('basket-open');
-
-    if ($('.product-page').length > 0) {
-      var prod = {};
-      prod.title = $('.product-page').attr('data-title');
-      prod.id = $('.product-page').attr('id');
-      new sampleBasketPreload(prod);
-    }
-    else {
-      new sampleBasketPreload;
-    }
-
-  }
-  else {
-    window.location = 'https://intrasystems.co.uk/request-free-samples/';
-  }
-});
-
-
-$('a[href="#sample-request-tool"').click(function(e) {
-  e.preventDefault();
-  new sampleBasketPreload;
-  $('body').addClass('basket-open');
-});
+  });
 
   $('#sample-basket-tab').click(function() {
     new sampleBasketPreload;

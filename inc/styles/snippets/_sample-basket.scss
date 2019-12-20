@@ -148,7 +148,7 @@
         top: 7.5%;
         right: -100%;
         transition: right 0.5s ease;
-z-index:200; 
+z-index:200;
         &.slide {
           right: 0;
         }
@@ -392,6 +392,8 @@ z-index:200;
         background: white!important;
         color: $primary-blue!important;
         align-self: flex-start;
+        width:20%;
+        display:inline-block;
 
         &:not(.active) {
           &:before {
