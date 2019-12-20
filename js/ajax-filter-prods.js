@@ -512,9 +512,11 @@ jQuery(document).ready(function($) {
 
     $('#sampleRequestInputField').val(fieldSubmit);
 
-    console.log(  $('#sampleRequestInputField').val());
+
 
   }
+
+
 
   var clearBasket = function() {
     $('.sample-basket form').removeClass('sent');
@@ -533,6 +535,10 @@ jQuery(document).ready(function($) {
     updateHiddenField();
 
   }
+
+  document.addEventListener( 'wpcf7submit', function( event ) {
+    clearBasket();
+}, false );
 
   var sampleBasketProducts = function(category) {
 
