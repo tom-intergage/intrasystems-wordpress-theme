@@ -27,7 +27,7 @@ if( $_SESSION['axishouse_pop_up_seen'] == 4 ){
   </p>
 
   <a href="/request-free-samples/" target="_self">
-    <img src="/wp-content/themes/axishouse/img/order-free-samples.gif" alt="Order Free Sample" width="246" height="107" />
+    <img src="/wp-content/themes/intergage-wordpress-theme/img/order-free-samples.gif" alt="Order Free Sample" width="246" height="107" />
   </a>
 
   <p class="last">

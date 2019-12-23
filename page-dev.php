@@ -22,8 +22,8 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="http://192.168.30.102/wp-content/themes/axishouse/library/css/style.css">
-	<link rel="stylesheet" href="http://192.168.30.102/wp-content/themes/axishouse/library/css/foundation.css" />
+	<link rel="stylesheet" href="http://192.168.30.102/wp-content/themes/intergage-wordpress-theme/library/css/style.css">
+	<link rel="stylesheet" href="http://192.168.30.102/wp-content/themes/intergage-wordpress-theme/library/css/foundation.css" />
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script>
 			document.write('<script src="http://' + (location.host || 'localhost')

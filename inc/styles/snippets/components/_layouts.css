@@ -1,7 +1,7 @@
 /*
 Error: Undefined variable: "$primary-blue".
-        on line 6 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss, in `background-overlay'
-        from line 26 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss
+        on line 6 of /var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss, in `background-overlay'
+        from line 26 of /var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss
 
 1: $pale-blue: #b9c2c1;
 2: $grey: #f2f6f7;
@@ -16,8 +16,8 @@ Error: Undefined variable: "$primary-blue".
 11:   }
 
 Backtrace:
-/var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss:6:in `background-overlay'
-/var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss:26
+/var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss:6:in `background-overlay'
+/var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss:26
 /usr/lib/ruby/vendor_ruby/sass/script/tree/variable.rb:49:in `_perform'
 /usr/lib/ruby/vendor_ruby/sass/script/tree/node.rb:58:in `perform'
 /usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:72:in `block in perform_arguments'
@@ -75,4 +75,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$primary-blue\".\A         on line 6 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss, in `background-overlay'\A         from line 26 of /var/www/html/intrasystems/wp-content/themes/axishouse/inc/styles/snippets/components/_layouts.scss\A \A 1: $pale-blue: #b9c2c1;\A 2: $grey: #f2f6f7;\A 3: @mixin background-shade ($col:$primary-blue) {\A 4:   background-color: rgba($col,0.5);\A 5: }\A 6: @mixin background-overlay ($col:$primary-blue) {\A 7:   position: relative;\A 8: \A 9:   > * {\A 10:     z-index: 10;\A 11:   }"; }
+  content: "Error: Undefined variable: \"$primary-blue\".\A         on line 6 of /var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss, in `background-overlay'\A         from line 26 of /var/www/html/intrasystems/wp-content/themes/intergage-wordpress-theme/inc/styles/snippets/components/_layouts.scss\A \A 1: $pale-blue: #b9c2c1;\A 2: $grey: #f2f6f7;\A 3: @mixin background-shade ($col:$primary-blue) {\A 4:   background-color: rgba($col,0.5);\A 5: }\A 6: @mixin background-overlay ($col:$primary-blue) {\A 7:   position: relative;\A 8: \A 9:   > * {\A 10:     z-index: 10;\A 11:   }"; }

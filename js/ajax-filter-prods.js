@@ -408,6 +408,7 @@ jQuery(document).ready(function($) {
   }
 
   function setActiveLocation(num) {
+    $('.sample-basket').attr('data-location',num);
     $('.sample-basket__progress__stage').removeClass('active');
     $('.sample-basket__progress__stage:nth-child(' + num + ')').addClass('active');
   }

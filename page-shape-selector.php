@@ -44,37 +44,37 @@ endwhile;
 					<ul id="shape-options">
 						<li>
 							<a href="#" id="triangle" data-examples="triangle-examples" data-downloads="triangle-downloads" data-shape="triangle">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/triangle.png" alt="Triangle Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/triangle.png" alt="Triangle Shape Carpets"></span>
 								<span class="txt">Triangle</span>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="square" data-examples="square-examples" data-downloads="square-downloads" data-shape="square">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/square.png" alt="Square Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/square.png" alt="Square Shape Carpets"></span>
 								<span class="txt">Square</span>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="rectangle" data-examples="rectangle-examples" data-downloads="rectangle-downloads" data-shape="rectangle">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/rectangle.png" alt="Rectangle Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/rectangle.png" alt="Rectangle Shape Carpets"></span>
 								<span class="txt">Rectangle</span>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="diamond" data-examples="diamond-examples" data-downloads="diamond-downloads" data-shape="diamond">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/diamond.png" alt="Diamond Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/diamond.png" alt="Diamond Shape Carpets"></span>
 								<span class="txt">Diamond</span>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="hexagon" data-examples="hexagon-examples" data-downloads="hexagon-downloads" data-shape="hexagon">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/hexagon.png" alt="Hexagon Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/hexagon.png" alt="Hexagon Shape Carpets"></span>
 								<span class="txt">Hexagon</span>
 							</a>
 						</li>
 						<li>
 							<a href="#" id="mixed" data-examples="mixed-examples" data-downloads="mixed-downloads" data-shape="mixed">
-								<span class="shape"><img src="/wp-content/themes/axishouse/img/shape-selector/mixed.png" alt="Mixed Shape Carpets"></span>
+								<span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/mixed.png" alt="Mixed Shape Carpets"></span>
 								<span class="txt">Mixed</span>
 							</a>
 						</li>
@@ -291,7 +291,7 @@ if( have_rows('triangle_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 
@@ -320,7 +320,7 @@ if( have_rows('square_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 
@@ -349,7 +349,7 @@ if( have_rows('rectangle_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 
@@ -378,7 +378,7 @@ if( have_rows('diamond_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 
@@ -407,7 +407,7 @@ if( have_rows('hexagon_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 
@@ -436,7 +436,7 @@ if( have_rows('mixed_downloads') ):
 ?>
 
 								<a href="<?php echo $photoshop_file['url']; ?>" target="_blank">
-									<img src="/wp-content/themes/axishouse/img/shape-selector/photoshop-icon.png" alt="File Name" />
+									<img src="/wp-content/themes/intergage-wordpress-theme/img/shape-selector/photoshop-icon.png" alt="File Name" />
 									<span><?php echo $photoshop_file_name; ?></span>
 								</a>
 

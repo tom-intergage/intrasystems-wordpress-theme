@@ -39,7 +39,7 @@ get_header();
             <?php echo "<p>".get_the_content()."</p>"; ?>
 
 
-				   <?php //<a class="large-blue-btn" href="/wp-content/themes/axishouse/pdf/Intrasystems-Brochure.pdf" target="_blank">Brochure Download</a>get_template_part( 'template-parts/content', 'page' ); ?>
+				   <?php //<a class="large-blue-btn" href="/wp-content/themes/intergage-wordpress-theme/pdf/Intrasystems-Brochure.pdf" target="_blank">Brochure Download</a>get_template_part( 'template-parts/content', 'page' ); ?>
                </div>
                </div>
             </section>

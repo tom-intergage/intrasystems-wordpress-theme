@@ -65,7 +65,7 @@ while ( have_posts() ) : the_post();
 
 					<div class="google-map">
           
-          				<img src="/wp-content/themes/axishouse/img/intrashape-img.png" alt="Get creative with Intrasystems" />
+          				<img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape-img.png" alt="Get creative with Intrasystems" />
          
          			</div>
          

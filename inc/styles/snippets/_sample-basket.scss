@@ -415,31 +415,31 @@ z-index:200;
 
       &--Triangle {
         &:before {
-          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/triangle.png");
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/intergage-wordpress-theme/img/shape-selector/triangle.png");
         }
       }
 
       &--Square {
         &:before {
-          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/square.png");
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/intergage-wordpress-theme/img/shape-selector/square.png");
         }
       }
 
       &--Rectangle {
         &:before {
-          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/rectangle.png");
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/intergage-wordpress-theme/img/shape-selector/rectangle.png");
         }
       }
 
       &--Hexagon {
         &:before {
-          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/hexagon.png");
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/intergage-wordpress-theme/img/shape-selector/hexagon.png");
         }
       }
 
       &--Diamond {
         &:before {
-          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/axishouse/img/shape-selector/diamond.png");
+          background-image: url("https://www.intrasystems.co.uk/wp-content/themes/intergage-wordpress-theme/img/shape-selector/diamond.png");
         }
       }
     }
@@ -849,5 +849,14 @@ body.basket-open {
 
   #sample-basket-tab {
     bottom: -2rem;
+  }
+}
+
+.sample-basket[data-location="4"] {
+  #go-to-basket {
+    display:none; color:black;
+  }
+  .sample-basket__items {
+    height:100%;
   }
 }

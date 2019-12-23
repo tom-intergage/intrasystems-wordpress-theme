@@ -57,7 +57,7 @@ while ( have_posts() ) : the_post();
 
 							<?php echo do_shortcode('[contact-form-7 id="7357" title="How to make a reception more inviting"]'); ?> 
 						   
-						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/axishouse/pdf/reception-design-whitepaper.pdf' target="_blank">here</a> to download your file.</a></p> 
+						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/intergage-wordpress-theme/pdf/reception-design-whitepaper.pdf' target="_blank">here</a> to download your file.</a></p> 
 						
 						</div>
 
@@ -65,7 +65,7 @@ while ( have_posts() ) : the_post();
 
 					<div class="google-map">
           
-          				<img src="/wp-content/themes/axishouse/img/book-cover-3.jpg" alt="How to make a reception more inviting" /> 
+          				<img src="/wp-content/themes/intergage-wordpress-theme/img/book-cover-3.jpg" alt="How to make a reception more inviting" /> 
          
          			</div>
          
