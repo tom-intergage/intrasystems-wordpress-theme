@@ -294,7 +294,7 @@ jQuery(document).ready(function($) {
 
                 if (filteredProductVariation.length > 0) {
                   var myListID = '#pv-list-' + finishIndex + '-' + pvlID;
-                  var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+                  var featuredImage = filteredProductVariation[0].thumbURL;
                   var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
                   $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
                 }
@@ -335,7 +335,7 @@ jQuery(document).ready(function($) {
               });
 
               var myListID = '#pv-list-' + i + '-' + pvlID;
-              var featuredImage = filteredProductVariation[0]._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+              var featuredImage = filteredProductVariation[0].thumbURL;
               var addClass = (currentBasket) ? returnProductTrue(filteredProductVariation[0].id, currentBasket) : "";
 
               $(myListID).append('<li data-id="' + filteredProductVariation[0].id + '" data-image="' + featuredImage + '" data-name="' + variantName + '" class="basket-item' + addClass + '"><div><img src="' + featuredImage + '"/></div><span>' + variantName + '</span></li>');
@@ -456,7 +456,7 @@ jQuery(document).ready(function($) {
       var toreturn = "";
       $.each(data, function(index) {
 
-        var featuredImage = this._embedded['wp:featuredmedia']['0']['media_details']['sizes']['prod_featured-small']['source_url'];
+        var featuredImage = this._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'];
         var itemTitle = this.title.rendered;
         var itemID = this.id;
 
@@ -640,7 +640,7 @@ jQuery(document).ready(function($) {
           newVariation.id = variations[i].id;
           newVariation.title = variations[i].title;
           newVariation.acf = variations[i].acf;
-          newVariation._embedded = variations[i]._embedded;
+          newVariation.thumbURL = variations[i]._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'];
           newVariation.var_finish = variations[i].var_finish;
           newVariation.var_prod = variations[i].var_prod;
 
