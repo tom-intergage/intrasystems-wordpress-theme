@@ -648,7 +648,7 @@ jQuery(document).ready(function($) {
 
         }
 
-        localStorage.setItem('__insys_variationList', JSON.stringify(variations));
+        localStorage.setItem('__insys_variationList', JSON.stringify(variationsFiltered));
         if (product) {
           new getBasketProductVariants(product.title, product.id);
         } else {
