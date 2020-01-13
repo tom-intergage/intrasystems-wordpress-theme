@@ -634,7 +634,7 @@ jQuery(document).ready(function($) {
 
         for(var i = 0;i < variations.length;i++) {
 
-          //console.log(variations[i].id);
+          console.log(variations[i].id);
 
           var newVariation = {};
           newVariation.id = variations[i].id;
