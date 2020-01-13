@@ -640,9 +640,11 @@ jQuery(document).ready(function($) {
           newVariation.id = variations[i].id;
           newVariation.title = variations[i].title;
           newVariation.acf = variations[i].acf;
-          var sizes = variations[i]._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'];
-          console.log(variations[i], sizes);
-          newVariation.thumbURL = (sizes !== undefined) ? sizes : "";
+          
+
+          var sizes = (variations[i]._embedded["wp:featuredmedia"][0]["code"] == undefined) ? variations[i]._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'] : "";
+
+          newVariation.thumbURL = sizes;
           newVariation.var_finish = variations[i].var_finish;
           newVariation.var_prod = variations[i].var_prod;
 
@@ -716,3 +718,4 @@ jQuery(document).ready(function($) {
 
 
 });
+ 
