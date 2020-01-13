@@ -634,13 +634,15 @@ jQuery(document).ready(function($) {
 
         for(var i = 0;i < variations.length;i++) {
 
-          console.log(variations[i]);
+
 
           var newVariation = {};
           newVariation.id = variations[i].id;
           newVariation.title = variations[i].title;
           newVariation.acf = variations[i].acf;
-          newVariation.thumbURL = variations[i]._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'];
+          var sizes = variations[i]._embedded["wp:featuredmedia"][0]['media_details']['sizes']['prod_featured-small']['source_url'];
+          console.log(variations[i], sizes);
+          newVariation.thumbURL = (sizes !== undefined) ? sizes : "";
           newVariation.var_finish = variations[i].var_finish;
           newVariation.var_prod = variations[i].var_prod;
 
