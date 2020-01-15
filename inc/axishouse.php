@@ -266,7 +266,7 @@ function variations_filter($finishes) {
 
 function ajax_filter_posts_scripts() {
   // Enqueue script
-  wp_register_script('afp_script', get_template_directory_uri() . '/js/ajax-filter-prods.js', false, null, false);
+  wp_register_script('afp_script', get_template_directory_uri() . '/js/ajax-filter-products.js', false, null, false);
   wp_enqueue_script('afp_script');
 
   wp_localize_script( 'afp_script', 'afp_vars', array(
