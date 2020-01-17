@@ -537,7 +537,7 @@ jQuery(document).ready(function($) {
 
   }
 
-  document.addEventListener( 'wpcf7submit', function( event ) {
+  document.addEventListener( 'wpcf7mailsent', function( event ) {
     clearBasket();
 }, false );
 
