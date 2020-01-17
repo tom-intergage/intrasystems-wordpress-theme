@@ -64,7 +64,7 @@ if ($manufacturer){
 
 $output .= "<div id='prod-mobile-intro'>";
 
-$sample_url = $site_url."/request-free-samples/#".$post->post_name;
+$sample_url = "#sample-request-tool"
 $sample_btn_txt = 'Request Free Sample';
 $sample_btn_class = '';
 
@@ -81,7 +81,7 @@ $output .= get_field('intro_paragraph');
 if( get_field('intrashape_content') ){
 
    $output .= "<a class='yellow-btn yellow-solid-btn' href='/shape-selector/' target='_self'>Download PSD to Create Your Own Design</a>
-   <a class='blue-btn blue-solid-btn free-samples' href='#free-samples' target='_self' style='width:100%'>Request Free Sample</a>";
+   <a class='blue-btn blue-solid-btn free-samples' href='#sample-request-tool' target='_self' style='width:100%'>Request Free Sample</a>";
    $output .= "<p style='font-style: italic;font-family: Arial,Helvetica Neue,Helvetica,sans-serif; '>INTRAshape is protected by design rights and pending patent protection</p>";
 
 } else if( get_field('intralux_grafic_content') ){
@@ -1255,16 +1255,15 @@ if( have_rows('prod_var') || get_field('spec_img') ){
       if( get_field('intrashape_content') ){
 
          $output .= "<a class='yellow-btn yellow-solid-btn' href='/shape-selector/' target='_self' style='width:100%;max-width:420px;'>Download PSD to Create Your Own Design</a>
-      <a class='blue-btn blue-solid-btn free-samples' href='#free-samples'  style='width:100%;max-width:420px;margin-top:0px;'>Request Free Samples</a>";
+      <a class='blue-btn blue-solid-btn free-samples' href='#sample-request-tool'  style='width:100%;max-width:420px;margin-top:0px;'>Request Free Samples</a>";
 
       } else if( get_field('intralux_grafic_content') ){
 
-         $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
-         $output .= "<div><a class='blue-btn free-sample-folder' href='#free-sample-folder' style='margin-top:0'>Request FREE Sample Folder</a></div>";
+         $output .= "<a class='blue-btn' href='#sample-request-tool".($prod_title)."'>Request Free Samples</a>";
 
       } else {
 
-         $output .= "<a class='blue-btn' href='".($site_url)."/request-free-samples/#".($prod_title)."'>Request Free Samples</a>";
+         $output .= "<a class='blue-btn' href='#sample-request-tool'>Request Free Samples</a>";
 
       }
 
@@ -1513,4 +1512,4 @@ function createForm(){
 
 ?>
 <?php get_footer(); ?>
- 
+
