@@ -64,7 +64,7 @@ if ($manufacturer){
 
 $output .= "<div id='prod-mobile-intro'>";
 
-$sample_url = "#sample-request-tool"
+$sample_url = "#sample-request-tool";
 $sample_btn_txt = 'Request Free Sample';
 $sample_btn_class = '';
 
