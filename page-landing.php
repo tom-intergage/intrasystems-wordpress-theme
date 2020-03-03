@@ -57,7 +57,7 @@ while ( have_posts() ) : the_post();
 
 							<?php echo do_shortcode('[contact-form-7 id="5846" title="WHITEPAPER: BIM vs CAD"]'); ?>
 						   
-						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/intergage-wordpress-theme/pdf/BIMvCAD-v2.pdf' target="_blank">here</a> to download your file.</a></p> 
+						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/intrasystems-wordpress-theme/pdf/BIMvCAD-v2.pdf' target="_blank">here</a> to download your file.</a></p> 
 						
 						</div>
 
@@ -65,7 +65,7 @@ while ( have_posts() ) : the_post();
 
 					<div class="google-map">
           
-          				<img src="/wp-content/themes/intergage-wordpress-theme/img/book-cover.jpg" alt="BIM Vs CAD" />
+          				<img src="/wp-content/themes/intrasystems-wordpress-theme/img/book-cover.jpg" alt="BIM Vs CAD" />
          
          			</div>
          
