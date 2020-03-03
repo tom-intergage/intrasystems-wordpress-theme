@@ -57,7 +57,7 @@ while ( have_posts() ) : the_post();
 
 							<?php echo do_shortcode('[contact-form-7 id="6547" title="Shopping Centres Strategy for Overcoming eCommerce"]'); ?>
 						   
-						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/intergage-wordpress-theme/pdf/intrasystems-shopping-centres-ebook.pdf' target="_blank">here</a> to download your file.</a></p> 
+						   <p id='file_url1' style='display:none;'>Thanks! Click <a href='/wp-content/themes/intrasystems-wordpress-theme/pdf/intrasystems-shopping-centres-ebook.pdf' target="_blank">here</a> to download your file.</a></p> 
 						
 						</div>
 
@@ -65,7 +65,7 @@ while ( have_posts() ) : the_post();
 
 					<div class="google-map">
           
-          				<img src="/wp-content/themes/intergage-wordpress-theme/img/book-cover-2.jpg" alt="Shopping Centre's Strategy For Overcoming eCommerce" />
+          				<img src="/wp-content/themes/intrasystems-wordpress-theme/img/book-cover-2.jpg" alt="Shopping Centre's Strategy For Overcoming eCommerce" />
          
          			</div>
          
