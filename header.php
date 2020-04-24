@@ -282,10 +282,10 @@ s.parentNode.insertBefore(b, s);})();
       <?php
       
         $flash_messaging = get_field('flash_messaging', 'option');
-      
-      if ($flash_messaging) {
+
+      if ($flash_messaging && is_user_logged_in()) {
         ?>
-      <div class="header-flash" style="display:none">
+      <div class="header-flash">
         <?php 
           echo $flash_messaging;
         ?>
