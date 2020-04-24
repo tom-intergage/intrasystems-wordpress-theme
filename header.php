@@ -283,7 +283,7 @@ s.parentNode.insertBefore(b, s);})();
       
         $flash_messaging = get_field('flash_messaging', 'option');
 
-      if ($flash_messaging && is_user_logged_in()) {
+      if ($flash_messaging && is_front_page()) {
         ?>
       <div class="header-flash">
         <?php 
