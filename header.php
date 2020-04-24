@@ -280,6 +280,19 @@ s.parentNode.insertBefore(b, s);})();
     </header><!-- #masthead -->
     <div class="header-content">
       <?php
+      
+        $flash_messaging = get_field('flash_messaging', 'option');
+      
+      if ($flash_messaging) {
+        ?>
+      <div class="header-flash" style="display:none">
+        <?php 
+          echo $flash_messaging;
+        ?>
+        </div>
+      <?php
+      }
+      
 
       /* - - - - - - - PRODUCT HEADER - START - - - - - - - */
 
