@@ -319,31 +319,31 @@ echo $output;
                               <ul id="shape-options">
                                  <li>
                                     <a href="#" id="triangle" data-examples="triangle-examples" data-downloads="triangle-downloads" data-shape="triangle">
-                                       <span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/triangle.png" alt="Triangle Shape Carpets"></span>
+                                       <span class="shape"><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/triangle.png" alt="Triangle Shape Carpets"></span>
                                        <span class="txt">Triangle</span>
                                     </a>
                                  </li>
                                  <li>
                                     <a href="#" id="square" data-examples="square-examples" data-downloads="square-downloads" data-shape="square">
-                                       <span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/square.png" alt="Square Shape Carpets"></span>
+                                       <span class="shape"><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/square.png" alt="Square Shape Carpets"></span>
                                        <span class="txt">Square</span>
                                     </a>
                                  </li>
                                  <li>
                                     <a href="#" id="rectangle" data-examples="rectangle-examples" data-downloads="rectangle-downloads" data-shape="rectangle">
-                                       <span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/rectangle.png" alt="Rectangle Shape Carpets"></span>
+                                       <span class="shape"><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/rectangle.png" alt="Rectangle Shape Carpets"></span>
                                        <span class="txt">Rectangle</span>
                                     </a>
                                  </li>
                                  <li>
                                     <a href="#" id="diamond" data-examples="diamond-examples" data-downloads="diamond-downloads" data-shape="diamond">
-                                       <span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/diamond.png" alt="Diamond Shape Carpets"></span>
+                                       <span class="shape"><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/diamond.png" alt="Diamond Shape Carpets"></span>
                                        <span class="txt">Diamond</span>
                                     </a>
                                  </li>
                                  <li>
                                     <a href="#" id="hexagon" data-examples="hexagon-examples" data-downloads="hexagon-downloads" data-shape="hexagon">
-                                       <span class="shape"><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/hexagon.png" alt="Hexagon Shape Carpets"></span>
+                                       <span class="shape"><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/hexagon.png" alt="Hexagon Shape Carpets"></span>
                                        <span class="txt">Hexagon</span>
                                     </a>
                                  </li>
@@ -367,7 +367,7 @@ echo $output;
 
                                     <div class="large-shape">
 
-                                       <div><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/triangle-large.png" alt="Triangle Shape Carpets"></div>
+                                       <div><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/triangle-large.png" alt="Triangle Shape Carpets"></div>
 
                                     </div>
 
@@ -416,7 +416,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/triangle-shapes.png" alt="Triangle Shape Carpets" id="triangle-shapes">
+                                       <img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/triangle-shapes.png" alt="Triangle Shape Carpets" id="triangle-shapes">
 
                                     </div>
 
@@ -445,7 +445,7 @@ echo $output;
 
                                     <div class="large-shape">
 
-                                       <div><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/square-large.png" alt="Square Shape Carpets"></div>
+                                       <div><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/square-large.png" alt="Square Shape Carpets"></div>
 
                                     </div>
 
@@ -494,7 +494,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/square-shapes.png" alt="Square Shape Carpets" id="square-shapes">
+                                       <img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/square-shapes.png" alt="Square Shape Carpets" id="square-shapes">
 
                                     </div>
 
@@ -519,7 +519,7 @@ echo $output;
 
                                     <div class="large-shape">
 
-                                       <div><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/rectangle-large.png" alt="Rectangle Shape Carpets"></div>
+                                       <div><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/rectangle-large.png" alt="Rectangle Shape Carpets"></div>
 
                                     </div>
 
@@ -570,7 +570,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/rectangle-shapes.png" alt="Rectangle Shape Carpets" id="rectangle-shapes">
+                                       <img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/rectangle-shapes.png" alt="Rectangle Shape Carpets" id="rectangle-shapes">
 
                                     </div>
 
@@ -594,7 +594,7 @@ echo $output;
 
                                     <div class="large-shape">
 
-                                       <div><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/diamond-large.png" alt="Diamond Shape Carpets"></div>
+                                       <div><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/diamond-large.png" alt="Diamond Shape Carpets"></div>
 
                                     </div>
 
@@ -643,7 +643,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/diamond-shapes.jpg" alt="Diamond Shape Carpets" id="diamond-shapes">
+                                       <img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/diamond-shapes.jpg" alt="Diamond Shape Carpets" id="diamond-shapes">
 
                                     </div>
 
@@ -669,7 +669,7 @@ echo $output;
 
                                     <div class="large-shape">
 
-                                       <div><img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/hexagon-large.png" alt="Hexagon Shape Carpets"></div>
+                                       <div><img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/hexagon-large.png" alt="Hexagon Shape Carpets"></div>
 
                                     </div>
 
@@ -716,7 +716,7 @@ echo $output;
 
                                     <div class="tesselation-img">
 
-                                       <img src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/hexagon-shapes.png" alt="Hexagon Shape Carpets" id="hexagon-shapes">
+                                       <img src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/hexagon-shapes.png" alt="Hexagon Shape Carpets" id="hexagon-shapes">
 
                                     </div>
 
@@ -1457,11 +1457,11 @@ function createForm(){
     $form .= "<p id='bim_ifc_url1' style='display:none;'></p>";
     $form .= "</div>";
 
-		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/triangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/square.png" /></td></tr>';
+		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/triangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/square.png" /></td></tr>';
 		$form .= '<tr><td>Triange <input type="checkbox" value="Triangle" class="freesamplecheckbox" /></td><td>Square <input value="Square" type="checkbox" class="freesamplecheckbox" /></td></tr>';
-		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/rectangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/diamond.png" /></td></tr>';
+		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/rectangle.png" /></td><td><img width="140" style="margin:10px;" src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/diamond.png" /></td></tr>';
 		$form .= '<tr><td>Rectangle <input type="checkbox" value="Rectangle" class="freesamplecheckbox" /></td><td>Diamond<input value="Diamond" type="checkbox" class="freesamplecheckbox" /></td></tr>';
-		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intergage-wordpress-theme/img/intrashape/hexagon.png" /></td><td></td></tr>';
+		$form .= '<tr><td><img width="140" style="margin:10px;" src="/wp-content/themes/intrasystems-wordpress-theme/img/intrashape/hexagon.png" /></td><td></td></tr>';
 		$form .= '<tr><td>Hexagon <input type="checkbox" value="Hexagon" class="freesamplecheckbox" /></td><td></td></tr>';
 
 		$form .= '</table>';
