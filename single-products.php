@@ -1452,7 +1452,7 @@ function createForm(){
     $form .= "</div>";
 
     $form .= "<div id='bim-ifc-form-download' class='popup-form-download' style='display:none;'>";
-    $form .= do_shortcode('[contact-form-7 id="7654" title="BIM IFC Download"]');
+    $form .= do_shortcode('[contact-form-7 id="7654" title="BIM IFC Download from '.get_the_title().'"]');
     $form .= "<p id='bim_ifc_url' style='display:none;'></p>";
     $form .= "<p id='bim_ifc_url1' style='display:none;'></p>";
     $form .= "</div>";
