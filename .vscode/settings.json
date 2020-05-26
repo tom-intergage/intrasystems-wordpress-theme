@@ -1,0 +1,17 @@
+{
+
+    "liveSassCompile.settings.formats": [
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": null
+        }
+    ],
+    "liveSassCompile.settings.excludeList": [
+        "inc/styles/login.scss",
+        "bower_components/foundation/scss/foundation.scss",
+        "bower_components/foundation/scss/normalize.scss",
+        "library/font-awesome/scss/font-awesome.scss",
+        "library/jeet/index.scss"
+    ]
+}

@@ -23,9 +23,9 @@ of the styles inside media queries.
 
 // import foundation overrides
 @import "settings";
-
-// foundation.scss
-@import "../../bower_components/foundation/scss/foundation";
+  
+// foundation.scss 
+@import "../../bower_components/foundation/scss/foundation.scss";
 
 // joints.scss
 @import '../../library/jeet/index'; 
@@ -35,7 +35,7 @@ of the styles inside media queries.
 @import "snippets/axis-forms";
 @import "snippets/plugins/simplelightbox";
 @import "snippets/header";
-
+ 
 /*
 SMALL (BASE) SIZE
 These are the small/base styles. It's what people see on their phones. If
@@ -65,7 +65,7 @@ you can add resource intensive styles.
 	// styles in large.scss
 	@import "snippets/core/large";
 
-} // end of media query
+} // end of media query 
 
 /*
 XLARGE
@@ -92,7 +92,7 @@ RETINA (2x RESOLUTION DEVICES)
 This applies to the retina iPhone (4s) and iPad (2,3) along with
 other displays with a 2x resolution. You can also create a media
 query for retina AND a certain size if you want. Go Nuts.
-*/
+*/ 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
        only screen and (min--moz-device-pixel-ratio: 1.5),
        only screen and (min-device-pixel-ratio: 1.5) {
