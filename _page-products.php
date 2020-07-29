@@ -11,6 +11,7 @@
  */
 $output = "";
 $parallax_img  =  get_field('parallax_img' );
+
 $parallax_thumb ="";
 if($parallax_img){
    $size = 'parallax';
